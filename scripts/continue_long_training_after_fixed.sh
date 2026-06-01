@@ -6,14 +6,22 @@ USE_CUDA="${USE_CUDA:-True}"
 REPORT_DIR="${REPORT_DIR:-reports/long_training}"
 LOG_DIR="${REPORT_DIR}/logs"
 MANIFEST="${REPORT_DIR}/manifest.env"
+WAIT_SECONDS="${WAIT_SECONDS:-300}"
 
 mkdir -p "${LOG_DIR}" "${REPORT_DIR}/eval" "${REPORT_DIR}/curves"
-: > "${MANIFEST}"
 
-latest_run_dir() {
-  local env_name="$1"
-  ls -td "tmp/${env_name}"/* | head -n 1
-}
+if [[ ! -f "${MANIFEST}" ]]; then
+  echo "Manifest not found: ${MANIFEST}" >&2
+  exit 1
+fi
+
+# shellcheck disable=SC1090
+source "${MANIFEST}"
+
+if [[ -z "${FIXED_RUN_DIR:-}" ]]; then
+  echo "FIXED_RUN_DIR is missing in ${MANIFEST}" >&2
+  exit 1
+fi
 
 record_var() {
   local name="$1"
@@ -21,11 +29,16 @@ record_var() {
   printf '%s=%q\n' "${name}" "${value}" | tee -a "${MANIFEST}"
 }
 
+latest_run_dir() {
+  local env_name="$1"
+  ls -td "tmp/${env_name}"/* | head -n 1
+}
+
 run_train() {
   local label="$1"
   shift
   echo "[$(date '+%F %T')] START ${label}" | tee -a "${LOG_DIR}/pipeline.log"
-  conda run -n EAI python train.py "$@" 2>&1 | tee "${LOG_DIR}/${label}.log"
+  PYTHONUNBUFFERED=1 conda run -n EAI python train.py "$@" 2>&1 | tee "${LOG_DIR}/${label}.log"
   echo "[$(date '+%F %T')] DONE ${label}" | tee -a "${LOG_DIR}/pipeline.log"
 }
 
@@ -33,12 +46,22 @@ run_eval() {
   local label="$1"
   shift
   echo "[$(date '+%F %T')] EVAL ${label}" | tee -a "${LOG_DIR}/pipeline.log"
-  conda run -n EAI python scripts/evaluate_checkpoint.py "$@" 2>&1 | tee "${LOG_DIR}/${label}.log"
+  PYTHONUNBUFFERED=1 conda run -n EAI python scripts/evaluate_checkpoint.py "$@" 2>&1 | tee "${LOG_DIR}/${label}.log"
 }
 
-run_train fixed_run_to_goal --cfg config/run-to-goal-ants-v0.yaml --num_threads "${NUM_THREADS}" --use_cuda "${USE_CUDA}"
-FIXED_RUN_DIR="$(latest_run_dir run-to-goal-ants-v0)"
-record_var FIXED_RUN_DIR "${FIXED_RUN_DIR}"
+if [[ -n "${FIXED_PID:-}" ]]; then
+  while kill -0 "${FIXED_PID}" 2>/dev/null; do
+    echo "[$(date '+%F %T')] waiting for fixed run ${FIXED_PID}; latest checkpoint:" \
+      "$(find "${FIXED_RUN_DIR}/models" -maxdepth 2 -type f -name 'epoch_*.p' -printf '%f\n' | sort | tail -n 1)" \
+      | tee -a "${LOG_DIR}/pipeline.log"
+    sleep "${WAIT_SECONDS}"
+  done
+fi
+
+if [[ ! -f "${FIXED_RUN_DIR}/models/agent_0/epoch_1000.p" || ! -f "${FIXED_RUN_DIR}/models/agent_1/epoch_1000.p" ]]; then
+  echo "Fixed long training did not produce epoch_1000 checkpoints in ${FIXED_RUN_DIR}" | tee -a "${LOG_DIR}/pipeline.log" >&2
+  exit 1
+fi
 
 run_train devants_warmup --cfg config/repro/devants-compatible-warmup-long.yaml --num_threads "${NUM_THREADS}" --use_cuda "${USE_CUDA}"
 WARMUP_RUN_DIR="$(latest_run_dir robo-sumo-devants-v0)"
@@ -58,11 +81,11 @@ run_eval confrontation_eval --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_di
 run_eval original_runs_eval --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir runs/robo-sumo-devants-v0/models --ckpt best --episodes 100 --seed 303 --out "${REPORT_DIR}/eval/original_runs_best.json"
 run_eval reproduction_eval --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir "${REPRO_RUN_DIR}/models" --ckpt 1000 --episodes 100 --seed 304 --out "${REPORT_DIR}/eval/reproduction_epoch1000.json"
 
-conda run -n EAI python scripts/plot_training_curves.py \
+PYTHONUNBUFFERED=1 conda run -n EAI python scripts/plot_training_curves.py \
   --run_dir "${FIXED_RUN_DIR}" \
   --run_dir "${WARMUP_RUN_DIR}" \
   --run_dir "${CONFRONTATION_RUN_DIR}" \
   --run_dir "${REPRO_RUN_DIR}" \
   --out_dir "${REPORT_DIR}/curves" 2>&1 | tee "${LOG_DIR}/plot_curves.log"
 
-echo "[$(date '+%F %T')] LONG TRAINING PIPELINE COMPLETE" | tee -a "${LOG_DIR}/pipeline.log"
+echo "[$(date '+%F %T')] LONG TRAINING CONTINUATION COMPLETE" | tee -a "${LOG_DIR}/pipeline.log"
