@@ -1,0 +1,25 @@
+# Local conda environment dependencies for the mujoco branch.
+# There is no official PyTorch cu125 wheel; cu126 works with the current NVIDIA
+# driver on this machine and remains in the CUDA 12 family.
+--extra-index-url https://download.pytorch.org/whl/cu126
+
+torch==2.12.0+cu126
+
+gymnasium==0.28.1
+gym==0.26.2
+mujoco==2.3.5
+pyglet==1.5.27
+glfw
+
+numpy==1.26.4
+PyYAML
+lxml
+six
+networkx
+Pillow
+termcolor
+setproctitle
+tensorboard
+tensorboardX
+imageio[ffmpeg]
+torch-geometric
