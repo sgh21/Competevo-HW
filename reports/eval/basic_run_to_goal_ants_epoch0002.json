@@ -1,0 +1,60 @@
+{
+  "config": "config/repro/basic-run-to-goal-ants-sanity.yaml",
+  "env_name": "run-to-goal-ants-v0",
+  "ckpt_dir": "tmp/run-to-goal-ants-v0/20260601_211152/models",
+  "ckpt": "2",
+  "checkpoint_files": {
+    "0": "tmp/run-to-goal-ants-v0/20260601_211152/models/agent_0/epoch_0002.p",
+    "1": "tmp/run-to-goal-ants-v0/20260601_211152/models/agent_1/epoch_0002.p"
+  },
+  "episodes": 5,
+  "mean_action": true,
+  "avg_episode_reward": [
+    502.01520443146626,
+    496.9608491099255
+  ],
+  "std_episode_reward": [
+    16.554244249283965,
+    11.106114041626306
+  ],
+  "avg_episode_length": 500.0,
+  "wins": [
+    0,
+    0
+  ],
+  "draws": 5,
+  "win_rate": [
+    0.0,
+    0.0
+  ],
+  "draw_rate": 1.0,
+  "rewards_by_episode": [
+    [
+      516.8775044677055,
+      493.9115290945247
+    ],
+    [
+      471.41759549399285,
+      495.872798180649
+    ],
+    [
+      516.2906793101617,
+      486.8571140953152
+    ],
+    [
+      504.7771939768814,
+      489.8906193868828
+    ],
+    [
+      500.71304890858994,
+      518.2721847922558
+    ]
+  ],
+  "episode_lengths": [
+    500,
+    500,
+    500,
+    500,
+    500
+  ]
+}

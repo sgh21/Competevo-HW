@@ -1,0 +1,60 @@
+{
+  "config": "config/repro/devants-compatible-warmup-sanity.yaml",
+  "env_name": "robo-sumo-devants-v0",
+  "ckpt_dir": "tmp/robo-sumo-devants-v0/20260601_211201/models",
+  "ckpt": "2",
+  "checkpoint_files": {
+    "0": "tmp/robo-sumo-devants-v0/20260601_211201/models/agent_0/epoch_0002.p",
+    "1": "tmp/robo-sumo-devants-v0/20260601_211201/models/agent_1/epoch_0002.p"
+  },
+  "episodes": 5,
+  "mean_action": true,
+  "avg_episode_reward": [
+    1076.4319689800668,
+    1123.3930858996096
+  ],
+  "std_episode_reward": [
+    51.36584867786122,
+    76.0043239876079
+  ],
+  "avg_episode_length": 501.0,
+  "wins": [
+    0,
+    0
+  ],
+  "draws": 5,
+  "win_rate": [
+    0.0,
+    0.0
+  ],
+  "draw_rate": 1.0,
+  "rewards_by_episode": [
+    [
+      1033.153080859545,
+      1035.4647083155446
+    ],
+    [
+      1031.3389529245014,
+      1095.9404927375215
+    ],
+    [
+      1042.949481590682,
+      1059.3913110440706
+    ],
+    [
+      1118.1174592202517,
+      1202.7662715118681
+    ],
+    [
+      1156.6008703053544,
+      1223.4026458890435
+    ]
+  ],
+  "episode_lengths": [
+    501,
+    501,
+    501,
+    501,
+    501
+  ]
+}

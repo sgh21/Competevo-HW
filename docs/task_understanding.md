@@ -478,3 +478,42 @@ mlp.affine_layers.0.weight           (64,52)  -> (64,139)
 - value 网络也不能直接迁移，因为 critic 输入是 `[stage_ind, scale_state, sim_obs]`，`sim_obs` 变化导致 `state_dim` 变化。
 
 因此，如果目标是“run-to-goal 预训练 -> 对抗训练”并且不改加载代码，就必须保证两个阶段的 observation/action/network shape 一致。否则需要显式实现 partial loading，并清楚声明哪些层继承、哪些层重新初始化。
+
+## 10. 本轮实验闭环记录（2026-06-01）
+
+本轮任务采用“同网络，不同目标函数”的兼容方案：不再把 `run-to-goal-devants-v0` 的 checkpoint 直接加载到 `robo-sumo-devants-v0`，而是在 `robo-sumo-devants-v0` 的 fighter 观测和网络结构下增加 `reward_specs.mode: run_to_goal_warmup`，先训练向对手移动的 dense reward，再切换到 sumo sparse+dense reward。
+
+已完成的短训练 sanity check：
+
+- 固定形态：`config/repro/basic-run-to-goal-ants-sanity.yaml`
+  - run dir: `tmp/run-to-goal-ants-v0/20260601_211152`
+  - final checkpoint: `models/agent_0/epoch_0002.p`、`models/agent_1/epoch_0002.p`
+- 形态可进化 warm-up：`config/repro/devants-compatible-warmup-sanity.yaml`
+  - run dir: `tmp/robo-sumo-devants-v0/20260601_211201`
+  - intermediate checkpoint: `models/agent_0/epoch_0002.p`、`models/agent_1/epoch_0002.p`
+- 形态可进化对抗：`config/repro/devants-confrontation-sanity.yaml`
+  - 从 warm-up `epoch_0002` 加载，严格同构加载成功
+  - run dir: `tmp/robo-sumo-devants-v0/20260601_211212`
+  - copied start checkpoint: `models/agent_*/epoch_0000.p`
+  - final checkpoint: `models/agent_*/epoch_0002.p`
+- runs 短复现：`config/repro/reproduce-robo-sumo-devants-sanity.yaml`
+  - run dir: `tmp/robo-sumo-devants-v0/20260601_211230`
+  - final checkpoint: `models/agent_*/epoch_0002.p`
+
+评测与报告输出：
+
+- HTML 报告：`reports/task_experiment_report.html`
+- 评测 JSON：`reports/eval/*.json`
+- 训练曲线：`reports/curves/*.svg`
+
+关键评测结果（5 episodes，mean action）：
+
+| 对象 | 平均回报 agent0 / agent1 | 胜率 agent0 / agent1 | 平局率 |
+|---|---:|---:|---:|
+| fixed run-to-goal sanity | 502.02 / 496.96 | 0.00 / 0.00 | 1.00 |
+| dev warm-up sanity | 1076.43 / 1123.39 | 0.00 / 0.00 | 1.00 |
+| dev confrontation sanity | -1087.79 / -1130.68 | 0.00 / 0.00 | 1.00 |
+| runs original best | 3023.87 / -1318.11 | 0.80 / 0.00 | 0.20 |
+| short reproduction epoch_0002 | -1168.99 / -2067.60 | 0.20 / 0.00 | 0.80 |
+
+短复现没有达到 runs 原 checkpoint 的效果，主要原因是本轮只跑 2 epoch、`min_batch_size=128`，而原始训练配置使用长训练和大 batch。该结果只能说明训练/保存/加载/评测/画图流程可用，不能作为收敛复现实验结论。

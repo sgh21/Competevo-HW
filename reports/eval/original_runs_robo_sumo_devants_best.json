@@ -1,0 +1,60 @@
+{
+  "config": "runs/robo-sumo-devants-v0/config.yml",
+  "env_name": "robo-sumo-devants-v0",
+  "ckpt_dir": "runs/robo-sumo-devants-v0/models",
+  "ckpt": "best",
+  "checkpoint_files": {
+    "0": "runs/robo-sumo-devants-v0/models/agent_0/best.p",
+    "1": "runs/robo-sumo-devants-v0/models/agent_1/best.p"
+  },
+  "episodes": 5,
+  "mean_action": true,
+  "avg_episode_reward": [
+    3023.8664960158967,
+    -1318.1071425690334
+  ],
+  "std_episode_reward": [
+    1303.7104381009528,
+    1522.1800951989737
+  ],
+  "avg_episode_length": 258.8,
+  "wins": [
+    4,
+    0
+  ],
+  "draws": 1,
+  "win_rate": [
+    0.8,
+    0.0
+  ],
+  "draw_rate": 0.2,
+  "rewards_by_episode": [
+    [
+      3903.7791427519346,
+      -2499.9995916283615
+    ],
+    [
+      625.2264241885971,
+      1679.5519332967976
+    ],
+    [
+      4197.339128552378,
+      -1859.3998868974636
+    ],
+    [
+      2679.7997773654706,
+      -2175.7889082126903
+    ],
+    [
+      3713.1880072211015,
+      -1734.8992594034494
+    ]
+  ],
+  "episode_lengths": [
+    291,
+    501,
+    272,
+    89,
+    141
+  ]
+}

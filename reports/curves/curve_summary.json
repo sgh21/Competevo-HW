@@ -1,0 +1,434 @@
+{
+  "tmp/run-to-goal-ants-v0/20260601_211152": {
+    "train_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211152__train_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          485.3266296386719
+        ],
+        [
+          1,
+          257.6532897949219
+        ]
+      ],
+      "last": 257.6532897949219
+    },
+    "train_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211152__train_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          487.10223388671875
+        ],
+        [
+          1,
+          245.12303161621094
+        ]
+      ],
+      "last": 245.12303161621094
+    },
+    "eval_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211152__eval_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          468.0764465332031
+        ],
+        [
+          1,
+          248.72915649414062
+        ]
+      ],
+      "last": 248.72915649414062
+    },
+    "eval_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211152__eval_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          505.8590393066406
+        ],
+        [
+          1,
+          243.74270629882812
+        ]
+      ],
+      "last": 243.74270629882812
+    },
+    "eval_win_rate_0": {
+      "path": "reports/curves/20260601_211152__eval_win_rate_0.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "eval_win_rate_1": {
+      "path": "reports/curves/20260601_211152__eval_win_rate_1.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "episode_length": {
+      "path": "reports/curves/20260601_211152__episode_length.svg",
+      "points": [
+        [
+          0,
+          500.0
+        ],
+        [
+          0,
+          500.0
+        ],
+        [
+          1,
+          500.0
+        ],
+        [
+          1,
+          500.0
+        ]
+      ],
+      "last": 500.0
+    }
+  },
+  "tmp/robo-sumo-devants-v0/20260601_211201": {
+    "train_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211201__train_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          715.397705078125
+        ],
+        [
+          1,
+          843.4104614257812
+        ]
+      ],
+      "last": 843.4104614257812
+    },
+    "train_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211201__train_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          610.9572143554688
+        ],
+        [
+          1,
+          440.7891845703125
+        ]
+      ],
+      "last": 440.7891845703125
+    },
+    "eval_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211201__eval_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          1032.5953369140625
+        ],
+        [
+          1,
+          1115.638916015625
+        ]
+      ],
+      "last": 1115.638916015625
+    },
+    "eval_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211201__eval_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          1038.5643310546875
+        ],
+        [
+          1,
+          1052.57373046875
+        ]
+      ],
+      "last": 1052.57373046875
+    },
+    "eval_win_rate_0": {
+      "path": "reports/curves/20260601_211201__eval_win_rate_0.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "eval_win_rate_1": {
+      "path": "reports/curves/20260601_211201__eval_win_rate_1.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "episode_length": {
+      "path": "reports/curves/20260601_211201__episode_length.svg",
+      "points": [
+        [
+          0,
+          501.0
+        ],
+        [
+          0,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ]
+      ],
+      "last": 501.0
+    }
+  },
+  "tmp/robo-sumo-devants-v0/20260601_211212": {
+    "train_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211212__train_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          -305.2851867675781
+        ],
+        [
+          1,
+          -1590.1138916015625
+        ]
+      ],
+      "last": -1590.1138916015625
+    },
+    "train_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211212__train_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          692.3206787109375
+        ],
+        [
+          1,
+          -1113.571044921875
+        ]
+      ],
+      "last": -1113.571044921875
+    },
+    "eval_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211212__eval_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          -302.8685302734375
+        ],
+        [
+          1,
+          -959.9403076171875
+        ]
+      ],
+      "last": -959.9403076171875
+    },
+    "eval_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211212__eval_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          576.208740234375
+        ],
+        [
+          1,
+          -1019.521728515625
+        ]
+      ],
+      "last": -1019.521728515625
+    },
+    "eval_win_rate_0": {
+      "path": "reports/curves/20260601_211212__eval_win_rate_0.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "eval_win_rate_1": {
+      "path": "reports/curves/20260601_211212__eval_win_rate_1.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "episode_length": {
+      "path": "reports/curves/20260601_211212__episode_length.svg",
+      "points": [
+        [
+          0,
+          501.0
+        ],
+        [
+          0,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ]
+      ],
+      "last": 501.0
+    }
+  },
+  "tmp/robo-sumo-devants-v0/20260601_211230": {
+    "train_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211230__train_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          -20.381574630737305
+        ],
+        [
+          1,
+          -1109.4483642578125
+        ]
+      ],
+      "last": -1109.4483642578125
+    },
+    "train_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211230__train_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          791.1890869140625
+        ],
+        [
+          1,
+          -1001.7932739257812
+        ]
+      ],
+      "last": -1001.7932739257812
+    },
+    "eval_R_eps_avg_0": {
+      "path": "reports/curves/20260601_211230__eval_R_eps_avg_0.svg",
+      "points": [
+        [
+          0,
+          -1325.755859375
+        ],
+        [
+          1,
+          -876.2225952148438
+        ]
+      ],
+      "last": -876.2225952148438
+    },
+    "eval_R_eps_avg_1": {
+      "path": "reports/curves/20260601_211230__eval_R_eps_avg_1.svg",
+      "points": [
+        [
+          0,
+          -320.22845458984375
+        ],
+        [
+          1,
+          -1338.25439453125
+        ]
+      ],
+      "last": -1338.25439453125
+    },
+    "eval_win_rate_0": {
+      "path": "reports/curves/20260601_211230__eval_win_rate_0.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "eval_win_rate_1": {
+      "path": "reports/curves/20260601_211230__eval_win_rate_1.svg",
+      "points": [
+        [
+          0,
+          0.0
+        ],
+        [
+          1,
+          0.0
+        ]
+      ],
+      "last": 0.0
+    },
+    "episode_length": {
+      "path": "reports/curves/20260601_211230__episode_length.svg",
+      "points": [
+        [
+          0,
+          501.0
+        ],
+        [
+          0,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ],
+        [
+          1,
+          501.0
+        ]
+      ],
+      "last": 501.0
+    }
+  }
+}
