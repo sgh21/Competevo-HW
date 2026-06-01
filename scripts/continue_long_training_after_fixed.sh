@@ -22,6 +22,7 @@ if [[ -z "${FIXED_RUN_DIR:-}" ]]; then
   echo "FIXED_RUN_DIR is missing in ${MANIFEST}" >&2
   exit 1
 fi
+FIXED_FINAL_CKPT="${FIXED_FINAL_CKPT:-1000}"
 
 record_var() {
   local name="$1"
@@ -58,8 +59,9 @@ if [[ -n "${FIXED_PID:-}" ]]; then
   done
 fi
 
-if [[ ! -f "${FIXED_RUN_DIR}/models/agent_0/epoch_1000.p" || ! -f "${FIXED_RUN_DIR}/models/agent_1/epoch_1000.p" ]]; then
-  echo "Fixed long training did not produce epoch_1000 checkpoints in ${FIXED_RUN_DIR}" | tee -a "${LOG_DIR}/pipeline.log" >&2
+FIXED_FINAL_NAME="$(printf 'epoch_%04d.p' "${FIXED_FINAL_CKPT}")"
+if [[ ! -f "${FIXED_RUN_DIR}/models/agent_0/${FIXED_FINAL_NAME}" || ! -f "${FIXED_RUN_DIR}/models/agent_1/${FIXED_FINAL_NAME}" ]]; then
+  echo "Fixed long training did not produce ${FIXED_FINAL_NAME} checkpoints in ${FIXED_RUN_DIR}" | tee -a "${LOG_DIR}/pipeline.log" >&2
   exit 1
 fi
 
@@ -75,7 +77,7 @@ run_train reproduction_robo_sumo_devants --cfg config/robo-sumo-devants-v0.yaml 
 REPRO_RUN_DIR="$(latest_run_dir robo-sumo-devants-v0)"
 record_var REPRO_RUN_DIR "${REPRO_RUN_DIR}"
 
-run_eval fixed_run_to_goal_eval --cfg config/run-to-goal-ants-v0.yaml --ckpt_dir "${FIXED_RUN_DIR}/models" --ckpt 1000 --episodes 100 --seed 300 --out "${REPORT_DIR}/eval/fixed_run_to_goal_epoch1000.json"
+run_eval fixed_run_to_goal_eval --cfg "${FIXED_EVAL_CFG:-config/run-to-goal-ants-v0.yaml}" --ckpt_dir "${FIXED_RUN_DIR}/models" --ckpt "${FIXED_FINAL_CKPT}" --episodes 100 --seed 300 --out "${REPORT_DIR}/eval/fixed_run_to_goal_${FIXED_FINAL_NAME%.p}.json"
 run_eval warmup_eval --cfg config/repro/devants-compatible-warmup-long.yaml --ckpt_dir "${WARMUP_RUN_DIR}/models" --ckpt 100 --episodes 100 --seed 301 --out "${REPORT_DIR}/eval/devants_warmup_epoch0100.json"
 run_eval confrontation_eval --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir "${CONFRONTATION_RUN_DIR}/models" --ckpt 1000 --episodes 100 --seed 302 --out "${REPORT_DIR}/eval/devants_confrontation_epoch1000.json"
 run_eval original_runs_eval --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir runs/robo-sumo-devants-v0/models --ckpt best --episodes 100 --seed 303 --out "${REPORT_DIR}/eval/original_runs_best.json"
