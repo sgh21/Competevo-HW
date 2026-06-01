@@ -162,6 +162,8 @@ class RoboSumoDevEnv(MultiDevAgentEnv):
 
     def _step(self, actions):
         self._elapsed_steps += 1
+        reward_mode = self.cfg.reward_specs.get('mode', 'sumo')
+        use_sparse_reward = self.cfg.use_parse_reward and reward_mode != 'run_to_goal_warmup'
         for i in range(self.n_agents):
             self.agents[i].before_step()
         
@@ -201,6 +203,8 @@ class RoboSumoDevEnv(MultiDevAgentEnv):
             if self._max_episode_steps <= self._elapsed_steps:
                 infos[i]['reward_parse'] += self.DRAW_PENALTY
                 dones[i] = True
+            if not use_sparse_reward:
+                infos[i]['reward_parse'] = 0.
             # Move to opponent(s) and push them out of center
             infos[i]['move_to_opp_reward'] = 0.
             infos[i]['push_opp_reward'] = 0.
@@ -217,8 +221,9 @@ class RoboSumoDevEnv(MultiDevAgentEnv):
             # Reward shaping
             infos[i]['reward_dense'] = infos[i]['alive_reward'] + \
                 infos[i]['ctrl_reward'] + \
-                infos[i]['push_opp_reward'] + \
                 infos[i]['move_to_opp_reward']
+            if reward_mode != 'run_to_goal_warmup':
+                infos[i]['reward_dense'] += infos[i]['push_opp_reward']
             # Add up rewards
             rewards[i] = infos[i]['reward_parse'] + infos[i]['reward_dense']
             # print(i, infos[i]['ctrl_reward'], infos[i]['push_opp_reward'], infos[i]['move_to_opp_reward'])

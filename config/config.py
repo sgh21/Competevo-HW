@@ -43,6 +43,7 @@ class Config:
         self.min_batch_size = cfg.get('min_batch_size', 50000)
         self.mini_batch_size = cfg.get('mini_batch_size', self.min_batch_size)
         self.eval_batch_size = cfg.get('eval_batch_size', 10000)
+        self.eval_num_threads = cfg.get('eval_num_threads', 10)
         self.max_epoch_num = cfg.get('max_epoch_num', 1000)
         self.seed = cfg.get('seed', 1)
         self.seed_method = cfg.get('seed_method', 'deep')

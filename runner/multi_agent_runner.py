@@ -86,7 +86,7 @@ class MultiAgentRunner(BaseRunner):
             "Sampling {} steps by {} slaves, spending {:.2f} s.".format(
             self.cfg.min_batch_size, self.num_threads, t1-t0)
         )
-        
+
         """updating policy"""
         for i, learner in self.learners.items():
             learner.update_params(batches[i])
@@ -94,7 +94,7 @@ class MultiAgentRunner(BaseRunner):
         self.logger.info("Policy update, spending: {:.2f} s.".format(t2-t1))
 
         """evaluate policy"""
-        _, log_evals, win_rate = self.sample(self.cfg.eval_batch_size, mean_action=True, nthreads=10)
+        _, log_evals, win_rate = self.sample(self.cfg.eval_batch_size, mean_action=True, nthreads=self.cfg.eval_num_threads)
         t3 = time.time()
         self.logger.info("Evaluation time: {:.2f} s.".format(t3-t2))
 
@@ -522,4 +522,3 @@ class MultiAgentRunner(BaseRunner):
 
         self.logger.info("Agent_0 gets averaged episode reward: {:.2f}".format(average(list(zip(*total_reward))[0])))
         self.logger.info("Agent_1 gets averaged episode reward: {:.2f}".format(average(list(zip(*total_reward))[1])))
-        
