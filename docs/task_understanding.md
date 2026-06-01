@@ -436,3 +436,45 @@ conda run -n EAI python train.py \
 - `run-to-goal-ants-v0`、`run-to-goal-bugs-v0`、`run-to-goal-spiders-v0`、`run-to-goal-devants-v0`、`run-to-goal-evoants-v0` 是双 agent 注册。
 
 双 agent 的 `MultiAgentRunner` / `MultiEvoAgentRunner` 默认不共享权重。agent0 和 agent1 架构通常相同，但参数独立，分别保存在 `models/agent_0/` 和 `models/agent_1/`。如果想共享权重，需要改 runner/learner 的构造方式，目前默认不是共享策略。
+
+### 9.8 checkpoint 加载预训练结果的真实机制
+
+当前代码加载 checkpoint 是严格的同构网络加载；并没有自动解决 run-to-goal 和对抗任务观测不同的问题。
+
+加载链路：
+
+- `train.py` 解析 `--ckpt_dir` 和 `--ckpt`。
+- `BaseRunner.__init__` 在创建 env 和 learner 后调用 `load_checkpoint`。
+- `MultiAgentRunner.load_agent_checkpoint` / `MultiEvoAgentRunner.load_agent_checkpoint` 从 `ckpt_dir/agent_i/<ckpt>.p` 读取 pickle。
+- learner 的 `load_ckpt` 直接调用：
+  - `self.policy_net.load_state_dict(model['policy_dict'])`
+  - `self.value_net.load_state_dict(model['value_dict'])`
+
+这里没有 `strict=False`，也没有过滤 shape 不一致的层。因此预训练 checkpoint 只有在目标 env 构造出的 policy/value 网络结构完全兼容时才能加载。
+
+对 `dev` agent 的 shape 检查结果：
+
+```text
+config/run-to-goal-devants-v0.yaml DevAnt sim_obs_dim 31 state_dim 52
+config/robo-sumo-devants-v0.yaml DevAntFighter sim_obs_dim 118 state_dim 139
+
+policy 不兼容层:
+control_norm.mean                    (31,)    -> (118,)
+control_norm.var                     (31,)    -> (118,)
+control_norm.std                     (31,)    -> (118,)
+control_mlp.affine_layers.0.weight   (64,31)  -> (64,118)
+
+value 不兼容层:
+norm.mean                            (52,)    -> (139,)
+norm.var                             (52,)    -> (139,)
+norm.std                             (52,)    -> (139,)
+mlp.affine_layers.0.weight           (64,52)  -> (64,139)
+```
+
+这说明：
+
+- `dev` 形态分支的 `scale_mlp` 和 `scale_state_mean` 理论上可以迁移，因为 `scale_state_dim=20` 一致。
+- control 分支不能直接迁移，因为 robo-sumo observation 比 run-to-goal 多了 contact force、torso matrix 等信息。
+- value 网络也不能直接迁移，因为 critic 输入是 `[stage_ind, scale_state, sim_obs]`，`sim_obs` 变化导致 `state_dim` 变化。
+
+因此，如果目标是“run-to-goal 预训练 -> 对抗训练”并且不改加载代码，就必须保证两个阶段的 observation/action/network shape 一致。否则需要显式实现 partial loading，并清楚声明哪些层继承、哪些层重新初始化。
