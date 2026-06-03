@@ -1,0 +1,1056 @@
+[20260602 03:55:55 @logger.py:79] Hardware info: x86_64
+[20260602 03:55:55 @logger.py:80] Device info: sgh
+[20260602 03:55:55 @logger.py:81] Platform info: Linux-6.17.0-29-generic-x86_64-with-glibc2.39
+[20260602 03:55:55 @logger.py:82] System info: Linux
+[20260602 03:55:55 @logger.py:83] Current Python version: 3.11.4
+[20260602 03:55:55 @train.py:51] CRITICAL The current environment is robo-sumo-devants-v0.
+[20260602 03:55:55 @train.py:52] Running directory: ./tmp/robo-sumo-devants-v0/20260602_035555
+[20260602 03:55:55 @train.py:53] Type of current running: Training
+[20260602 03:55:55 @logger.py:107] Log file set to ./tmp/robo-sumo-devants-v0/20260602_035555/log/robo-sumo-devants-v0-20260602_035555.log
+Config file is saved at ./tmp/robo-sumo-devants-v0/20260602_035555/config.yml
+[20260602 03:55:55 @multi_evo_agent_runner.py:79] #------------------------ Iteration 0 --------------------------#
+[20260602 03:56:07 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 12.17 s.
+[20260602 03:56:36 @multi_evo_agent_runner.py:94] Policy update, spending: 29.00 s.
+[20260602 03:56:39 @multi_evo_agent_runner.py:99] Evaluation time: 2.47 s.
+[20260602 03:56:39 @multi_evo_agent_runner.py:105] Total time:       0.73 min
+[20260602 03:56:39 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1121.88.
+[20260602 03:56:39 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 03:56:39 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1144.72.
+[20260602 03:56:39 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 03:56:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1121.88!
+[20260602 03:56:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1144.72!
+[20260602 03:56:39 @multi_evo_agent_runner.py:79] #------------------------ Iteration 1 --------------------------#
+[20260602 03:56:52 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 12.84 s.
+[20260602 03:57:21 @multi_evo_agent_runner.py:94] Policy update, spending: 29.56 s.
+[20260602 03:57:24 @multi_evo_agent_runner.py:99] Evaluation time: 2.15 s.
+[20260602 03:57:24 @multi_evo_agent_runner.py:105] Total time:       1.47 min
+[20260602 03:57:24 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 828.25.
+[20260602 03:57:24 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.15.
+[20260602 03:57:24 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 840.78.
+[20260602 03:57:24 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.11.
+[20260602 03:57:24 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 828.25!
+[20260602 03:57:24 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 840.78!
+[20260602 03:57:24 @multi_evo_agent_runner.py:79] #------------------------ Iteration 2 --------------------------#
+[20260602 03:57:38 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.39 s.
+[20260602 03:58:07 @multi_evo_agent_runner.py:94] Policy update, spending: 28.60 s.
+[20260602 03:58:09 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 03:58:09 @multi_evo_agent_runner.py:105] Total time:       2.23 min
+[20260602 03:58:09 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1029.36.
+[20260602 03:58:09 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 03:58:09 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1026.09.
+[20260602 03:58:09 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 03:58:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1029.36!
+[20260602 03:58:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1026.09!
+[20260602 03:58:09 @multi_evo_agent_runner.py:79] #------------------------ Iteration 3 --------------------------#
+[20260602 03:58:25 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.52 s.
+[20260602 03:58:55 @multi_evo_agent_runner.py:94] Policy update, spending: 29.94 s.
+[20260602 03:58:57 @multi_evo_agent_runner.py:99] Evaluation time: 1.98 s.
+[20260602 03:58:57 @multi_evo_agent_runner.py:105] Total time:       3.03 min
+[20260602 03:58:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1183.04.
+[20260602 03:58:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 03:58:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1114.21.
+[20260602 03:58:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 03:58:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1183.04!
+[20260602 03:58:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1114.21!
+[20260602 03:58:57 @multi_evo_agent_runner.py:79] #------------------------ Iteration 4 --------------------------#
+[20260602 03:59:12 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.00 s.
+[20260602 03:59:41 @multi_evo_agent_runner.py:94] Policy update, spending: 28.87 s.
+[20260602 03:59:43 @multi_evo_agent_runner.py:99] Evaluation time: 2.03 s.
+[20260602 03:59:43 @multi_evo_agent_runner.py:105] Total time:       3.80 min
+[20260602 03:59:43 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1029.99.
+[20260602 03:59:43 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.05.
+[20260602 03:59:43 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1035.11.
+[20260602 03:59:43 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.05.
+[20260602 03:59:43 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1029.99!
+[20260602 03:59:43 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1035.11!
+[20260602 03:59:43 @multi_evo_agent_runner.py:79] #------------------------ Iteration 5 --------------------------#
+[20260602 03:59:59 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.69 s.
+[20260602 04:00:29 @multi_evo_agent_runner.py:94] Policy update, spending: 30.19 s.
+[20260602 04:00:31 @multi_evo_agent_runner.py:99] Evaluation time: 1.96 s.
+[20260602 04:00:31 @multi_evo_agent_runner.py:105] Total time:       4.60 min
+[20260602 04:00:31 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1187.47.
+[20260602 04:00:31 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:00:31 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1092.05.
+[20260602 04:00:31 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:00:31 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1187.47!
+[20260602 04:00:31 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1092.05!
+[20260602 04:00:31 @multi_evo_agent_runner.py:79] #------------------------ Iteration 6 --------------------------#
+[20260602 04:00:47 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.83 s.
+[20260602 04:01:17 @multi_evo_agent_runner.py:94] Policy update, spending: 29.29 s.
+[20260602 04:01:19 @multi_evo_agent_runner.py:99] Evaluation time: 2.21 s.
+[20260602 04:01:19 @multi_evo_agent_runner.py:105] Total time:       5.39 min
+[20260602 04:01:19 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 929.89.
+[20260602 04:01:19 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.11.
+[20260602 04:01:19 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 902.18.
+[20260602 04:01:19 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.15.
+[20260602 04:01:19 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 929.89!
+[20260602 04:01:19 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 902.18!
+[20260602 04:01:19 @multi_evo_agent_runner.py:79] #------------------------ Iteration 7 --------------------------#
+[20260602 04:01:34 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.44 s.
+[20260602 04:02:03 @multi_evo_agent_runner.py:94] Policy update, spending: 29.01 s.
+[20260602 04:02:06 @multi_evo_agent_runner.py:99] Evaluation time: 2.22 s.
+[20260602 04:02:06 @multi_evo_agent_runner.py:105] Total time:       6.18 min
+[20260602 04:02:06 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1144.05.
+[20260602 04:02:06 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:02:06 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1119.05.
+[20260602 04:02:06 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:02:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1144.05!
+[20260602 04:02:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1119.05!
+[20260602 04:02:06 @multi_evo_agent_runner.py:79] #------------------------ Iteration 8 --------------------------#
+[20260602 04:02:22 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.62 s.
+[20260602 04:02:51 @multi_evo_agent_runner.py:94] Policy update, spending: 29.70 s.
+[20260602 04:02:53 @multi_evo_agent_runner.py:99] Evaluation time: 2.07 s.
+[20260602 04:02:53 @multi_evo_agent_runner.py:105] Total time:       6.97 min
+[20260602 04:02:53 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1005.17.
+[20260602 04:02:53 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.15.
+[20260602 04:02:53 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 960.67.
+[20260602 04:02:53 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.08.
+[20260602 04:02:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1005.17!
+[20260602 04:02:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 960.67!
+[20260602 04:02:54 @multi_evo_agent_runner.py:79] #------------------------ Iteration 9 --------------------------#
+[20260602 04:03:08 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.94 s.
+[20260602 04:03:37 @multi_evo_agent_runner.py:94] Policy update, spending: 28.08 s.
+[20260602 04:03:39 @multi_evo_agent_runner.py:99] Evaluation time: 2.09 s.
+[20260602 04:03:39 @multi_evo_agent_runner.py:105] Total time:       7.73 min
+[20260602 04:03:39 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1079.55.
+[20260602 04:03:39 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.09.
+[20260602 04:03:39 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1055.99.
+[20260602 04:03:39 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.04.
+[20260602 04:03:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1079.55!
+[20260602 04:03:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1055.99!
+[20260602 04:03:39 @multi_evo_agent_runner.py:79] #------------------------ Iteration 10 --------------------------#
+[20260602 04:03:54 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.53 s.
+[20260602 04:04:24 @multi_evo_agent_runner.py:94] Policy update, spending: 29.45 s.
+[20260602 04:04:26 @multi_evo_agent_runner.py:99] Evaluation time: 1.99 s.
+[20260602 04:04:26 @multi_evo_agent_runner.py:105] Total time:       8.51 min
+[20260602 04:04:26 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1178.55.
+[20260602 04:04:26 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:04:26 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1262.73.
+[20260602 04:04:26 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:04:26 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1178.55!
+[20260602 04:04:26 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1262.73!
+[20260602 04:04:26 @multi_evo_agent_runner.py:79] #------------------------ Iteration 11 --------------------------#
+[20260602 04:04:41 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.23 s.
+[20260602 04:05:10 @multi_evo_agent_runner.py:94] Policy update, spending: 28.78 s.
+[20260602 04:05:12 @multi_evo_agent_runner.py:99] Evaluation time: 2.23 s.
+[20260602 04:05:12 @multi_evo_agent_runner.py:105] Total time:       9.29 min
+[20260602 04:05:13 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1318.47.
+[20260602 04:05:13 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:05:13 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1211.51.
+[20260602 04:05:13 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:05:13 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1318.47!
+[20260602 04:05:13 @multi_evo_agent_runner.py:79] #------------------------ Iteration 12 --------------------------#
+[20260602 04:05:28 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.69 s.
+[20260602 04:05:58 @multi_evo_agent_runner.py:94] Policy update, spending: 29.50 s.
+[20260602 04:06:00 @multi_evo_agent_runner.py:99] Evaluation time: 2.05 s.
+[20260602 04:06:00 @multi_evo_agent_runner.py:105] Total time:      10.08 min
+[20260602 04:06:00 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1448.52.
+[20260602 04:06:00 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:06:00 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1292.48.
+[20260602 04:06:00 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:06:00 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1448.52!
+[20260602 04:06:00 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1292.48!
+[20260602 04:06:00 @multi_evo_agent_runner.py:79] #------------------------ Iteration 13 --------------------------#
+[20260602 04:06:16 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.53 s.
+[20260602 04:06:45 @multi_evo_agent_runner.py:94] Policy update, spending: 29.71 s.
+[20260602 04:06:48 @multi_evo_agent_runner.py:99] Evaluation time: 2.52 s.
+[20260602 04:06:48 @multi_evo_agent_runner.py:105] Total time:      10.88 min
+[20260602 04:06:48 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1323.27.
+[20260602 04:06:48 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:06:48 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1462.64.
+[20260602 04:06:48 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.05.
+[20260602 04:06:48 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1462.64!
+[20260602 04:06:48 @multi_evo_agent_runner.py:79] #------------------------ Iteration 14 --------------------------#
+[20260602 04:07:04 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.37 s.
+[20260602 04:07:33 @multi_evo_agent_runner.py:94] Policy update, spending: 29.40 s.
+[20260602 04:07:35 @multi_evo_agent_runner.py:99] Evaluation time: 2.05 s.
+[20260602 04:07:35 @multi_evo_agent_runner.py:105] Total time:      11.66 min
+[20260602 04:07:35 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1178.21.
+[20260602 04:07:35 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:07:35 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1137.79.
+[20260602 04:07:35 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:07:35 @multi_evo_agent_runner.py:79] #------------------------ Iteration 15 --------------------------#
+[20260602 04:07:50 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.93 s.
+[20260602 04:08:19 @multi_evo_agent_runner.py:94] Policy update, spending: 29.06 s.
+[20260602 04:08:21 @multi_evo_agent_runner.py:99] Evaluation time: 2.19 s.
+[20260602 04:08:21 @multi_evo_agent_runner.py:105] Total time:      12.44 min
+[20260602 04:08:22 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1168.06.
+[20260602 04:08:22 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:08:22 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1126.62.
+[20260602 04:08:22 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:08:22 @multi_evo_agent_runner.py:79] #------------------------ Iteration 16 --------------------------#
+[20260602 04:08:37 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.36 s.
+[20260602 04:09:06 @multi_evo_agent_runner.py:94] Policy update, spending: 28.83 s.
+[20260602 04:09:08 @multi_evo_agent_runner.py:99] Evaluation time: 2.02 s.
+[20260602 04:09:08 @multi_evo_agent_runner.py:105] Total time:      13.21 min
+[20260602 04:09:08 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1726.02.
+[20260602 04:09:08 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:09:08 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1467.59.
+[20260602 04:09:08 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:09:08 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1726.02!
+[20260602 04:09:08 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1467.59!
+[20260602 04:09:08 @multi_evo_agent_runner.py:79] #------------------------ Iteration 17 --------------------------#
+[20260602 04:09:24 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.31 s.
+[20260602 04:09:53 @multi_evo_agent_runner.py:94] Policy update, spending: 29.53 s.
+[20260602 04:09:55 @multi_evo_agent_runner.py:99] Evaluation time: 2.03 s.
+[20260602 04:09:55 @multi_evo_agent_runner.py:105] Total time:      14.00 min
+[20260602 04:09:55 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1598.98.
+[20260602 04:09:55 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.04.
+[20260602 04:09:55 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1159.41.
+[20260602 04:09:55 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.13.
+[20260602 04:09:55 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1598.98!
+[20260602 04:09:55 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1159.41!
+[20260602 04:09:55 @multi_evo_agent_runner.py:79] #------------------------ Iteration 18 --------------------------#
+[20260602 04:10:11 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.21 s.
+[20260602 04:10:39 @multi_evo_agent_runner.py:94] Policy update, spending: 28.60 s.
+[20260602 04:10:41 @multi_evo_agent_runner.py:99] Evaluation time: 2.08 s.
+[20260602 04:10:41 @multi_evo_agent_runner.py:105] Total time:      14.77 min
+[20260602 04:10:41 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1187.96.
+[20260602 04:10:41 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.12.
+[20260602 04:10:41 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1140.78.
+[20260602 04:10:41 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.12.
+[20260602 04:10:41 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1187.96!
+[20260602 04:10:41 @multi_evo_agent_runner.py:79] #------------------------ Iteration 19 --------------------------#
+[20260602 04:10:57 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.48 s.
+[20260602 04:11:27 @multi_evo_agent_runner.py:94] Policy update, spending: 29.54 s.
+[20260602 04:11:29 @multi_evo_agent_runner.py:99] Evaluation time: 2.20 s.
+[20260602 04:11:29 @multi_evo_agent_runner.py:105] Total time:      15.56 min
+[20260602 04:11:29 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1146.43.
+[20260602 04:11:29 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:11:29 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1090.50.
+[20260602 04:11:29 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.32.
+[20260602 04:11:29 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1090.50!
+[20260602 04:11:29 @multi_evo_agent_runner.py:79] #------------------------ Iteration 20 --------------------------#
+[20260602 04:11:45 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.59 s.
+[20260602 04:12:14 @multi_evo_agent_runner.py:94] Policy update, spending: 29.30 s.
+[20260602 04:12:16 @multi_evo_agent_runner.py:99] Evaluation time: 2.09 s.
+[20260602 04:12:16 @multi_evo_agent_runner.py:105] Total time:      16.35 min
+[20260602 04:12:16 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1339.68.
+[20260602 04:12:16 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:12:16 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1086.90.
+[20260602 04:12:16 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:12:16 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1339.68!
+[20260602 04:12:16 @multi_evo_agent_runner.py:79] #------------------------ Iteration 21 --------------------------#
+[20260602 04:12:31 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.12 s.
+[20260602 04:13:01 @multi_evo_agent_runner.py:94] Policy update, spending: 29.33 s.
+[20260602 04:13:03 @multi_evo_agent_runner.py:99] Evaluation time: 2.28 s.
+[20260602 04:13:03 @multi_evo_agent_runner.py:105] Total time:      17.13 min
+[20260602 04:13:03 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1450.22.
+[20260602 04:13:03 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:13:03 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1208.00.
+[20260602 04:13:03 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:13:03 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1450.22!
+[20260602 04:13:03 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1208.00!
+[20260602 04:13:03 @multi_evo_agent_runner.py:79] #------------------------ Iteration 22 --------------------------#
+[20260602 04:13:19 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.48 s.
+[20260602 04:13:48 @multi_evo_agent_runner.py:94] Policy update, spending: 29.75 s.
+[20260602 04:13:51 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 04:13:51 @multi_evo_agent_runner.py:105] Total time:      17.93 min
+[20260602 04:13:51 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1550.58.
+[20260602 04:13:51 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:13:51 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1103.68.
+[20260602 04:13:51 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.05.
+[20260602 04:13:51 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1550.58!
+[20260602 04:13:51 @multi_evo_agent_runner.py:79] #------------------------ Iteration 23 --------------------------#
+[20260602 04:14:06 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.99 s.
+[20260602 04:14:35 @multi_evo_agent_runner.py:94] Policy update, spending: 28.56 s.
+[20260602 04:14:37 @multi_evo_agent_runner.py:99] Evaluation time: 2.07 s.
+[20260602 04:14:37 @multi_evo_agent_runner.py:105] Total time:      18.69 min
+[20260602 04:14:37 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1620.09.
+[20260602 04:14:37 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:14:37 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1179.78.
+[20260602 04:14:37 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:14:37 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1620.09!
+[20260602 04:14:37 @multi_evo_agent_runner.py:79] #------------------------ Iteration 24 --------------------------#
+[20260602 04:14:52 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.26 s.
+[20260602 04:15:22 @multi_evo_agent_runner.py:94] Policy update, spending: 29.88 s.
+[20260602 04:15:24 @multi_evo_agent_runner.py:99] Evaluation time: 2.10 s.
+[20260602 04:15:24 @multi_evo_agent_runner.py:105] Total time:      19.48 min
+[20260602 04:15:24 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1113.16.
+[20260602 04:15:24 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.10.
+[20260602 04:15:24 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 916.25.
+[20260602 04:15:24 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.24.
+[20260602 04:15:24 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1113.16!
+[20260602 04:15:24 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 916.25!
+[20260602 04:15:24 @multi_evo_agent_runner.py:79] #------------------------ Iteration 25 --------------------------#
+[20260602 04:15:40 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.36 s.
+[20260602 04:16:08 @multi_evo_agent_runner.py:94] Policy update, spending: 28.66 s.
+[20260602 04:16:11 @multi_evo_agent_runner.py:99] Evaluation time: 2.10 s.
+[20260602 04:16:11 @multi_evo_agent_runner.py:105] Total time:      20.26 min
+[20260602 04:16:11 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1112.27.
+[20260602 04:16:11 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.07.
+[20260602 04:16:11 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1429.82.
+[20260602 04:16:11 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.31.
+[20260602 04:16:11 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1429.82!
+[20260602 04:16:11 @multi_evo_agent_runner.py:79] #------------------------ Iteration 26 --------------------------#
+[20260602 04:16:26 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.38 s.
+[20260602 04:16:55 @multi_evo_agent_runner.py:94] Policy update, spending: 29.09 s.
+[20260602 04:16:57 @multi_evo_agent_runner.py:99] Evaluation time: 1.97 s.
+[20260602 04:16:57 @multi_evo_agent_runner.py:105] Total time:      21.04 min
+[20260602 04:16:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1577.31.
+[20260602 04:16:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:16:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1444.28.
+[20260602 04:16:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.10.
+[20260602 04:16:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1577.31!
+[20260602 04:16:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1444.28!
+[20260602 04:16:58 @multi_evo_agent_runner.py:79] #------------------------ Iteration 27 --------------------------#
+[20260602 04:17:13 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.57 s.
+[20260602 04:17:43 @multi_evo_agent_runner.py:94] Policy update, spending: 29.92 s.
+[20260602 04:17:45 @multi_evo_agent_runner.py:99] Evaluation time: 2.05 s.
+[20260602 04:17:45 @multi_evo_agent_runner.py:105] Total time:      21.83 min
+[20260602 04:17:45 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1390.31.
+[20260602 04:17:45 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.08.
+[20260602 04:17:45 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1493.19.
+[20260602 04:17:45 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.23.
+[20260602 04:17:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1390.31!
+[20260602 04:17:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1493.19!
+[20260602 04:17:45 @multi_evo_agent_runner.py:79] #------------------------ Iteration 28 --------------------------#
+[20260602 04:18:02 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.29 s.
+[20260602 04:18:31 @multi_evo_agent_runner.py:94] Policy update, spending: 29.34 s.
+[20260602 04:18:33 @multi_evo_agent_runner.py:99] Evaluation time: 2.40 s.
+[20260602 04:18:33 @multi_evo_agent_runner.py:105] Total time:      22.64 min
+[20260602 04:18:34 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1530.78.
+[20260602 04:18:34 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:18:34 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1115.60.
+[20260602 04:18:34 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:18:34 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1530.78!
+[20260602 04:18:34 @multi_evo_agent_runner.py:79] #------------------------ Iteration 29 --------------------------#
+[20260602 04:18:49 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.52 s.
+[20260602 04:19:18 @multi_evo_agent_runner.py:94] Policy update, spending: 28.86 s.
+[20260602 04:19:20 @multi_evo_agent_runner.py:99] Evaluation time: 2.48 s.
+[20260602 04:19:20 @multi_evo_agent_runner.py:105] Total time:      23.42 min
+[20260602 04:19:21 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1604.63.
+[20260602 04:19:21 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:19:21 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1577.02.
+[20260602 04:19:21 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.05.
+[20260602 04:19:21 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1604.63!
+[20260602 04:19:21 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1577.02!
+[20260602 04:19:21 @multi_evo_agent_runner.py:79] #------------------------ Iteration 30 --------------------------#
+[20260602 04:19:36 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.97 s.
+[20260602 04:20:04 @multi_evo_agent_runner.py:94] Policy update, spending: 28.37 s.
+[20260602 04:20:06 @multi_evo_agent_runner.py:99] Evaluation time: 2.20 s.
+[20260602 04:20:06 @multi_evo_agent_runner.py:105] Total time:      24.19 min
+[20260602 04:20:06 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1241.20.
+[20260602 04:20:06 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.12.
+[20260602 04:20:06 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1035.32.
+[20260602 04:20:06 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.31.
+[20260602 04:20:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1241.20!
+[20260602 04:20:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1035.32!
+[20260602 04:20:07 @multi_evo_agent_runner.py:79] #------------------------ Iteration 31 --------------------------#
+[20260602 04:20:22 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.25 s.
+[20260602 04:20:51 @multi_evo_agent_runner.py:94] Policy update, spending: 29.26 s.
+[20260602 04:20:53 @multi_evo_agent_runner.py:99] Evaluation time: 2.23 s.
+[20260602 04:20:53 @multi_evo_agent_runner.py:105] Total time:      24.97 min
+[20260602 04:20:53 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1555.03.
+[20260602 04:20:53 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:20:53 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1097.77.
+[20260602 04:20:53 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:20:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1555.03!
+[20260602 04:20:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1097.77!
+[20260602 04:20:54 @multi_evo_agent_runner.py:79] #------------------------ Iteration 32 --------------------------#
+[20260602 04:21:08 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.87 s.
+[20260602 04:21:37 @multi_evo_agent_runner.py:94] Policy update, spending: 28.44 s.
+[20260602 04:21:39 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:21:39 @multi_evo_agent_runner.py:105] Total time:      25.73 min
+[20260602 04:21:39 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1864.70.
+[20260602 04:21:39 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:21:39 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1133.15.
+[20260602 04:21:39 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:21:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1864.70!
+[20260602 04:21:39 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1133.15!
+[20260602 04:21:39 @multi_evo_agent_runner.py:79] #------------------------ Iteration 33 --------------------------#
+[20260602 04:21:55 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.73 s.
+[20260602 04:22:25 @multi_evo_agent_runner.py:94] Policy update, spending: 29.73 s.
+[20260602 04:22:27 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:22:27 @multi_evo_agent_runner.py:105] Total time:      26.52 min
+[20260602 04:22:27 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 945.34.
+[20260602 04:22:27 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.25.
+[20260602 04:22:27 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1133.18.
+[20260602 04:22:27 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.14.
+[20260602 04:22:27 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 945.34!
+[20260602 04:22:27 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1133.18!
+[20260602 04:22:27 @multi_evo_agent_runner.py:79] #------------------------ Iteration 34 --------------------------#
+[20260602 04:22:42 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.43 s.
+[20260602 04:23:12 @multi_evo_agent_runner.py:94] Policy update, spending: 29.88 s.
+[20260602 04:23:14 @multi_evo_agent_runner.py:99] Evaluation time: 2.03 s.
+[20260602 04:23:14 @multi_evo_agent_runner.py:105] Total time:      27.32 min
+[20260602 04:23:14 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1204.30.
+[20260602 04:23:14 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:23:14 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1132.58.
+[20260602 04:23:14 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:23:14 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1204.30!
+[20260602 04:23:15 @multi_evo_agent_runner.py:79] #------------------------ Iteration 35 --------------------------#
+[20260602 04:23:30 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.35 s.
+[20260602 04:23:59 @multi_evo_agent_runner.py:94] Policy update, spending: 28.73 s.
+[20260602 04:24:01 @multi_evo_agent_runner.py:99] Evaluation time: 2.06 s.
+[20260602 04:24:01 @multi_evo_agent_runner.py:105] Total time:      28.09 min
+[20260602 04:24:01 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1404.01.
+[20260602 04:24:01 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.04.
+[20260602 04:24:01 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1672.36.
+[20260602 04:24:01 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.09.
+[20260602 04:24:01 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1404.01!
+[20260602 04:24:01 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1672.36!
+[20260602 04:24:01 @multi_evo_agent_runner.py:79] #------------------------ Iteration 36 --------------------------#
+[20260602 04:24:17 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.62 s.
+[20260602 04:24:45 @multi_evo_agent_runner.py:94] Policy update, spending: 28.66 s.
+[20260602 04:24:48 @multi_evo_agent_runner.py:99] Evaluation time: 2.39 s.
+[20260602 04:24:48 @multi_evo_agent_runner.py:105] Total time:      28.87 min
+[20260602 04:24:48 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1422.42.
+[20260602 04:24:48 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.10.
+[20260602 04:24:48 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 998.51.
+[20260602 04:24:48 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.30.
+[20260602 04:24:48 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1422.42!
+[20260602 04:24:48 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 998.51!
+[20260602 04:24:48 @multi_evo_agent_runner.py:79] #------------------------ Iteration 37 --------------------------#
+[20260602 04:25:03 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.82 s.
+[20260602 04:25:31 @multi_evo_agent_runner.py:94] Policy update, spending: 28.43 s.
+[20260602 04:25:34 @multi_evo_agent_runner.py:99] Evaluation time: 2.55 s.
+[20260602 04:25:34 @multi_evo_agent_runner.py:105] Total time:      29.64 min
+[20260602 04:25:34 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1341.67.
+[20260602 04:25:34 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.04.
+[20260602 04:25:34 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1203.43.
+[20260602 04:25:34 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.12.
+[20260602 04:25:34 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1203.43!
+[20260602 04:25:34 @multi_evo_agent_runner.py:79] #------------------------ Iteration 38 --------------------------#
+[20260602 04:25:50 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.70 s.
+[20260602 04:26:19 @multi_evo_agent_runner.py:94] Policy update, spending: 29.35 s.
+[20260602 04:26:21 @multi_evo_agent_runner.py:99] Evaluation time: 1.99 s.
+[20260602 04:26:21 @multi_evo_agent_runner.py:105] Total time:      30.43 min
+[20260602 04:26:21 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 2023.97.
+[20260602 04:26:21 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:26:21 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1131.58.
+[20260602 04:26:21 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:26:21 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 2023.97!
+[20260602 04:26:21 @multi_evo_agent_runner.py:79] #------------------------ Iteration 39 --------------------------#
+[20260602 04:26:36 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.24 s.
+[20260602 04:27:06 @multi_evo_agent_runner.py:94] Policy update, spending: 29.11 s.
+[20260602 04:27:08 @multi_evo_agent_runner.py:99] Evaluation time: 2.30 s.
+[20260602 04:27:08 @multi_evo_agent_runner.py:105] Total time:      31.21 min
+[20260602 04:27:08 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1663.03.
+[20260602 04:27:08 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:27:08 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1153.25.
+[20260602 04:27:08 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:27:08 @multi_evo_agent_runner.py:79] #------------------------ Iteration 40 --------------------------#
+[20260602 04:27:24 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.84 s.
+[20260602 04:27:54 @multi_evo_agent_runner.py:94] Policy update, spending: 30.26 s.
+[20260602 04:27:57 @multi_evo_agent_runner.py:99] Evaluation time: 2.35 s.
+[20260602 04:27:57 @multi_evo_agent_runner.py:105] Total time:      32.02 min
+[20260602 04:27:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1014.54.
+[20260602 04:27:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.34.
+[20260602 04:27:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 811.82.
+[20260602 04:27:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.24.
+[20260602 04:27:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1014.54!
+[20260602 04:27:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 811.82!
+[20260602 04:27:57 @multi_evo_agent_runner.py:79] #------------------------ Iteration 41 --------------------------#
+[20260602 04:28:13 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.73 s.
+[20260602 04:28:42 @multi_evo_agent_runner.py:94] Policy update, spending: 29.83 s.
+[20260602 04:28:44 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:28:44 @multi_evo_agent_runner.py:105] Total time:      32.82 min
+[20260602 04:28:45 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1569.62.
+[20260602 04:28:45 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:28:45 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1211.22.
+[20260602 04:28:45 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.05.
+[20260602 04:28:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1569.62!
+[20260602 04:28:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1211.22!
+[20260602 04:28:45 @multi_evo_agent_runner.py:79] #------------------------ Iteration 42 --------------------------#
+[20260602 04:29:00 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.11 s.
+[20260602 04:29:29 @multi_evo_agent_runner.py:94] Policy update, spending: 28.96 s.
+[20260602 04:29:31 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:29:31 @multi_evo_agent_runner.py:105] Total time:      33.59 min
+[20260602 04:29:31 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1458.07.
+[20260602 04:29:31 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:29:31 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1134.14.
+[20260602 04:29:31 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:29:31 @multi_evo_agent_runner.py:79] #------------------------ Iteration 43 --------------------------#
+[20260602 04:29:46 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.94 s.
+[20260602 04:30:15 @multi_evo_agent_runner.py:94] Policy update, spending: 29.33 s.
+[20260602 04:30:18 @multi_evo_agent_runner.py:99] Evaluation time: 2.57 s.
+[20260602 04:30:18 @multi_evo_agent_runner.py:105] Total time:      34.38 min
+[20260602 04:30:18 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1332.47.
+[20260602 04:30:18 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.12.
+[20260602 04:30:18 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1172.63.
+[20260602 04:30:18 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.30.
+[20260602 04:30:18 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1332.47!
+[20260602 04:30:18 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1172.63!
+[20260602 04:30:18 @multi_evo_agent_runner.py:79] #------------------------ Iteration 44 --------------------------#
+[20260602 04:30:34 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.62 s.
+[20260602 04:31:03 @multi_evo_agent_runner.py:94] Policy update, spending: 29.62 s.
+[20260602 04:31:06 @multi_evo_agent_runner.py:99] Evaluation time: 2.59 s.
+[20260602 04:31:06 @multi_evo_agent_runner.py:105] Total time:      35.18 min
+[20260602 04:31:06 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1299.10.
+[20260602 04:31:06 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.29.
+[20260602 04:31:06 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1237.62.
+[20260602 04:31:06 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.13.
+[20260602 04:31:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1299.10!
+[20260602 04:31:06 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1237.62!
+[20260602 04:31:06 @multi_evo_agent_runner.py:79] #------------------------ Iteration 45 --------------------------#
+[20260602 04:31:21 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.15 s.
+[20260602 04:31:50 @multi_evo_agent_runner.py:94] Policy update, spending: 28.88 s.
+[20260602 04:31:52 @multi_evo_agent_runner.py:99] Evaluation time: 1.98 s.
+[20260602 04:31:52 @multi_evo_agent_runner.py:105] Total time:      35.95 min
+[20260602 04:31:52 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1226.89.
+[20260602 04:31:52 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:31:52 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1169.34.
+[20260602 04:31:52 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:31:53 @multi_evo_agent_runner.py:79] #------------------------ Iteration 46 --------------------------#
+[20260602 04:32:08 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.80 s.
+[20260602 04:32:39 @multi_evo_agent_runner.py:94] Policy update, spending: 30.49 s.
+[20260602 04:32:41 @multi_evo_agent_runner.py:99] Evaluation time: 2.46 s.
+[20260602 04:32:41 @multi_evo_agent_runner.py:105] Total time:      36.77 min
+[20260602 04:32:41 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1134.43.
+[20260602 04:32:41 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.42.
+[20260602 04:32:41 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1353.47.
+[20260602 04:32:41 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:32:41 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1134.43!
+[20260602 04:32:41 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1353.47!
+[20260602 04:32:42 @multi_evo_agent_runner.py:79] #------------------------ Iteration 47 --------------------------#
+[20260602 04:32:57 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.28 s.
+[20260602 04:33:26 @multi_evo_agent_runner.py:94] Policy update, spending: 28.98 s.
+[20260602 04:33:28 @multi_evo_agent_runner.py:99] Evaluation time: 2.27 s.
+[20260602 04:33:28 @multi_evo_agent_runner.py:105] Total time:      37.55 min
+[20260602 04:33:28 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1469.63.
+[20260602 04:33:28 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.17.
+[20260602 04:33:28 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1421.28.
+[20260602 04:33:28 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:33:28 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1469.63!
+[20260602 04:33:28 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1421.28!
+[20260602 04:33:28 @multi_evo_agent_runner.py:79] #------------------------ Iteration 48 --------------------------#
+[20260602 04:33:44 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.42 s.
+[20260602 04:34:13 @multi_evo_agent_runner.py:94] Policy update, spending: 29.37 s.
+[20260602 04:34:15 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 04:34:15 @multi_evo_agent_runner.py:105] Total time:      38.34 min
+[20260602 04:34:16 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1148.91.
+[20260602 04:34:16 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.39.
+[20260602 04:34:16 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1214.13.
+[20260602 04:34:16 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.12.
+[20260602 04:34:16 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1148.91!
+[20260602 04:34:16 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1214.13!
+[20260602 04:34:16 @multi_evo_agent_runner.py:79] #------------------------ Iteration 49 --------------------------#
+[20260602 04:34:31 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.22 s.
+[20260602 04:35:00 @multi_evo_agent_runner.py:94] Policy update, spending: 29.32 s.
+[20260602 04:35:02 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:35:02 @multi_evo_agent_runner.py:105] Total time:      39.12 min
+[20260602 04:35:02 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1470.55.
+[20260602 04:35:02 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:35:02 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1188.35.
+[20260602 04:35:02 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:35:02 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1470.55!
+[20260602 04:35:02 @multi_evo_agent_runner.py:79] #------------------------ Iteration 50 --------------------------#
+[20260602 04:35:18 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.40 s.
+[20260602 04:35:47 @multi_evo_agent_runner.py:94] Policy update, spending: 29.08 s.
+[20260602 04:35:49 @multi_evo_agent_runner.py:99] Evaluation time: 2.25 s.
+[20260602 04:35:49 @multi_evo_agent_runner.py:105] Total time:      39.90 min
+[20260602 04:35:49 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1238.53.
+[20260602 04:35:49 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.43.
+[20260602 04:35:49 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1468.41.
+[20260602 04:35:49 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.17.
+[20260602 04:35:49 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1238.53!
+[20260602 04:35:49 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1468.41!
+[20260602 04:35:49 @multi_evo_agent_runner.py:79] #------------------------ Iteration 51 --------------------------#
+[20260602 04:36:05 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.38 s.
+[20260602 04:36:34 @multi_evo_agent_runner.py:94] Policy update, spending: 29.01 s.
+[20260602 04:36:36 @multi_evo_agent_runner.py:99] Evaluation time: 2.41 s.
+[20260602 04:36:36 @multi_evo_agent_runner.py:105] Total time:      40.69 min
+[20260602 04:36:36 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1095.96.
+[20260602 04:36:36 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.38.
+[20260602 04:36:36 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1339.92.
+[20260602 04:36:36 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:36:36 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1339.92!
+[20260602 04:36:37 @multi_evo_agent_runner.py:79] #------------------------ Iteration 52 --------------------------#
+[20260602 04:36:52 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.31 s.
+[20260602 04:37:21 @multi_evo_agent_runner.py:94] Policy update, spending: 29.17 s.
+[20260602 04:37:23 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 04:37:23 @multi_evo_agent_runner.py:105] Total time:      41.47 min
+[20260602 04:37:23 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1339.17.
+[20260602 04:37:23 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.21.
+[20260602 04:37:23 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1556.52.
+[20260602 04:37:23 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:37:23 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1339.17!
+[20260602 04:37:23 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1556.52!
+[20260602 04:37:24 @multi_evo_agent_runner.py:79] #------------------------ Iteration 53 --------------------------#
+[20260602 04:37:39 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.68 s.
+[20260602 04:38:08 @multi_evo_agent_runner.py:94] Policy update, spending: 28.76 s.
+[20260602 04:38:10 @multi_evo_agent_runner.py:99] Evaluation time: 2.23 s.
+[20260602 04:38:10 @multi_evo_agent_runner.py:105] Total time:      42.25 min
+[20260602 04:38:10 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1189.43.
+[20260602 04:38:10 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.17.
+[20260602 04:38:10 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1372.15.
+[20260602 04:38:10 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.04.
+[20260602 04:38:10 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1372.15!
+[20260602 04:38:10 @multi_evo_agent_runner.py:79] #------------------------ Iteration 54 --------------------------#
+[20260602 04:38:26 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.16 s.
+[20260602 04:38:54 @multi_evo_agent_runner.py:94] Policy update, spending: 28.79 s.
+[20260602 04:38:57 @multi_evo_agent_runner.py:99] Evaluation time: 2.19 s.
+[20260602 04:38:57 @multi_evo_agent_runner.py:105] Total time:      43.02 min
+[20260602 04:38:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1362.44.
+[20260602 04:38:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 04:38:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1088.53.
+[20260602 04:38:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:38:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1362.44!
+[20260602 04:38:57 @multi_evo_agent_runner.py:79] #------------------------ Iteration 55 --------------------------#
+[20260602 04:39:13 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.65 s.
+[20260602 04:39:43 @multi_evo_agent_runner.py:94] Policy update, spending: 30.21 s.
+[20260602 04:39:45 @multi_evo_agent_runner.py:99] Evaluation time: 2.43 s.
+[20260602 04:39:45 @multi_evo_agent_runner.py:105] Total time:      43.83 min
+[20260602 04:39:45 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 721.57.
+[20260602 04:39:45 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.49.
+[20260602 04:39:45 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1148.04.
+[20260602 04:39:45 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.28.
+[20260602 04:39:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 721.57!
+[20260602 04:39:45 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1148.04!
+[20260602 04:39:45 @multi_evo_agent_runner.py:79] #------------------------ Iteration 56 --------------------------#
+[20260602 04:40:00 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.01 s.
+[20260602 04:40:29 @multi_evo_agent_runner.py:94] Policy update, spending: 28.79 s.
+[20260602 04:40:32 @multi_evo_agent_runner.py:99] Evaluation time: 2.40 s.
+[20260602 04:40:32 @multi_evo_agent_runner.py:105] Total time:      44.61 min
+[20260602 04:40:32 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 949.07.
+[20260602 04:40:32 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.35.
+[20260602 04:40:32 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 892.48.
+[20260602 04:40:32 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.35.
+[20260602 04:40:32 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 949.07!
+[20260602 04:40:32 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 892.48!
+[20260602 04:40:32 @multi_evo_agent_runner.py:79] #------------------------ Iteration 57 --------------------------#
+[20260602 04:40:48 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.34 s.
+[20260602 04:41:19 @multi_evo_agent_runner.py:94] Policy update, spending: 30.60 s.
+[20260602 04:41:21 @multi_evo_agent_runner.py:99] Evaluation time: 2.33 s.
+[20260602 04:41:21 @multi_evo_agent_runner.py:105] Total time:      45.43 min
+[20260602 04:41:21 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 837.61.
+[20260602 04:41:21 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.45.
+[20260602 04:41:21 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1046.22.
+[20260602 04:41:21 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.18.
+[20260602 04:41:21 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 837.61!
+[20260602 04:41:21 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1046.22!
+[20260602 04:41:21 @multi_evo_agent_runner.py:79] #------------------------ Iteration 58 --------------------------#
+[20260602 04:41:37 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.67 s.
+[20260602 04:42:06 @multi_evo_agent_runner.py:94] Policy update, spending: 29.35 s.
+[20260602 04:42:09 @multi_evo_agent_runner.py:99] Evaluation time: 2.03 s.
+[20260602 04:42:09 @multi_evo_agent_runner.py:105] Total time:      46.22 min
+[20260602 04:42:09 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1635.70.
+[20260602 04:42:09 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.17.
+[20260602 04:42:09 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1597.35.
+[20260602 04:42:09 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:42:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1635.70!
+[20260602 04:42:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1597.35!
+[20260602 04:42:09 @multi_evo_agent_runner.py:79] #------------------------ Iteration 59 --------------------------#
+[20260602 04:42:24 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.87 s.
+[20260602 04:42:51 @multi_evo_agent_runner.py:94] Policy update, spending: 27.75 s.
+[20260602 04:42:53 @multi_evo_agent_runner.py:99] Evaluation time: 1.91 s.
+[20260602 04:42:53 @multi_evo_agent_runner.py:105] Total time:      46.97 min
+[20260602 04:42:53 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1576.13.
+[20260602 04:42:53 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.29.
+[20260602 04:42:53 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1474.48.
+[20260602 04:42:53 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:42:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1576.13!
+[20260602 04:42:54 @multi_evo_agent_runner.py:79] #------------------------ Iteration 60 --------------------------#
+[20260602 04:43:09 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.41 s.
+[20260602 04:43:38 @multi_evo_agent_runner.py:94] Policy update, spending: 28.80 s.
+[20260602 04:43:40 @multi_evo_agent_runner.py:99] Evaluation time: 2.37 s.
+[20260602 04:43:40 @multi_evo_agent_runner.py:105] Total time:      47.75 min
+[20260602 04:43:40 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1268.80.
+[20260602 04:43:40 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.33.
+[20260602 04:43:40 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1221.16.
+[20260602 04:43:40 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.03.
+[20260602 04:43:40 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1268.80!
+[20260602 04:43:40 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1221.16!
+[20260602 04:43:40 @multi_evo_agent_runner.py:79] #------------------------ Iteration 61 --------------------------#
+[20260602 04:43:56 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.36 s.
+[20260602 04:44:26 @multi_evo_agent_runner.py:94] Policy update, spending: 29.94 s.
+[20260602 04:44:28 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 04:44:28 @multi_evo_agent_runner.py:105] Total time:      48.55 min
+[20260602 04:44:28 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1257.32.
+[20260602 04:44:28 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.37.
+[20260602 04:44:28 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1399.38.
+[20260602 04:44:28 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.14.
+[20260602 04:44:28 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1257.32!
+[20260602 04:44:28 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1399.38!
+[20260602 04:44:28 @multi_evo_agent_runner.py:79] #------------------------ Iteration 62 --------------------------#
+[20260602 04:44:43 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.22 s.
+[20260602 04:45:12 @multi_evo_agent_runner.py:94] Policy update, spending: 28.76 s.
+[20260602 04:45:14 @multi_evo_agent_runner.py:99] Evaluation time: 2.22 s.
+[20260602 04:45:14 @multi_evo_agent_runner.py:105] Total time:      49.32 min
+[20260602 04:45:15 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1449.93.
+[20260602 04:45:15 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.53.
+[20260602 04:45:15 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1363.08.
+[20260602 04:45:15 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:45:15 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1449.93!
+[20260602 04:45:15 @multi_evo_agent_runner.py:79] #------------------------ Iteration 63 --------------------------#
+[20260602 04:45:30 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.22 s.
+[20260602 04:45:59 @multi_evo_agent_runner.py:94] Policy update, spending: 28.97 s.
+[20260602 04:46:01 @multi_evo_agent_runner.py:99] Evaluation time: 2.38 s.
+[20260602 04:46:01 @multi_evo_agent_runner.py:105] Total time:      50.10 min
+[20260602 04:46:01 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1341.80.
+[20260602 04:46:01 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.21.
+[20260602 04:46:01 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1424.60.
+[20260602 04:46:01 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 04:46:01 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1424.60!
+[20260602 04:46:02 @multi_evo_agent_runner.py:79] #------------------------ Iteration 64 --------------------------#
+[20260602 04:46:18 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.07 s.
+[20260602 04:46:46 @multi_evo_agent_runner.py:94] Policy update, spending: 28.29 s.
+[20260602 04:46:48 @multi_evo_agent_runner.py:99] Evaluation time: 1.95 s.
+[20260602 04:46:48 @multi_evo_agent_runner.py:105] Total time:      50.88 min
+[20260602 04:46:48 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1498.48.
+[20260602 04:46:48 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.22.
+[20260602 04:46:48 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1091.52.
+[20260602 04:46:48 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.04.
+[20260602 04:46:48 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1498.48!
+[20260602 04:46:48 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1091.52!
+[20260602 04:46:48 @multi_evo_agent_runner.py:79] #------------------------ Iteration 65 --------------------------#
+[20260602 04:47:03 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.25 s.
+[20260602 04:47:32 @multi_evo_agent_runner.py:94] Policy update, spending: 28.98 s.
+[20260602 04:47:35 @multi_evo_agent_runner.py:99] Evaluation time: 2.65 s.
+[20260602 04:47:35 @multi_evo_agent_runner.py:105] Total time:      51.66 min
+[20260602 04:47:35 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1650.18.
+[20260602 04:47:35 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.21.
+[20260602 04:47:35 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1529.60.
+[20260602 04:47:35 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.25.
+[20260602 04:47:35 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1650.18!
+[20260602 04:47:35 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1529.60!
+[20260602 04:47:35 @multi_evo_agent_runner.py:79] #------------------------ Iteration 66 --------------------------#
+[20260602 04:47:51 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.62 s.
+[20260602 04:48:20 @multi_evo_agent_runner.py:94] Policy update, spending: 28.77 s.
+[20260602 04:48:22 @multi_evo_agent_runner.py:99] Evaluation time: 2.38 s.
+[20260602 04:48:22 @multi_evo_agent_runner.py:105] Total time:      52.45 min
+[20260602 04:48:22 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1192.02.
+[20260602 04:48:22 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.44.
+[20260602 04:48:22 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1730.31.
+[20260602 04:48:22 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:48:22 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1192.02!
+[20260602 04:48:22 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1730.31!
+[20260602 04:48:22 @multi_evo_agent_runner.py:79] #------------------------ Iteration 67 --------------------------#
+[20260602 04:48:38 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.33 s.
+[20260602 04:49:06 @multi_evo_agent_runner.py:94] Policy update, spending: 28.33 s.
+[20260602 04:49:08 @multi_evo_agent_runner.py:99] Evaluation time: 2.37 s.
+[20260602 04:49:08 @multi_evo_agent_runner.py:105] Total time:      53.22 min
+[20260602 04:49:08 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1131.70.
+[20260602 04:49:08 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.28.
+[20260602 04:49:08 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1438.77.
+[20260602 04:49:08 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.03.
+[20260602 04:49:09 @multi_evo_agent_runner.py:79] #------------------------ Iteration 68 --------------------------#
+[20260602 04:49:25 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.26 s.
+[20260602 04:49:55 @multi_evo_agent_runner.py:94] Policy update, spending: 29.99 s.
+[20260602 04:49:57 @multi_evo_agent_runner.py:99] Evaluation time: 2.24 s.
+[20260602 04:49:57 @multi_evo_agent_runner.py:105] Total time:      54.03 min
+[20260602 04:49:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1060.54.
+[20260602 04:49:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.38.
+[20260602 04:49:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1549.24.
+[20260602 04:49:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.18.
+[20260602 04:49:57 @multi_evo_agent_runner.py:79] #------------------------ Iteration 69 --------------------------#
+[20260602 04:50:12 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.08 s.
+[20260602 04:50:41 @multi_evo_agent_runner.py:94] Policy update, spending: 28.41 s.
+[20260602 04:50:43 @multi_evo_agent_runner.py:99] Evaluation time: 2.42 s.
+[20260602 04:50:43 @multi_evo_agent_runner.py:105] Total time:      54.80 min
+[20260602 04:50:43 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1099.42.
+[20260602 04:50:43 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.55.
+[20260602 04:50:43 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1324.89.
+[20260602 04:50:43 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.17.
+[20260602 04:50:43 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1099.42!
+[20260602 04:50:44 @multi_evo_agent_runner.py:79] #------------------------ Iteration 70 --------------------------#
+[20260602 04:50:59 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.93 s.
+[20260602 04:51:29 @multi_evo_agent_runner.py:94] Policy update, spending: 29.77 s.
+[20260602 04:51:31 @multi_evo_agent_runner.py:99] Evaluation time: 2.15 s.
+[20260602 04:51:31 @multi_evo_agent_runner.py:105] Total time:      55.60 min
+[20260602 04:51:32 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1298.88.
+[20260602 04:51:32 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.49.
+[20260602 04:51:32 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1381.21.
+[20260602 04:51:32 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.12.
+[20260602 04:51:32 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1298.88!
+[20260602 04:51:32 @multi_evo_agent_runner.py:79] #------------------------ Iteration 71 --------------------------#
+[20260602 04:51:47 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.09 s.
+[20260602 04:52:15 @multi_evo_agent_runner.py:94] Policy update, spending: 28.62 s.
+[20260602 04:52:18 @multi_evo_agent_runner.py:99] Evaluation time: 2.59 s.
+[20260602 04:52:18 @multi_evo_agent_runner.py:105] Total time:      56.38 min
+[20260602 04:52:18 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1023.03.
+[20260602 04:52:18 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.40.
+[20260602 04:52:18 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1027.60.
+[20260602 04:52:18 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.20.
+[20260602 04:52:18 @multi_evo_agent_runner.py:79] #------------------------ Iteration 72 --------------------------#
+[20260602 04:52:34 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.42 s.
+[20260602 04:53:02 @multi_evo_agent_runner.py:94] Policy update, spending: 28.18 s.
+[20260602 04:53:04 @multi_evo_agent_runner.py:99] Evaluation time: 2.33 s.
+[20260602 04:53:04 @multi_evo_agent_runner.py:105] Total time:      57.15 min
+[20260602 04:53:04 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 895.16.
+[20260602 04:53:04 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.74.
+[20260602 04:53:04 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1516.46.
+[20260602 04:53:04 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.14.
+[20260602 04:53:04 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 895.16!
+[20260602 04:53:04 @multi_evo_agent_runner.py:79] #------------------------ Iteration 73 --------------------------#
+[20260602 04:53:20 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.48 s.
+[20260602 04:53:48 @multi_evo_agent_runner.py:94] Policy update, spending: 28.33 s.
+[20260602 04:53:50 @multi_evo_agent_runner.py:99] Evaluation time: 2.17 s.
+[20260602 04:53:50 @multi_evo_agent_runner.py:105] Total time:      57.92 min
+[20260602 04:53:51 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 856.66.
+[20260602 04:53:51 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.06.
+[20260602 04:53:51 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 915.49.
+[20260602 04:53:51 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.29.
+[20260602 04:53:51 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 915.49!
+[20260602 04:53:51 @multi_evo_agent_runner.py:79] #------------------------ Iteration 74 --------------------------#
+[20260602 04:54:06 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.49 s.
+[20260602 04:54:35 @multi_evo_agent_runner.py:94] Policy update, spending: 28.69 s.
+[20260602 04:54:37 @multi_evo_agent_runner.py:99] Evaluation time: 2.48 s.
+[20260602 04:54:37 @multi_evo_agent_runner.py:105] Total time:      58.70 min
+[20260602 04:54:37 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1117.42.
+[20260602 04:54:37 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.44.
+[20260602 04:54:37 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1322.83.
+[20260602 04:54:37 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:54:37 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1117.42!
+[20260602 04:54:38 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1322.83!
+[20260602 04:54:38 @multi_evo_agent_runner.py:79] #------------------------ Iteration 75 --------------------------#
+[20260602 04:54:53 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.02 s.
+[20260602 04:55:21 @multi_evo_agent_runner.py:94] Policy update, spending: 28.29 s.
+[20260602 04:55:23 @multi_evo_agent_runner.py:99] Evaluation time: 2.24 s.
+[20260602 04:55:23 @multi_evo_agent_runner.py:105] Total time:      59.47 min
+[20260602 04:55:23 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1239.94.
+[20260602 04:55:23 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.50.
+[20260602 04:55:23 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1525.92.
+[20260602 04:55:23 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:55:23 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1239.94!
+[20260602 04:55:23 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1525.92!
+[20260602 04:55:23 @multi_evo_agent_runner.py:79] #------------------------ Iteration 76 --------------------------#
+[20260602 04:55:38 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.01 s.
+[20260602 04:56:08 @multi_evo_agent_runner.py:94] Policy update, spending: 29.08 s.
+[20260602 04:56:10 @multi_evo_agent_runner.py:99] Evaluation time: 2.34 s.
+[20260602 04:56:10 @multi_evo_agent_runner.py:105] Total time:      60.25 min
+[20260602 04:56:10 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 976.18.
+[20260602 04:56:10 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.53.
+[20260602 04:56:10 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1240.13.
+[20260602 04:56:10 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.20.
+[20260602 04:56:10 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 976.18!
+[20260602 04:56:10 @multi_evo_agent_runner.py:79] #------------------------ Iteration 77 --------------------------#
+[20260602 04:56:25 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.25 s.
+[20260602 04:56:54 @multi_evo_agent_runner.py:94] Policy update, spending: 28.75 s.
+[20260602 04:56:57 @multi_evo_agent_runner.py:99] Evaluation time: 2.36 s.
+[20260602 04:56:57 @multi_evo_agent_runner.py:105] Total time:      61.02 min
+[20260602 04:56:57 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1451.21.
+[20260602 04:56:57 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.42.
+[20260602 04:56:57 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1376.09.
+[20260602 04:56:57 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.18.
+[20260602 04:56:57 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1451.21!
+[20260602 04:56:57 @multi_evo_agent_runner.py:79] #------------------------ Iteration 78 --------------------------#
+[20260602 04:57:12 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.69 s.
+[20260602 04:57:41 @multi_evo_agent_runner.py:94] Policy update, spending: 28.54 s.
+[20260602 04:57:43 @multi_evo_agent_runner.py:99] Evaluation time: 2.12 s.
+[20260602 04:57:43 @multi_evo_agent_runner.py:105] Total time:      61.80 min
+[20260602 04:57:43 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1133.67.
+[20260602 04:57:43 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.43.
+[20260602 04:57:43 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1049.29.
+[20260602 04:57:43 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.36.
+[20260602 04:57:43 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1133.67!
+[20260602 04:57:43 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1049.29!
+[20260602 04:57:43 @multi_evo_agent_runner.py:79] #------------------------ Iteration 79 --------------------------#
+[20260602 04:57:59 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.96 s.
+[20260602 04:58:29 @multi_evo_agent_runner.py:94] Policy update, spending: 29.54 s.
+[20260602 04:58:31 @multi_evo_agent_runner.py:99] Evaluation time: 2.12 s.
+[20260602 04:58:31 @multi_evo_agent_runner.py:105] Total time:      62.60 min
+[20260602 04:58:31 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1783.10.
+[20260602 04:58:31 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.34.
+[20260602 04:58:31 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1927.46.
+[20260602 04:58:31 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.21.
+[20260602 04:58:31 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1783.10!
+[20260602 04:58:31 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1927.46!
+[20260602 04:58:31 @multi_evo_agent_runner.py:79] #------------------------ Iteration 80 --------------------------#
+[20260602 04:58:46 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.81 s.
+[20260602 04:59:14 @multi_evo_agent_runner.py:94] Policy update, spending: 27.96 s.
+[20260602 04:59:16 @multi_evo_agent_runner.py:99] Evaluation time: 2.01 s.
+[20260602 04:59:16 @multi_evo_agent_runner.py:105] Total time:      63.35 min
+[20260602 04:59:16 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1627.45.
+[20260602 04:59:16 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.44.
+[20260602 04:59:16 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1182.80.
+[20260602 04:59:16 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.24.
+[20260602 04:59:16 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1627.45!
+[20260602 04:59:16 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1182.80!
+[20260602 04:59:16 @multi_evo_agent_runner.py:79] #------------------------ Iteration 81 --------------------------#
+[20260602 04:59:32 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.71 s.
+[20260602 05:00:01 @multi_evo_agent_runner.py:94] Policy update, spending: 29.25 s.
+[20260602 05:00:04 @multi_evo_agent_runner.py:99] Evaluation time: 2.30 s.
+[20260602 05:00:04 @multi_evo_agent_runner.py:105] Total time:      64.14 min
+[20260602 05:00:04 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1582.23.
+[20260602 05:00:04 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.27.
+[20260602 05:00:04 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1288.28.
+[20260602 05:00:04 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 05:00:04 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1288.28!
+[20260602 05:00:04 @multi_evo_agent_runner.py:79] #------------------------ Iteration 82 --------------------------#
+[20260602 05:00:19 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 14.98 s.
+[20260602 05:00:48 @multi_evo_agent_runner.py:94] Policy update, spending: 29.05 s.
+[20260602 05:00:50 @multi_evo_agent_runner.py:99] Evaluation time: 2.34 s.
+[20260602 05:00:50 @multi_evo_agent_runner.py:105] Total time:      64.92 min
+[20260602 05:00:50 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1544.85.
+[20260602 05:00:50 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.32.
+[20260602 05:00:50 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1462.80.
+[20260602 05:00:50 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.38.
+[20260602 05:00:50 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1462.80!
+[20260602 05:00:50 @multi_evo_agent_runner.py:79] #------------------------ Iteration 83 --------------------------#
+[20260602 05:01:06 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.16 s.
+[20260602 05:01:35 @multi_evo_agent_runner.py:94] Policy update, spending: 28.93 s.
+[20260602 05:01:37 @multi_evo_agent_runner.py:99] Evaluation time: 2.61 s.
+[20260602 05:01:37 @multi_evo_agent_runner.py:105] Total time:      65.70 min
+[20260602 05:01:37 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1365.98.
+[20260602 05:01:37 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.32.
+[20260602 05:01:37 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 912.49.
+[20260602 05:01:37 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.15.
+[20260602 05:01:37 @multi_evo_agent_runner.py:79] #------------------------ Iteration 84 --------------------------#
+[20260602 05:01:53 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.20 s.
+[20260602 05:02:21 @multi_evo_agent_runner.py:94] Policy update, spending: 28.07 s.
+[20260602 05:02:23 @multi_evo_agent_runner.py:99] Evaluation time: 2.15 s.
+[20260602 05:02:23 @multi_evo_agent_runner.py:105] Total time:      66.46 min
+[20260602 05:02:23 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1296.13.
+[20260602 05:02:23 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.41.
+[20260602 05:02:23 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1535.23.
+[20260602 05:02:23 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.28.
+[20260602 05:02:23 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1535.23!
+[20260602 05:02:23 @multi_evo_agent_runner.py:79] #------------------------ Iteration 85 --------------------------#
+[20260602 05:02:38 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.26 s.
+[20260602 05:03:07 @multi_evo_agent_runner.py:94] Policy update, spending: 28.56 s.
+[20260602 05:03:09 @multi_evo_agent_runner.py:99] Evaluation time: 2.13 s.
+[20260602 05:03:09 @multi_evo_agent_runner.py:105] Total time:      67.23 min
+[20260602 05:03:09 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1568.85.
+[20260602 05:03:09 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.44.
+[20260602 05:03:09 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1747.87.
+[20260602 05:03:09 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.24.
+[20260602 05:03:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1747.87!
+[20260602 05:03:09 @multi_evo_agent_runner.py:79] #------------------------ Iteration 86 --------------------------#
+[20260602 05:03:25 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.18 s.
+[20260602 05:03:53 @multi_evo_agent_runner.py:94] Policy update, spending: 28.43 s.
+[20260602 05:03:55 @multi_evo_agent_runner.py:99] Evaluation time: 2.34 s.
+[20260602 05:03:55 @multi_evo_agent_runner.py:105] Total time:      68.00 min
+[20260602 05:03:55 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1182.76.
+[20260602 05:03:55 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.38.
+[20260602 05:03:55 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1296.68.
+[20260602 05:03:55 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.42.
+[20260602 05:03:55 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1296.68!
+[20260602 05:03:56 @multi_evo_agent_runner.py:79] #------------------------ Iteration 87 --------------------------#
+[20260602 05:04:11 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.52 s.
+[20260602 05:04:41 @multi_evo_agent_runner.py:94] Policy update, spending: 29.84 s.
+[20260602 05:04:43 @multi_evo_agent_runner.py:99] Evaluation time: 2.43 s.
+[20260602 05:04:43 @multi_evo_agent_runner.py:105] Total time:      68.80 min
+[20260602 05:04:43 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1097.93.
+[20260602 05:04:43 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.31.
+[20260602 05:04:43 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1051.39.
+[20260602 05:04:43 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.29.
+[20260602 05:04:44 @multi_evo_agent_runner.py:79] #------------------------ Iteration 88 --------------------------#
+[20260602 05:04:59 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.24 s.
+[20260602 05:05:28 @multi_evo_agent_runner.py:94] Policy update, spending: 29.65 s.
+[20260602 05:05:31 @multi_evo_agent_runner.py:99] Evaluation time: 2.37 s.
+[20260602 05:05:31 @multi_evo_agent_runner.py:105] Total time:      69.60 min
+[20260602 05:05:31 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1088.99.
+[20260602 05:05:31 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.33.
+[20260602 05:05:31 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1143.57.
+[20260602 05:05:31 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.35.
+[20260602 05:05:31 @multi_evo_agent_runner.py:79] #------------------------ Iteration 89 --------------------------#
+[20260602 05:05:47 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.54 s.
+[20260602 05:06:15 @multi_evo_agent_runner.py:94] Policy update, spending: 28.45 s.
+[20260602 05:06:17 @multi_evo_agent_runner.py:99] Evaluation time: 2.19 s.
+[20260602 05:06:17 @multi_evo_agent_runner.py:105] Total time:      70.37 min
+[20260602 05:06:17 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1516.47.
+[20260602 05:06:17 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.49.
+[20260602 05:06:17 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1499.55.
+[20260602 05:06:17 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.12.
+[20260602 05:06:17 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1516.47!
+[20260602 05:06:17 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1499.55!
+[20260602 05:06:18 @multi_evo_agent_runner.py:79] #------------------------ Iteration 90 --------------------------#
+[20260602 05:06:34 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.14 s.
+[20260602 05:07:03 @multi_evo_agent_runner.py:94] Policy update, spending: 29.33 s.
+[20260602 05:07:05 @multi_evo_agent_runner.py:99] Evaluation time: 2.20 s.
+[20260602 05:07:05 @multi_evo_agent_runner.py:105] Total time:      71.17 min
+[20260602 05:07:05 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 2005.08.
+[20260602 05:07:05 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.08.
+[20260602 05:07:05 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1612.14.
+[20260602 05:07:05 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.17.
+[20260602 05:07:05 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 2005.08!
+[20260602 05:07:05 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1612.14!
+[20260602 05:07:06 @multi_evo_agent_runner.py:79] #------------------------ Iteration 91 --------------------------#
+[20260602 05:07:21 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.48 s.
+[20260602 05:07:50 @multi_evo_agent_runner.py:94] Policy update, spending: 29.28 s.
+[20260602 05:07:53 @multi_evo_agent_runner.py:99] Evaluation time: 2.69 s.
+[20260602 05:07:53 @multi_evo_agent_runner.py:105] Total time:      71.96 min
+[20260602 05:07:53 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1593.18.
+[20260602 05:07:53 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.33.
+[20260602 05:07:53 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1741.35.
+[20260602 05:07:53 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.07.
+[20260602 05:07:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1593.18!
+[20260602 05:07:53 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1741.35!
+[20260602 05:07:53 @multi_evo_agent_runner.py:79] #------------------------ Iteration 92 --------------------------#
+[20260602 05:08:08 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.16 s.
+[20260602 05:08:37 @multi_evo_agent_runner.py:94] Policy update, spending: 28.85 s.
+[20260602 05:08:39 @multi_evo_agent_runner.py:99] Evaluation time: 2.14 s.
+[20260602 05:08:39 @multi_evo_agent_runner.py:105] Total time:      72.74 min
+[20260602 05:08:40 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1067.90.
+[20260602 05:08:40 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.60.
+[20260602 05:08:40 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1244.65.
+[20260602 05:08:40 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.14.
+[20260602 05:08:40 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1067.90!
+[20260602 05:08:40 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1244.65!
+[20260602 05:08:40 @multi_evo_agent_runner.py:79] #------------------------ Iteration 93 --------------------------#
+[20260602 05:08:55 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.35 s.
+[20260602 05:09:24 @multi_evo_agent_runner.py:94] Policy update, spending: 28.59 s.
+[20260602 05:09:26 @multi_evo_agent_runner.py:99] Evaluation time: 2.55 s.
+[20260602 05:09:26 @multi_evo_agent_runner.py:105] Total time:      73.52 min
+[20260602 05:09:26 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1719.88.
+[20260602 05:09:26 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.32.
+[20260602 05:09:26 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1498.17.
+[20260602 05:09:26 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.24.
+[20260602 05:09:26 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1719.88!
+[20260602 05:09:26 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1498.17!
+[20260602 05:09:26 @multi_evo_agent_runner.py:79] #------------------------ Iteration 94 --------------------------#
+[20260602 05:09:42 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 16.01 s.
+[20260602 05:10:11 @multi_evo_agent_runner.py:94] Policy update, spending: 28.71 s.
+[20260602 05:10:14 @multi_evo_agent_runner.py:99] Evaluation time: 2.45 s.
+[20260602 05:10:14 @multi_evo_agent_runner.py:105] Total time:      74.31 min
+[20260602 05:10:14 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1310.18.
+[20260602 05:10:14 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.51.
+[20260602 05:10:14 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1049.19.
+[20260602 05:10:14 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.22.
+[20260602 05:10:14 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1310.18!
+[20260602 05:10:14 @multi_evo_agent_runner.py:79] #------------------------ Iteration 95 --------------------------#
+[20260602 05:10:30 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.91 s.
+[20260602 05:10:59 @multi_evo_agent_runner.py:94] Policy update, spending: 29.34 s.
+[20260602 05:11:01 @multi_evo_agent_runner.py:99] Evaluation time: 2.20 s.
+[20260602 05:11:01 @multi_evo_agent_runner.py:105] Total time:      75.10 min
+[20260602 05:11:01 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 2273.38.
+[20260602 05:11:01 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.05.
+[20260602 05:11:01 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1277.76.
+[20260602 05:11:01 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.00.
+[20260602 05:11:01 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 2273.38!
+[20260602 05:11:02 @multi_evo_agent_runner.py:79] #------------------------ Iteration 96 --------------------------#
+[20260602 05:11:17 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.06 s.
+[20260602 05:11:45 @multi_evo_agent_runner.py:94] Policy update, spending: 28.18 s.
+[20260602 05:11:47 @multi_evo_agent_runner.py:99] Evaluation time: 2.43 s.
+[20260602 05:11:47 @multi_evo_agent_runner.py:105] Total time:      75.87 min
+[20260602 05:11:47 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1896.54.
+[20260602 05:11:47 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.00.
+[20260602 05:11:47 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1263.81.
+[20260602 05:11:47 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.20.
+[20260602 05:11:47 @multi_evo_agent_runner.py:79] #------------------------ Iteration 97 --------------------------#
+[20260602 05:12:03 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.25 s.
+[20260602 05:12:32 @multi_evo_agent_runner.py:94] Policy update, spending: 29.35 s.
+[20260602 05:12:34 @multi_evo_agent_runner.py:99] Evaluation time: 2.04 s.
+[20260602 05:12:34 @multi_evo_agent_runner.py:105] Total time:      76.65 min
+[20260602 05:12:34 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1043.74.
+[20260602 05:12:34 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.38.
+[20260602 05:12:34 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1167.45.
+[20260602 05:12:34 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.33.
+[20260602 05:12:34 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1043.74!
+[20260602 05:12:34 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1167.45!
+[20260602 05:12:34 @multi_evo_agent_runner.py:79] #------------------------ Iteration 98 --------------------------#
+[20260602 05:12:50 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.62 s.
+[20260602 05:13:19 @multi_evo_agent_runner.py:94] Policy update, spending: 29.24 s.
+[20260602 05:13:22 @multi_evo_agent_runner.py:99] Evaluation time: 2.39 s.
+[20260602 05:13:22 @multi_evo_agent_runner.py:105] Total time:      77.44 min
+[20260602 05:13:22 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 1394.74.
+[20260602 05:13:22 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.48.
+[20260602 05:13:22 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 1272.45.
+[20260602 05:13:22 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.29.
+[20260602 05:13:22 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_0's rewards 1394.74!
+[20260602 05:13:22 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 1272.45!
+[20260602 05:13:22 @multi_evo_agent_runner.py:79] #------------------------ Iteration 99 --------------------------#
+[20260602 05:13:37 @multi_evo_agent_runner.py:85] Sampling 50000 steps by 50 slaves, spending 15.60 s.
+[20260602 05:14:07 @multi_evo_agent_runner.py:94] Policy update, spending: 29.28 s.
+[20260602 05:14:09 @multi_evo_agent_runner.py:99] Evaluation time: 2.26 s.
+[20260602 05:14:09 @multi_evo_agent_runner.py:105] Total time:      78.23 min
+[20260602 05:14:09 @multi_evo_agent_runner.py:115] Agent_0 gets eval reward: 865.58.
+[20260602 05:14:09 @multi_evo_agent_runner.py:116] Agent_0 gets win rate: 0.39.
+[20260602 05:14:09 @multi_evo_agent_runner.py:115] Agent_1 gets eval reward: 693.02.
+[20260602 05:14:09 @multi_evo_agent_runner.py:116] Agent_1 gets win rate: 0.54.
+[20260602 05:14:09 @multi_evo_agent_runner.py:503] CRITICAL save best checkpoint with agent_1's rewards 693.02!
+[20260602 05:14:09 @train.py:101] training done!
+/home/sgh/Data/miniconda3/envs/EAI/lib/python3.11/site-packages/gymnasium/spaces/box.py:130: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  gym.logger.warn(f"Box bound precision lowered by casting to {self.dtype}")

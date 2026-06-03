@@ -1,0 +1,89 @@
+[2026-06-01 21:33:17] waiting for fixed run 37357; latest checkpoint: epoch_0013.p
+[2026-06-01 21:38:17] waiting for fixed run 37357; latest checkpoint: epoch_0026.p
+[2026-06-01 21:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0002.p
+[2026-06-01 21:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0015.p
+[2026-06-01 21:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0028.p
+[2026-06-01 21:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0041.p
+[2026-06-01 22:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0055.p
+[2026-06-01 22:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0068.p
+[2026-06-01 22:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0081.p
+[2026-06-01 22:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0094.p
+[2026-06-01 22:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0107.p
+[2026-06-01 22:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0119.p
+[2026-06-01 22:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0132.p
+[2026-06-01 22:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0145.p
+[2026-06-01 22:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0157.p
+[2026-06-01 22:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0170.p
+[2026-06-01 22:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0182.p
+[2026-06-01 22:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0195.p
+[2026-06-01 23:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0207.p
+[2026-06-01 23:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0220.p
+[2026-06-01 23:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0233.p
+[2026-06-01 23:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0246.p
+[2026-06-01 23:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0259.p
+[2026-06-01 23:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0272.p
+[2026-06-01 23:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0285.p
+[2026-06-01 23:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0297.p
+[2026-06-01 23:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0310.p
+[2026-06-01 23:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0323.p
+[2026-06-01 23:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0336.p
+[2026-06-01 23:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0350.p
+[2026-06-02 00:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0363.p
+[2026-06-02 00:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0376.p
+[2026-06-02 00:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0389.p
+[2026-06-02 00:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0402.p
+[2026-06-02 00:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0415.p
+[2026-06-02 00:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0429.p
+[2026-06-02 00:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0442.p
+[2026-06-02 00:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0455.p
+[2026-06-02 00:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0468.p
+[2026-06-02 00:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0482.p
+[2026-06-02 00:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0495.p
+[2026-06-02 00:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0508.p
+[2026-06-02 01:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0521.p
+[2026-06-02 01:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0535.p
+[2026-06-02 01:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0548.p
+[2026-06-02 01:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0561.p
+[2026-06-02 01:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0575.p
+[2026-06-02 01:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0588.p
+[2026-06-02 01:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0601.p
+[2026-06-02 01:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0615.p
+[2026-06-02 01:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0628.p
+[2026-06-02 01:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0641.p
+[2026-06-02 01:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0654.p
+[2026-06-02 01:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0667.p
+[2026-06-02 02:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0681.p
+[2026-06-02 02:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0694.p
+[2026-06-02 02:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0707.p
+[2026-06-02 02:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0721.p
+[2026-06-02 02:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0734.p
+[2026-06-02 02:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0747.p
+[2026-06-02 02:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0761.p
+[2026-06-02 02:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0774.p
+[2026-06-02 02:40:52] waiting for fixed run 46736; latest checkpoint: epoch_0787.p
+[2026-06-02 02:45:52] waiting for fixed run 46736; latest checkpoint: epoch_0800.p
+[2026-06-02 02:50:52] waiting for fixed run 46736; latest checkpoint: epoch_0813.p
+[2026-06-02 02:55:52] waiting for fixed run 46736; latest checkpoint: epoch_0827.p
+[2026-06-02 03:00:52] waiting for fixed run 46736; latest checkpoint: epoch_0840.p
+[2026-06-02 03:05:52] waiting for fixed run 46736; latest checkpoint: epoch_0853.p
+[2026-06-02 03:10:52] waiting for fixed run 46736; latest checkpoint: epoch_0866.p
+[2026-06-02 03:15:52] waiting for fixed run 46736; latest checkpoint: epoch_0879.p
+[2026-06-02 03:20:52] waiting for fixed run 46736; latest checkpoint: epoch_0892.p
+[2026-06-02 03:25:52] waiting for fixed run 46736; latest checkpoint: epoch_0905.p
+[2026-06-02 03:30:52] waiting for fixed run 46736; latest checkpoint: epoch_0919.p
+[2026-06-02 03:35:52] waiting for fixed run 46736; latest checkpoint: epoch_0932.p
+[2026-06-02 03:40:53] waiting for fixed run 46736; latest checkpoint: epoch_0945.p
+[2026-06-02 03:45:53] waiting for fixed run 46736; latest checkpoint: epoch_0958.p
+[2026-06-02 03:50:53] waiting for fixed run 46736; latest checkpoint: epoch_0971.p
+[2026-06-02 03:55:53] START devants_warmup
+[2026-06-02 05:14:10] DONE devants_warmup
+[2026-06-02 05:14:10] START devants_confrontation
+[2026-06-02 18:49:59] DONE devants_confrontation
+[2026-06-02 18:49:59] START reproduction_robo_sumo_devants
+[2026-06-03 08:07:02] DONE reproduction_robo_sumo_devants
+[2026-06-03 08:07:02] EVAL fixed_run_to_goal_eval
+[2026-06-03 08:07:19] EVAL warmup_eval
+[2026-06-03 08:07:50] EVAL confrontation_eval
+[2026-06-03 08:08:27] EVAL original_runs_eval
+[2026-06-03 08:09:03] EVAL reproduction_eval
+[2026-06-03 08:09:46] LONG TRAINING CONTINUATION COMPLETE
