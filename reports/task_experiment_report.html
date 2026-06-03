@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>CompetEvo 训练与复现实验报告</title>
+  <title>CompetEvo 长训练、评测与复现实验报告</title>
   <style>
     body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 32px; color: #111827; line-height: 1.55; }
-    h1 { font-size: 28px; margin-bottom: 8px; }
+    h1 { font-size: 28px; margin-bottom: 6px; }
     h2 { margin-top: 28px; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; }
-    h3 { margin-top: 20px; }
+    h3 { margin-top: 18px; }
     code { background: #f3f4f6; padding: 2px 5px; border-radius: 4px; }
     pre { background: #111827; color: #f9fafb; padding: 14px; overflow-x: auto; border-radius: 6px; }
     table { border-collapse: collapse; width: 100%; margin: 12px 0 20px; font-size: 14px; }
@@ -22,135 +22,188 @@
   </style>
 </head>
 <body>
-  <h1>CompetEvo 训练、评测与复现实验报告</h1>
-  <p>日期：2026-06-01。目标是在不大规模重构的前提下，确认固定形态训练、形态可进化训练、checkpoint 保存/加载、统一评测和曲线输出流程可用。</p>
+  <h1>CompetEvo 长训练、评测与复现实验报告</h1>
+  <p>日期：2026-06-03。目标是在已经通过短训练 sanity check 的基础上，完成固定形态、形态可进化 warm-up 到对抗、runs 原实验复现、统一评测和曲线输出。</p>
 
   <div class="note">
-    <strong>结论摘要：</strong>本轮完成了短训练 sanity check。固定形态 run-to-goal、devants 兼容 warm-up、warm-up 到 robo-sumo 对抗加载、runs 原实验短复现、无渲染评测、TensorBoard 曲线导出和 HTML 报告均已跑通。由于 sanity 训练只用 2 epoch、128 batch，复现 checkpoint 与 runs 中长训 checkpoint 仍有明显性能差距。
+    <strong>结论摘要：</strong>完整长训练流水线已经跑完。固定形态 run-to-goal、devants run-to-goal warm-up、devants 对抗训练、runs 配置复现实验均产出 checkpoint；统一 100 episode 评测 JSON 和 TensorBoard SVG 曲线已生成。复现实验与仓库原始 checkpoint 仍有差距，主要表现为 draw rate 更高、胜率更低。
   </div>
 
-  <h2>代码与流程理解</h2>
-  <ul>
-    <li><code>train.py</code> 读取 YAML，按 <code>runner_type</code> 创建 runner。固定形态使用 <code>MultiAgentRunner</code>，dev/evo 形态使用 <code>MultiEvoAgentRunner</code>。</li>
-    <li>日志、TensorBoard 和 checkpoint 写入 <code>tmp/&lt;env&gt;/&lt;timestamp&gt;/</code>。多智能体 checkpoint 分别保存在 <code>models/agent_0/</code> 和 <code>models/agent_1/</code>。</li>
-    <li>checkpoint 加载是严格同构加载。run-to-goal-devants 原始环境观测维度为 31，而 robo-sumo-devants fighter 观测维度为 118，不能直接加载。</li>
-    <li>为实现“run-to-goal 到对抗”的兼容链路，本轮使用同一个 <code>robo-sumo-devants-v0</code> 网络结构，先用 <code>run_to_goal_warmup</code> 奖励训练向对手移动的基础行为，再切换到 <code>sumo</code> 对抗奖励继续训练。</li>
-  </ul>
-
-  <h2>修改内容</h2>
+  <h2>实验组</h2>
   <table>
-    <tr><th>文件</th><th>修改</th><th>目的</th></tr>
-    <tr><td><code>config/config.py</code></td><td>新增 <code>eval_num_threads</code> 配置项，默认 10。</td><td>短训练时可把评估线程降到 1，不改变原默认行为。</td></tr>
-    <tr><td><code>runner/multi_agent_runner.py</code><br><code>runner/multi_evo_agent_runner.py</code></td><td>评估采样线程从硬编码 10 改为 <code>cfg.eval_num_threads</code>。</td><td>让 sanity check 可快速完成。</td></tr>
-    <tr><td><code>competevo/evo_envs/robo_sumo_dev.py</code></td><td>新增 <code>reward_specs.mode: run_to_goal_warmup</code>，关闭 sparse win/lose，并只保留 alive、control、move-to-opponent dense reward。</td><td>同 observation/action/network 下实现 warm-up 到对抗训练。</td></tr>
-    <tr><td><code>config/repro/*.yaml</code></td><td>新增 4 个短训练配置。</td><td>固定形态、warm-up、对抗和复现 sanity 实验。</td></tr>
-    <tr><td><code>scripts/evaluate_checkpoint.py</code></td><td>新增无渲染 checkpoint 评测脚本。</td><td>统一输出 JSON 评测结果。</td></tr>
-    <tr><td><code>scripts/plot_training_curves.py</code></td><td>新增 TensorBoard scalar 到 SVG 曲线导出脚本。</td><td>本机没有 matplotlib，使用标准库和 tensorboard 直接输出 SVG。</td></tr>
+    <tr><th>组别</th><th>目的</th><th>训练配置</th><th>状态</th></tr>
+    <tr><td>基础 fixed run-to-goal</td><td>训练固定形态 Ant 的基础奔跑能力。</td><td><code>config/run-to-goal-ants-v0.yaml</code> + GPU resume 配置</td><td>完成，CPU 28 epoch + GPU resume 972 epoch。</td></tr>
+    <tr><td>进阶 devants warm-up</td><td>在 robo-sumo-devants 同观测/同网络下，用 run-to-goal 风格奖励预训练可变形态策略。</td><td><code>config/repro/devants-compatible-warmup-long.yaml</code></td><td>完成 100 epoch。</td></tr>
+    <tr><td>进阶 devants 对抗</td><td>从 warm-up checkpoint 继承参数，切换到对抗奖励继续训练。</td><td><code>config/repro/devants-confrontation-long.yaml</code></td><td>完成 1000 epoch。</td></tr>
+    <tr><td>runs 复现实验</td><td>使用仓库原配置重新训练，与 <code>runs/robo-sumo-devants-v0</code> 原 checkpoint 统一比较。</td><td><code>config/robo-sumo-devants-v0.yaml</code></td><td>完成 1000 epoch。</td></tr>
+    <tr><td>原始 checkpoint 基准</td><td>不训练，只评测仓库自带 checkpoint。</td><td><code>runs/robo-sumo-devants-v0/config.yml</code></td><td>完成 100 episode 评测。</td></tr>
   </table>
 
-  <h2>备份提交</h2>
-  <ul>
-    <li><code>5579087</code>：backup before task experiment runs。</li>
-    <li><code>bf9391c</code>：add sanity experiment configs and evaluation utilities。</li>
-    <li>两个提交均已推送到远端 <code>EAI/master</code>。</li>
-  </ul>
-
-  <h2>训练命令</h2>
-  <pre><code>conda run -n EAI python train.py --cfg config/repro/basic-run-to-goal-ants-sanity.yaml --num_threads 1 --use_cuda False
-
-conda run -n EAI python train.py --cfg config/repro/devants-compatible-warmup-sanity.yaml --num_threads 1 --use_cuda False
-
-conda run -n EAI python train.py --cfg config/repro/devants-confrontation-sanity.yaml \
-  --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211201/models --ckpt 2 \
-  --num_threads 1 --use_cuda False
-
-conda run -n EAI python train.py --cfg config/repro/reproduce-robo-sumo-devants-sanity.yaml --num_threads 1 --use_cuda False</code></pre>
-
-  <h2>评测与画图命令</h2>
-  <pre><code>conda run -n EAI python scripts/evaluate_checkpoint.py --cfg config/repro/basic-run-to-goal-ants-sanity.yaml --ckpt_dir tmp/run-to-goal-ants-v0/20260601_211152/models --ckpt 2 --episodes 5 --seed 100 --out reports/eval/basic_run_to_goal_ants_epoch0002.json
-
-conda run -n EAI python scripts/evaluate_checkpoint.py --cfg config/repro/devants-compatible-warmup-sanity.yaml --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211201/models --ckpt 2 --episodes 5 --seed 101 --out reports/eval/advanced_warmup_devants_epoch0002.json
-
-conda run -n EAI python scripts/evaluate_checkpoint.py --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211212/models --ckpt 2 --episodes 5 --seed 102 --out reports/eval/advanced_confrontation_devants_epoch0002.json
-
-conda run -n EAI python scripts/evaluate_checkpoint.py --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir runs/robo-sumo-devants-v0/models --ckpt best --episodes 5 --seed 103 --out reports/eval/original_runs_robo_sumo_devants_best.json
-
-conda run -n EAI python scripts/evaluate_checkpoint.py --cfg runs/robo-sumo-devants-v0/config.yml --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211230/models --ckpt 2 --episodes 5 --seed 104 --out reports/eval/reproduction_robo_sumo_devants_epoch0002.json
-
-conda run -n EAI python scripts/plot_training_curves.py \
-  --run_dir tmp/run-to-goal-ants-v0/20260601_211152 \
-  --run_dir tmp/robo-sumo-devants-v0/20260601_211201 \
-  --run_dir tmp/robo-sumo-devants-v0/20260601_211212 \
-  --run_dir tmp/robo-sumo-devants-v0/20260601_211230 \
-  --out_dir reports/curves</code></pre>
+  <h2>关键产物</h2>
+  <table>
+    <tr><th>产物</th><th>路径</th></tr>
+    <tr><td>长训练 manifest</td><td><code>reports/long_training/manifest.env</code></td></tr>
+    <tr><td>长训练日志目录</td><td><code>reports/long_training/logs/</code></td></tr>
+    <tr><td>评测 JSON 目录</td><td><code>reports/long_training/eval/</code></td></tr>
+    <tr><td>训练曲线目录</td><td><code>reports/long_training/curves/</code></td></tr>
+    <tr><td>曲线索引</td><td><a href="long_training/curves/curve_summary.json"><code>reports/long_training/curves/curve_summary.json</code></a></td></tr>
+  </table>
 
   <h2>Checkpoint 路径</h2>
   <table>
     <tr><th>实验</th><th>agent_0</th><th>agent_1</th><th>说明</th></tr>
-    <tr><td>基础 fixed run-to-goal 最终</td><td><code>tmp/run-to-goal-ants-v0/20260601_211152/models/agent_0/epoch_0002.p</code></td><td><code>tmp/run-to-goal-ants-v0/20260601_211152/models/agent_1/epoch_0002.p</code></td><td>也生成了 <code>best.p</code>。</td></tr>
-    <tr><td>进阶 warm-up 中间</td><td><code>tmp/robo-sumo-devants-v0/20260601_211201/models/agent_0/epoch_0002.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260601_211201/models/agent_1/epoch_0002.p</code></td><td>同网络 warm-up，作为对抗预训练输入。</td></tr>
-    <tr><td>进阶对抗起点</td><td><code>tmp/robo-sumo-devants-v0/20260601_211212/models/agent_0/epoch_0000.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260601_211212/models/agent_1/epoch_0000.p</code></td><td>由 warm-up <code>epoch_0002</code> 自动复制。</td></tr>
-    <tr><td>进阶对抗最终</td><td><code>tmp/robo-sumo-devants-v0/20260601_211212/models/agent_0/epoch_0002.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260601_211212/models/agent_1/epoch_0002.p</code></td><td>本阶段未刷新 <code>best.p</code>，原因见问题记录。</td></tr>
-    <tr><td>runs 原始 checkpoint</td><td><code>runs/robo-sumo-devants-v0/models/agent_0/best.p</code></td><td><code>runs/robo-sumo-devants-v0/models/agent_1/best.p</code></td><td>仓库自带预训练模型。</td></tr>
-    <tr><td>短复现最终</td><td><code>tmp/robo-sumo-devants-v0/20260601_211230/models/agent_0/epoch_0002.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260601_211230/models/agent_1/epoch_0002.p</code></td><td>从零开始 2 epoch sanity 复现。</td></tr>
+    <tr><td>基础 fixed run-to-goal 最终</td><td><code>tmp/run-to-goal-ants-v0/20260601_214009/models/agent_0/epoch_0972.p</code></td><td><code>tmp/run-to-goal-ants-v0/20260601_214009/models/agent_1/epoch_0972.p</code></td><td>从 CPU <code>epoch_0028</code> 续训 972 epoch，合计约 1000 epoch。</td></tr>
+    <tr><td>进阶 warm-up 中间 checkpoint</td><td><code>tmp/robo-sumo-devants-v0/20260602_035555/models/agent_0/epoch_0100.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260602_035555/models/agent_1/epoch_0100.p</code></td><td>同网络、run-to-goal warm-up 奖励。</td></tr>
+    <tr><td>进阶对抗最终 checkpoint</td><td><code>tmp/robo-sumo-devants-v0/20260602_051413/models/agent_0/epoch_1000.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260602_051413/models/agent_1/epoch_1000.p</code></td><td>从 warm-up <code>epoch_0100</code> 加载。</td></tr>
+    <tr><td>复现实验最终 checkpoint</td><td><code>tmp/robo-sumo-devants-v0/20260602_185001/models/agent_0/epoch_1000.p</code></td><td><code>tmp/robo-sumo-devants-v0/20260602_185001/models/agent_1/epoch_1000.p</code></td><td>使用原始 <code>config/robo-sumo-devants-v0.yaml</code> 从零训练。</td></tr>
+    <tr><td>原始 runs checkpoint</td><td><code>runs/robo-sumo-devants-v0/models/agent_0/best.p</code></td><td><code>runs/robo-sumo-devants-v0/models/agent_1/best.p</code></td><td>仓库自带基准。</td></tr>
   </table>
+
+  <h2>训练命令</h2>
+  <pre><code># 初始 CPU fixed run-to-goal，用户要求切 GPU 前跑到 epoch_0028
+conda run -n EAI python train.py --cfg config/run-to-goal-ants-v0.yaml --num_threads 50 --use_cuda False
+
+# fixed run-to-goal GPU 续训，从 CPU epoch_0028 继续 972 epoch
+conda run -n EAI python train.py \
+  --cfg config/repro/basic-run-to-goal-ants-resume-gpu.yaml \
+  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_212809/models --ckpt 28 \
+  --num_threads 50 --use_cuda True --gpu_index 0
+
+# 后续长训练流水线，由脚本等待 fixed 训练完成后自动执行 warm-up、对抗、复现、评测和曲线
+scripts/continue_long_training_after_fixed.sh
+
+# 脚本内部实际训练命令
+conda run -n EAI python train.py --cfg config/repro/devants-compatible-warmup-long.yaml --num_threads 50 --use_cuda True
+
+conda run -n EAI python train.py --cfg config/repro/devants-confrontation-long.yaml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_035555/models --ckpt 100 \
+  --num_threads 50 --use_cuda True
+
+conda run -n EAI python train.py --cfg config/robo-sumo-devants-v0.yaml --num_threads 50 --use_cuda True</code></pre>
+
+  <h2>评测与曲线命令</h2>
+  <pre><code>conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/basic-run-to-goal-ants-resume-gpu.yaml \
+  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_214009/models --ckpt 972 \
+  --episodes 100 --seed 300 \
+  --out reports/long_training/eval/fixed_run_to_goal_epoch_0972.json
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/devants-compatible-warmup-long.yaml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_035555/models --ckpt 100 \
+  --episodes 100 --seed 301 \
+  --out reports/long_training/eval/devants_warmup_epoch0100.json
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg runs/robo-sumo-devants-v0/config.yml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_051413/models --ckpt 1000 \
+  --episodes 100 --seed 302 \
+  --out reports/long_training/eval/devants_confrontation_epoch1000.json
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg runs/robo-sumo-devants-v0/config.yml \
+  --ckpt_dir runs/robo-sumo-devants-v0/models --ckpt best \
+  --episodes 100 --seed 303 \
+  --out reports/long_training/eval/original_runs_best.json
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg runs/robo-sumo-devants-v0/config.yml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_185001/models --ckpt 1000 \
+  --episodes 100 --seed 304 \
+  --out reports/long_training/eval/reproduction_epoch1000.json
+
+conda run -n EAI python scripts/plot_training_curves.py \
+  --run_dir tmp/run-to-goal-ants-v0/20260601_214009 \
+  --run_dir tmp/robo-sumo-devants-v0/20260602_035555 \
+  --run_dir tmp/robo-sumo-devants-v0/20260602_051413 \
+  --run_dir tmp/robo-sumo-devants-v0/20260602_185001 \
+  --out_dir reports/long_training/curves</code></pre>
 
   <h2>统一评测对比</h2>
   <table>
-    <tr><th>对象</th><th>评测配置</th><th>checkpoint</th><th>平均回报 agent0 / agent1</th><th>胜率 agent0 / agent1</th><th>平局率</th><th>平均长度</th><th>结果文件</th></tr>
-    <tr><td>基础 fixed run-to-goal</td><td><code>config/repro/basic-run-to-goal-ants-sanity.yaml</code></td><td><code>epoch_0002</code></td><td>502.02 / 496.96</td><td>0.00 / 0.00</td><td>1.00</td><td>500.0</td><td><a href="eval/basic_run_to_goal_ants_epoch0002.json">JSON</a></td></tr>
-    <tr><td>进阶 warm-up 中间</td><td><code>config/repro/devants-compatible-warmup-sanity.yaml</code></td><td><code>epoch_0002</code></td><td>1076.43 / 1123.39</td><td>0.00 / 0.00</td><td>1.00</td><td>501.0</td><td><a href="eval/advanced_warmup_devants_epoch0002.json">JSON</a></td></tr>
-    <tr><td>进阶对抗最终</td><td><code>runs/robo-sumo-devants-v0/config.yml</code></td><td><code>epoch_0002</code></td><td>-1087.79 / -1130.68</td><td>0.00 / 0.00</td><td>1.00</td><td>501.0</td><td><a href="eval/advanced_confrontation_devants_epoch0002.json">JSON</a></td></tr>
-    <tr><td>runs 原始 checkpoint</td><td><code>runs/robo-sumo-devants-v0/config.yml</code></td><td><code>best</code></td><td>3023.87 / -1318.11</td><td>0.80 / 0.00</td><td>0.20</td><td>258.8</td><td><a href="eval/original_runs_robo_sumo_devants_best.json">JSON</a></td></tr>
-    <tr><td>短复现 checkpoint</td><td><code>runs/robo-sumo-devants-v0/config.yml</code></td><td><code>epoch_0002</code></td><td>-1168.99 / -2067.60</td><td>0.20 / 0.00</td><td>0.80</td><td>417.0</td><td><a href="eval/reproduction_robo_sumo_devants_epoch0002.json">JSON</a></td></tr>
+    <tr><th>对象</th><th>checkpoint</th><th>平均回报 agent0 / agent1</th><th>标准差 agent0 / agent1</th><th>胜率 agent0 / agent1</th><th>平局率</th><th>平均长度</th><th>结果文件</th></tr>
+    <tr><td>基础 fixed run-to-goal</td><td><code>epoch_0972</code></td><td>167.21 / 204.72</td><td>267.81 / 368.96</td><td>0.01 / 0.06</td><td>0.93</td><td>229.44</td><td><a href="long_training/eval/fixed_run_to_goal_epoch_0972.json">JSON</a></td></tr>
+    <tr><td>进阶 warm-up</td><td><code>epoch_0100</code></td><td>1344.47 / 1421.83</td><td>879.62 / 757.83</td><td>0.47 / 0.25</td><td>0.28</td><td>299.24</td><td><a href="long_training/eval/devants_warmup_epoch0100.json">JSON</a></td></tr>
+    <tr><td>进阶对抗最终</td><td><code>epoch_1000</code></td><td>823.61 / 558.62</td><td>2197.21 / 2062.07</td><td>0.34 / 0.24</td><td>0.42</td><td>375.56</td><td><a href="long_training/eval/devants_confrontation_epoch1000.json">JSON</a></td></tr>
+    <tr><td>runs 原始 checkpoint</td><td><code>best</code></td><td>1012.16 / 156.36</td><td>2300.07 / 2093.78</td><td>0.40 / 0.20</td><td>0.40</td><td>360.29</td><td><a href="long_training/eval/original_runs_best.json">JSON</a></td></tr>
+    <tr><td>复现实验 checkpoint</td><td><code>epoch_1000</code></td><td>283.17 / 264.38</td><td>1705.21 / 1879.79</td><td>0.21 / 0.16</td><td>0.63</td><td>423.00</td><td><a href="long_training/eval/reproduction_epoch1000.json">JSON</a></td></tr>
   </table>
 
-  <h2>训练曲线</h2>
-  <p>完整曲线索引见 <a href="curves/curve_summary.json"><code>reports/curves/curve_summary.json</code></a>。下面展示每组实验 agent0 的 train/eval reward 曲线；agent1、win rate 和 episode length 的 SVG 也已输出到同目录。</p>
-  <div class="grid">
-    <div class="curve"><h3>fixed run-to-goal train agent0</h3><img src="curves/20260601_211152__train_R_eps_avg_0.svg" alt="fixed train agent0"></div>
-    <div class="curve"><h3>fixed run-to-goal eval agent0</h3><img src="curves/20260601_211152__eval_R_eps_avg_0.svg" alt="fixed eval agent0"></div>
-    <div class="curve"><h3>dev warm-up train agent0</h3><img src="curves/20260601_211201__train_R_eps_avg_0.svg" alt="warmup train agent0"></div>
-    <div class="curve"><h3>dev warm-up eval agent0</h3><img src="curves/20260601_211201__eval_R_eps_avg_0.svg" alt="warmup eval agent0"></div>
-    <div class="curve"><h3>dev confrontation train agent0</h3><img src="curves/20260601_211212__train_R_eps_avg_0.svg" alt="confrontation train agent0"></div>
-    <div class="curve"><h3>dev confrontation eval agent0</h3><img src="curves/20260601_211212__eval_R_eps_avg_0.svg" alt="confrontation eval agent0"></div>
-    <div class="curve"><h3>reproduction train agent0</h3><img src="curves/20260601_211230__train_R_eps_avg_0.svg" alt="reproduction train agent0"></div>
-    <div class="curve"><h3>reproduction eval agent0</h3><img src="curves/20260601_211230__eval_R_eps_avg_0.svg" alt="reproduction eval agent0"></div>
+  <div class="warn">
+    <strong>复现实验说明：</strong>复现 checkpoint 已学到非零胜率，但与 runs 原始 checkpoint 仍有差距。主要差异是复现模型平局率更高（0.63 vs 0.40），agent0 胜率更低（0.21 vs 0.40）。可能原因包括随机种子、CPU/GPU 浮点路径、MuJoCo/Gymnasium 版本、本地 XML 生成副作用、以及原始 checkpoint 的训练历史与当前复现并非完全同一运行条件。
   </div>
+
+  <h2>训练曲线</h2>
+  <p>完整 SVG 曲线在 <code>reports/long_training/curves/</code>。下面展示每组实验 agent0 的 train/eval reward 与 win rate 曲线；agent1 和 episode length 也已经导出。</p>
+  <div class="grid">
+    <div class="curve"><h3>fixed train reward agent0</h3><img src="long_training/curves/20260601_214009__train_R_eps_avg_0.svg" alt="fixed train reward agent0"></div>
+    <div class="curve"><h3>fixed eval reward agent0</h3><img src="long_training/curves/20260601_214009__eval_R_eps_avg_0.svg" alt="fixed eval reward agent0"></div>
+    <div class="curve"><h3>warm-up train reward agent0</h3><img src="long_training/curves/20260602_035555__train_R_eps_avg_0.svg" alt="warm-up train reward agent0"></div>
+    <div class="curve"><h3>warm-up eval win rate agent0</h3><img src="long_training/curves/20260602_035555__eval_win_rate_0.svg" alt="warm-up eval win rate agent0"></div>
+    <div class="curve"><h3>confrontation train reward agent0</h3><img src="long_training/curves/20260602_051413__train_R_eps_avg_0.svg" alt="confrontation train reward agent0"></div>
+    <div class="curve"><h3>confrontation eval win rate agent0</h3><img src="long_training/curves/20260602_051413__eval_win_rate_0.svg" alt="confrontation eval win rate agent0"></div>
+    <div class="curve"><h3>reproduction train reward agent0</h3><img src="long_training/curves/20260602_185001__train_R_eps_avg_0.svg" alt="reproduction train reward agent0"></div>
+    <div class="curve"><h3>reproduction eval win rate agent0</h3><img src="long_training/curves/20260602_185001__eval_win_rate_0.svg" alt="reproduction eval win rate agent0"></div>
+  </div>
+
+  <h2>曲线末值摘要</h2>
+  <table>
+    <tr><th>run</th><th>train reward agent0 / agent1</th><th>eval reward agent0 / agent1</th><th>eval win rate agent0 / agent1</th><th>episode length 末值</th></tr>
+    <tr><td><code>20260601_214009</code></td><td>-93.88 / -29.05</td><td>0.00 / 0.00</td><td>0.00 / 0.00</td><td>181.67</td></tr>
+    <tr><td><code>20260602_035555</code></td><td>888.30 / 900.87</td><td>865.58 / 693.02</td><td>0.39 / 0.54</td><td>185.36</td></tr>
+    <tr><td><code>20260602_051413</code></td><td>-244.35 / -501.49</td><td>-701.12 / 271.16</td><td>0.27 / 0.51</td><td>320.00</td></tr>
+    <tr><td><code>20260602_185001</code></td><td>-383.76 / -587.30</td><td>-933.94 / -160.46</td><td>0.13 / 0.32</td><td>405.10</td></tr>
+  </table>
 
   <h2>问题与解决</h2>
   <table>
-    <tr><th>问题</th><th>处理</th></tr>
-    <tr><td>原始 run-to-goal-devants 与 robo-sumo-devants 观测维度不同，checkpoint 不能严格加载。</td><td>不做 partial loading，而是保持 <code>robo-sumo-devants-v0</code> 网络结构不变，用 <code>reward_specs.mode</code> 切换 warm-up/对抗目标函数。</td></tr>
-    <tr><td>sanity 训练如果沿用默认评估线程，会额外启动 10 个评估 worker。</td><td>新增 <code>eval_num_threads</code>，默认仍为 10，短配置设为 1。</td></tr>
-    <tr><td>本机没有 matplotlib。</td><td>曲线脚本直接读取 TensorBoard event，生成 SVG，无需额外安装依赖。</td></tr>
-    <tr><td>对抗阶段从 warm-up 加载后没有生成 <code>best.p</code>。</td><td>原因是 learner 继承了 warm-up 的 <code>best_reward</code>，而对抗 reward 尺度更低。本轮使用按 epoch 保存的 <code>epoch_0001/0002</code> 作为对抗 checkpoint。</td></tr>
-    <tr><td>环境创建会改写部分 XML 中的匿名节点名。</td><td>这是现有 XML 生成流程副作用，当前工作区出现 <code>world_body*.xml</code> 的匿名名变更，未作为算法逻辑修改处理。</td></tr>
-    <tr><td>短复现无法达到 runs 原 checkpoint 效果。</td><td>原论文/配置是长训练、大 batch；本轮 sanity 是 2 epoch、128 batch，只用于验证流程。完整复现需要后续按长训命令继续。</td></tr>
+    <tr><th>问题</th><th>处理或结论</th></tr>
+    <tr><td>run-to-goal-devants 与 robo-sumo-devants 观测维度不同，checkpoint 无法严格加载。</td><td>采用同一个 <code>robo-sumo-devants-v0</code> 网络结构，通过 <code>reward_specs.mode: run_to_goal_warmup</code> 做 warm-up，再切换到对抗奖励。</td></tr>
+    <tr><td>用户要求固定形态训练从 CPU 改为 GPU。</td><td>保留 CPU 已训练到的 <code>epoch_0028</code>，新增 resume 配置并从该 checkpoint 继续 GPU 训练到本地 <code>epoch_0972</code>。</td></tr>
+    <tr><td>MuJoCo rollout 主要在 CPU，GPU 利用率不持续满载。</td><td>GPU 主要加速 PPO 网络更新；最终仍完成训练，但速度提升有限。</td></tr>
+    <tr><td>fixed resume 不是原地恢复完整历史池。</td><td>当前 runner 会把加载 checkpoint 复制为新 run 的 <code>epoch_0000</code>，旧 self-play 历史池不会完整继承。这是本轮长训的保真度 caveat。</td></tr>
+    <tr><td>环境运行会改写部分 XML 匿名节点名。</td><td>保留为现有 XML 生成流程副作用，不作为算法逻辑修改。</td></tr>
+    <tr><td>复现 checkpoint 未达到原始 checkpoint 效果。</td><td>已统一 100 episode 评测并记录差距。后续可从 <code>epoch_1000</code> 继续训练，或固定随机种子/环境版本进一步排查。</td></tr>
+  </table>
+
+  <h2>修改文件列表</h2>
+  <table>
+    <tr><th>文件</th><th>用途</th></tr>
+    <tr><td><code>config/config.py</code></td><td>新增 <code>eval_num_threads</code>。</td></tr>
+    <tr><td><code>runner/multi_agent_runner.py</code></td><td>评估线程数改为配置控制。</td></tr>
+    <tr><td><code>runner/multi_evo_agent_runner.py</code></td><td>评估线程数改为配置控制。</td></tr>
+    <tr><td><code>competevo/evo_envs/robo_sumo_dev.py</code></td><td>新增 <code>run_to_goal_warmup</code> reward mode。</td></tr>
+    <tr><td><code>config/repro/*.yaml</code></td><td>短训练和长训练配置。</td></tr>
+    <tr><td><code>scripts/evaluate_checkpoint.py</code></td><td>无渲染统一评测。</td></tr>
+    <tr><td><code>scripts/plot_training_curves.py</code></td><td>TensorBoard scalar 导出 SVG。</td></tr>
+    <tr><td><code>scripts/run_long_training_pipeline.sh</code></td><td>长训练流水线入口。</td></tr>
+    <tr><td><code>scripts/continue_long_training_after_fixed.sh</code></td><td>固定形态完成后自动串接后续训练、评测和画图。</td></tr>
+    <tr><td><code>reports/task_experiment_report.html</code></td><td>本报告，手写整理。</td></tr>
+    <tr><td><code>docs/task_understanding.md</code></td><td>任务理解与实验记录。</td></tr>
   </table>
 
   <h2>后续继续训练命令</h2>
-  <pre><code># 从本轮 fixed run-to-goal checkpoint 继续长训
-conda run -n EAI python train.py --cfg config/run-to-goal-ants-v0.yaml \
-  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_211152/models --ckpt 2 --num_threads 50
+  <pre><code># 继续 fixed run-to-goal
+conda run -n EAI python train.py --cfg config/repro/basic-run-to-goal-ants-resume-gpu.yaml \
+  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_214009/models --ckpt 972 \
+  --num_threads 50 --use_cuda True --gpu_index 0
 
-# 从本轮 dev 对抗最终 checkpoint 继续长训
+# 继续进阶对抗
+conda run -n EAI python train.py --cfg config/repro/devants-confrontation-long.yaml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_051413/models --ckpt 1000 \
+  --num_threads 50 --use_cuda True
+
+# 继续复现实验
 conda run -n EAI python train.py --cfg config/robo-sumo-devants-v0.yaml \
-  --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211212/models --ckpt 2 --num_threads 50
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_185001/models --ckpt 1000 \
+  --num_threads 50 --use_cuda True</code></pre>
 
-# 从短复现 checkpoint 继续向 runs 原始配置靠近
-conda run -n EAI python train.py --cfg config/robo-sumo-devants-v0.yaml \
-  --ckpt_dir tmp/robo-sumo-devants-v0/20260601_211230/models --ckpt 2 --num_threads 50
-
-# 继续后可用同一评测脚本统一比较
-conda run -n EAI python scripts/evaluate_checkpoint.py --cfg runs/robo-sumo-devants-v0/config.yml \
-  --ckpt_dir &lt;new_run&gt;/models --ckpt &lt;epoch_or_best&gt; --episodes 100 --seed 200 \
-  --out reports/eval/&lt;new_eval&gt;.json</code></pre>
-
-  <h2>验证命令</h2>
-  <pre><code>conda run -n EAI python -m py_compile scripts/evaluate_checkpoint.py scripts/plot_training_curves.py config/config.py runner/multi_agent_runner.py runner/multi_evo_agent_runner.py competevo/evo_envs/robo_sumo_dev.py
-
-conda run -n EAI python -c "... gym.make(...).reset(); env.step(zero_actions) ..."</code></pre>
-
+  <h2>验证</h2>
+  <ul>
+    <li>训练流水线完成标记：<code>reports/long_training/logs/pipeline.log</code> 末尾为 <code>LONG TRAINING CONTINUATION COMPLETE</code>。</li>
+    <li>评测 JSON：5 个目标评测文件均已生成。</li>
+    <li>训练曲线：4 个 run 的 reward、win rate、episode length SVG 均已生成。</li>
+    <li>代码备份：长训练前相关修改已提交并推送到 GitHub，最新备份提交为 <code>a77faa4</code>。</li>
+  </ul>
 </body>
 </html>

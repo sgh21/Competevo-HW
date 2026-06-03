@@ -517,3 +517,89 @@ mlp.affine_layers.0.weight           (64,52)  -> (64,139)
 | short reproduction epoch_0002 | -1168.99 / -2067.60 | 0.20 / 0.00 | 0.80 |
 
 短复现没有达到 runs 原 checkpoint 的效果，主要原因是本轮只跑 2 epoch、`min_batch_size=128`，而原始训练配置使用长训练和大 batch。该结果只能说明训练/保存/加载/评测/画图流程可用，不能作为收敛复现实验结论。
+
+## 11. 长训练实验闭环记录（2026-06-03）
+
+在短训练 sanity check 通过后，本轮继续执行完整长训练。执行策略仍采用“同网络，不同目标函数”的兼容方案：`robo-sumo-devants-v0` 先以 `run_to_goal_warmup` 奖励训练，再加载该 checkpoint 切换到对抗奖励训练。
+
+### 11.1 实验组与 checkpoint
+
+| 实验 | 作用 | run dir | checkpoint |
+|---|---|---|---|
+| fixed run-to-goal | 固定形态基础任务 | `tmp/run-to-goal-ants-v0/20260601_214009` | `agent_*/epoch_0972.p` |
+| devants warm-up | 可变形态 run-to-goal warm-up | `tmp/robo-sumo-devants-v0/20260602_035555` | `agent_*/epoch_0100.p` |
+| devants confrontation | 从 warm-up 继承到对抗训练 | `tmp/robo-sumo-devants-v0/20260602_051413` | `agent_*/epoch_1000.p` |
+| runs reproduction | 复现仓库自带 runs 配置 | `tmp/robo-sumo-devants-v0/20260602_185001` | `agent_*/epoch_1000.p` |
+| original baseline | 仓库自带 checkpoint 评测 | `runs/robo-sumo-devants-v0` | `agent_*/best.p` |
+
+fixed run-to-goal 最初在 CPU 上训练到 `epoch_0028`，随后根据讨论切换到 GPU，从该 checkpoint 续训 972 epoch。当前 runner 的 resume 逻辑会把加载 checkpoint 复制成新 run 的 `epoch_0000`，不会完整继承旧 run 的全部 self-play 历史池，这是本轮固定形态结果的保真度 caveat。
+
+### 11.2 训练流水线
+
+长训练相关命令已经在代码提交并推送 GitHub 后启动。关键命令：
+
+```bash
+conda run -n EAI python train.py --cfg config/repro/basic-run-to-goal-ants-resume-gpu.yaml \
+  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_212809/models --ckpt 28 \
+  --num_threads 50 --use_cuda True --gpu_index 0
+
+scripts/continue_long_training_after_fixed.sh
+```
+
+`scripts/continue_long_training_after_fixed.sh` 在 fixed 训练完成后自动执行：
+
+1. `config/repro/devants-compatible-warmup-long.yaml`
+2. `config/repro/devants-confrontation-long.yaml`
+3. `config/robo-sumo-devants-v0.yaml`
+4. 5 组统一评测
+5. 4 个 run 的 TensorBoard 曲线导出
+
+流水线完成时间记录在 `reports/long_training/logs/pipeline.log`，末尾为 `LONG TRAINING CONTINUATION COMPLETE`。
+
+### 11.3 统一评测结果
+
+评测均使用 100 episodes、mean action。
+
+| 对象 | 平均回报 agent0 / agent1 | 胜率 agent0 / agent1 | 平局率 | 平均长度 | 结果 |
+|---|---:|---:|---:|---:|---|
+| fixed run-to-goal `epoch_0972` | 167.21 / 204.72 | 0.01 / 0.06 | 0.93 | 229.44 | `reports/long_training/eval/fixed_run_to_goal_epoch_0972.json` |
+| devants warm-up `epoch_0100` | 1344.47 / 1421.83 | 0.47 / 0.25 | 0.28 | 299.24 | `reports/long_training/eval/devants_warmup_epoch0100.json` |
+| devants confrontation `epoch_1000` | 823.61 / 558.62 | 0.34 / 0.24 | 0.42 | 375.56 | `reports/long_training/eval/devants_confrontation_epoch1000.json` |
+| original runs `best` | 1012.16 / 156.36 | 0.40 / 0.20 | 0.40 | 360.29 | `reports/long_training/eval/original_runs_best.json` |
+| reproduction `epoch_1000` | 283.17 / 264.38 | 0.21 / 0.16 | 0.63 | 423.00 | `reports/long_training/eval/reproduction_epoch1000.json` |
+
+复现实验已经明显优于短 sanity checkpoint，但仍未达到原始 `runs` checkpoint 的效果。主要差距是复现模型的平局率更高、agent0 胜率更低。可能原因包括随机种子、MuJoCo/Gymnasium 版本、本地 XML 生成副作用、CPU/GPU 浮点路径，以及原始 checkpoint 的训练历史与当前复现不完全一致。
+
+### 11.4 曲线与报告
+
+- HTML 报告：`reports/task_experiment_report.html`
+- 长训练曲线：`reports/long_training/curves/*.svg`
+- 曲线索引：`reports/long_training/curves/curve_summary.json`
+
+曲线末值摘要：
+
+| run | train reward agent0 / agent1 | eval reward agent0 / agent1 | eval win rate agent0 / agent1 |
+|---|---:|---:|---:|
+| `20260601_214009` | -93.88 / -29.05 | 0.00 / 0.00 | 0.00 / 0.00 |
+| `20260602_035555` | 888.30 / 900.87 | 865.58 / 693.02 | 0.39 / 0.54 |
+| `20260602_051413` | -244.35 / -501.49 | -701.12 / 271.16 | 0.27 / 0.51 |
+| `20260602_185001` | -383.76 / -587.30 | -933.94 / -160.46 | 0.13 / 0.32 |
+
+### 11.5 后续可继续训练的入口
+
+```bash
+# 继续 fixed run-to-goal
+conda run -n EAI python train.py --cfg config/repro/basic-run-to-goal-ants-resume-gpu.yaml \
+  --ckpt_dir tmp/run-to-goal-ants-v0/20260601_214009/models --ckpt 972 \
+  --num_threads 50 --use_cuda True --gpu_index 0
+
+# 继续进阶对抗
+conda run -n EAI python train.py --cfg config/repro/devants-confrontation-long.yaml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_051413/models --ckpt 1000 \
+  --num_threads 50 --use_cuda True
+
+# 继续复现实验
+conda run -n EAI python train.py --cfg config/robo-sumo-devants-v0.yaml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/20260602_185001/models --ckpt 1000 \
+  --num_threads 50 --use_cuda True
+```
