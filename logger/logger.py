@@ -10,6 +10,7 @@ import os
 from termcolor import colored
 import platform
 import socket
+import re
 from datetime import datetime
 
 NOTSET = 0
@@ -53,7 +54,12 @@ class Logger(logging.Logger):
         self.output_dir = './tmp'
         self.sub_dir = '/%s' % (cfg.env_name)
         self.time_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.target_dir = '/' + self.time_str
+        run_label = getattr(cfg, "run_label", None)
+        if run_label:
+            safe_label = re.sub(r"[^A-Za-z0-9_.-]+", "-", str(run_label)).strip("-")
+            self.target_dir = '/' + safe_label + '-' + self.time_str
+        else:
+            self.target_dir = '/' + self.time_str
         self.run_dir = self.output_dir + self.sub_dir + self.target_dir
         self.model_dir = '%s/models' % self.run_dir
         self.log_dir = '%s/log' % self.run_dir

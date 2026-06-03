@@ -244,18 +244,26 @@ class RoboSumoDevEnv(MultiDevAgentEnv):
             infos = []
             cur_xml_strs = []
             for i in range(self.n_agents):
-                design_params = actions[i]
-                self.agents[i].set_design_params(design_params)
+                agent = self.agents[i]
+                if hasattr(agent, 'flag') and agent.flag == 'dev':
+                    design_params = actions[i]
+                    agent.set_design_params(design_params)
 
-                info = {'use_transform_action': True, 
-                        'stage': 'attribute_transform',
-                        'reward_parse': 0,
-                        'reward_dense': 0,
-                        'design_params': design_params[:self.agents[i].scale_state_dim],
-                        }
+                    info = {'use_transform_action': True, 
+                            'stage': 'attribute_transform',
+                            'reward_parse': 0,
+                            'reward_dense': 0,
+                            'design_params': design_params[:agent.scale_state_dim],
+                            }
+                else:
+                    info = {'use_transform_action': False,
+                            'stage': 'attribute_transform',
+                            'reward_parse': 0,
+                            'reward_dense': 0,
+                            }
                 infos.append(info)
 
-                cur_xml_str = self.agents[i].cur_xml_str
+                cur_xml_str = agent.cur_xml_str
                 cur_xml_strs.append(cur_xml_str)
 
             try:
@@ -275,8 +283,13 @@ class RoboSumoDevEnv(MultiDevAgentEnv):
             return obses, rews, terminateds, False, infos
         # execution
         else:
-            actions = [actions[i][-agent.sim_action_dim:] for i, agent in self.agents.items()]
-            obses, rews, terminateds, truncated, infos = self._step(actions)
+            control_actions = []
+            for i, agent in self.agents.items():
+                if hasattr(agent, 'flag') and agent.flag == 'dev':
+                    control_actions.append(actions[i][-agent.sim_action_dim:])
+                else:
+                    control_actions.append(actions[i])
+            obses, rews, terminateds, truncated, infos = self._step(control_actions)
         if self._past_limit():
             return obses, rews, terminateds, True, infos
         

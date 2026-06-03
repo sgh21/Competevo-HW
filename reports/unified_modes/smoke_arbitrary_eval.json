@@ -1,0 +1,45 @@
+{
+  "config": "config/repro/unified-devant-training.yaml",
+  "env_name": "robo-sumo-devants-v0",
+  "ckpt_dir": "tmp/robo-sumo-devants-v0/smoke-twoplayer-evo-sumo-20260603_173028/models",
+  "ckpt": "1",
+  "checkpoint_files": {
+    "0": "tmp/robo-sumo-devants-v0/smoke-selfplay-evo-sumo-20260603_173016/models/epoch_0001.p",
+    "1": "tmp/robo-sumo-devants-v0/smoke-twoplayer-mixed0-sumo-20260603_173052/models/agent_1/epoch_0001.p"
+  },
+  "episodes": 2,
+  "mean_action": true,
+  "avg_episode_reward": [
+    -882.8115132225576,
+    -773.8005608176596
+  ],
+  "std_episode_reward": [
+    87.18346798067438,
+    216.52478078761806
+  ],
+  "avg_episode_length": 501.0,
+  "wins": [
+    0,
+    0
+  ],
+  "draws": 2,
+  "win_rate": [
+    0.0,
+    0.0
+  ],
+  "draw_rate": 1.0,
+  "rewards_by_episode": [
+    [
+      -969.9949812032319,
+      -557.2757800300416
+    ],
+    [
+      -795.6280452418831,
+      -990.3253416052777
+    ]
+  ],
+  "episode_lengths": [
+    501,
+    501
+  ]
+}

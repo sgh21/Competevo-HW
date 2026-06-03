@@ -1,0 +1,85 @@
+{
+  "config": "config/repro/robo-sumo-ant-devant-v0.yaml",
+  "env_name": "robo-sumo-ant-devant-v0",
+  "ckpt_dir": "reports/mixed_ant_devant/ckpts/fixed_selfplay_vs_devant",
+  "ckpt": "1000",
+  "checkpoint_files": {
+    "0": "reports/mixed_ant_devant/ckpts/fixed_selfplay_vs_devant/agent_0/epoch_1000.p",
+    "1": "reports/mixed_ant_devant/ckpts/fixed_selfplay_vs_devant/agent_1/epoch_1000.p"
+  },
+  "episodes": 10,
+  "mean_action": true,
+  "avg_episode_reward": [
+    -1739.3051849666274,
+    2273.1505792821617
+  ],
+  "std_episode_reward": [
+    1281.7814649231375,
+    1450.1008186809602
+  ],
+  "avg_episode_length": 125.7,
+  "wins": [
+    1,
+    9
+  ],
+  "draws": 0,
+  "win_rate": [
+    0.1,
+    0.9
+  ],
+  "draw_rate": 0.0,
+  "rewards_by_episode": [
+    [
+      -2252.2053882326763,
+      2637.1070694298883
+    ],
+    [
+      -1400.90429901758,
+      2725.394689484348
+    ],
+    [
+      2001.8048951377534,
+      -1957.5774210497937
+    ],
+    [
+      -2238.846131645241,
+      2133.7188249482588
+    ],
+    [
+      -2415.5349556733345,
+      2732.2103309371473
+    ],
+    [
+      -1973.4301875638512,
+      3360.922151254466
+    ],
+    [
+      -2542.230309991683,
+      3135.122539247368
+    ],
+    [
+      -2035.8246418802514,
+      2328.7145834768908
+    ],
+    [
+      -2229.304336727672,
+      2678.728930974691
+    ],
+    [
+      -2306.576494071739,
+      2957.164094118351
+    ]
+  ],
+  "episode_lengths": [
+    78,
+    145,
+    180,
+    37,
+    74,
+    148,
+    224,
+    217,
+    54,
+    100
+  ]
+}

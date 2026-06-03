@@ -19,6 +19,67 @@ from runner.multi_evo_agent_runner import MultiEvoAgentRunner
 from runner.multi_agent_runner import MultiAgentRunner
 from runner.selfplay_agent_runner import SPAgentRunner
 
+
+def parse_agent_ids(value):
+    if value is None:
+        return None
+    value = str(value).strip().lower()
+    if value in ("", "none", "fixed", "no", "false"):
+        return []
+    if value in ("all", "both", "true"):
+        return [0, 1]
+    return [int(item.strip()) for item in value.split(",") if item.strip() != ""]
+
+
+def set_cfg_attr(cfg, name, value):
+    if value is None:
+        return
+    setattr(cfg, name, value)
+    cfg.cfg[name] = value
+
+
+def apply_cli_overrides(cfg, args):
+    if args.game_mode is not None:
+        game_mode = args.game_mode.replace("-", "_")
+        set_cfg_attr(cfg, "game_mode", game_mode)
+        if game_mode == "selfplay":
+            set_cfg_attr(cfg, "runner_type", "selfplay-agent-runner")
+        elif game_mode in ("two_player", "twoplayer"):
+            set_cfg_attr(cfg, "runner_type", "multi-evo-agent-runner")
+        else:
+            raise ValueError("Unsupported game mode: %s" % args.game_mode)
+
+    if args.morph_optim_agents is not None:
+        morph_agents = parse_agent_ids(args.morph_optim_agents)
+        set_cfg_attr(cfg, "morph_optim_agents", morph_agents)
+
+    if args.reward_mode is not None:
+        cfg.reward_specs = dict(cfg.reward_specs)
+        cfg.reward_specs["mode"] = args.reward_mode
+        cfg.cfg["reward_specs"] = cfg.reward_specs
+        if args.reward_mode == "run_to_goal_warmup":
+            set_cfg_attr(cfg, "use_parse_reward", False)
+            set_cfg_attr(cfg, "use_exploration_curriculum", False)
+
+    simple_overrides = [
+        "run_label",
+        "max_epoch_num",
+        "min_batch_size",
+        "mini_batch_size",
+        "eval_batch_size",
+        "eval_num_threads",
+        "num_optim_epoch",
+        "save_model_interval",
+        "termination_epoch",
+        "delta",
+        "use_opponent_sample",
+        "use_exploration_curriculum",
+        "use_parse_reward",
+    ]
+    for name in simple_overrides:
+        set_cfg_attr(cfg, name, getattr(args, name))
+
+
 def main():
     # ----------------------------------------------------------------------------#
     # Load config options from terminal and predefined yaml file
@@ -34,9 +95,30 @@ def main():
     parser.add_argument('--num_threads', type=int, default=1)
     parser.add_argument('--ckpt_dir', type=str, default=None)
     parser.add_argument('--ckpt', type=str, default='0')
+    parser.add_argument('--game_mode', type=str, default=None,
+                        help='selfplay or two_player; overrides runner_type')
+    parser.add_argument('--morph_optim_agents', type=str, default=None,
+                        help='none, all, 0, 1, or comma-separated ids such as 0,1')
+    parser.add_argument('--reward_mode', type=str, default=None,
+                        help='sumo or run_to_goal_warmup')
+    parser.add_argument('--run_label', type=str, default=None,
+                        help='human-readable prefix for the run directory')
+    parser.add_argument('--max_epoch_num', type=int, default=None)
+    parser.add_argument('--min_batch_size', type=int, default=None)
+    parser.add_argument('--mini_batch_size', type=int, default=None)
+    parser.add_argument('--eval_batch_size', type=int, default=None)
+    parser.add_argument('--eval_num_threads', type=int, default=None)
+    parser.add_argument('--num_optim_epoch', type=int, default=None)
+    parser.add_argument('--save_model_interval', type=int, default=None)
+    parser.add_argument('--termination_epoch', type=int, default=None)
+    parser.add_argument('--delta', type=float, default=None)
+    parser.add_argument('--use_opponent_sample', type=str2bool, default=None)
+    parser.add_argument('--use_exploration_curriculum', type=str2bool, default=None)
+    parser.add_argument('--use_parse_reward', type=str2bool, default=None)
     args = parser.parse_args()
     # Load config file
     cfg = Config(args.cfg_file)
+    apply_cli_overrides(cfg, args)
 
     # ----------------------------------------------------------------------------#
     # Define logger and create dirs
@@ -83,7 +165,7 @@ def main():
                                     num_threads=args.num_threads, training=True, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
     elif cfg.runner_type == "selfplay-agent-runner":
         runner = SPAgentRunner(cfg, logger, dtype, device, 
-                                    num_threads=args.num_threads, training=True, ckpt=ckpt)
+                                    num_threads=args.num_threads, training=True, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
     elif cfg.runner_type == "multi-evo-agent-runner":
         ckpt = [ckpt] * 2
         runner = MultiEvoAgentRunner(cfg, logger, dtype, device,

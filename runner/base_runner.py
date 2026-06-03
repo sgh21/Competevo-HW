@@ -30,49 +30,60 @@ class BaseRunner:
         self.setup_writer()
         self.setup_learner()
 
-        if (ckpt != 0 and ckpt[0] != 0) or not training:
+        has_checkpoint = not self._checkpoint_is_zero(ckpt)
+        if has_checkpoint or not training:
             self.load_checkpoint(ckpt_dir, ckpt)
+            if training and has_checkpoint and ckpt_dir is not None:
+                self.copy_initial_checkpoint(ckpt_dir, ckpt)
 
-            def copy_checkpoint(ckpt_dir, ckpt, model_dir, new_filename='epoch_0000.p'):
-                # 确保目标文件夹存在，如果不存在则创建
-                if not os.path.exists(model_dir):
-                    os.makedirs(model_dir)
+    def _checkpoint_is_zero(self, ckpt):
+        if isinstance(ckpt, (list, tuple)):
+            return all(self._checkpoint_is_zero(item) for item in ckpt)
+        return ckpt is None or ckpt == 0 or ckpt == "0"
 
-                # 构建源文件路径
-                source_file = os.path.join(ckpt_dir, ckpt)
+    def _checkpoint_name(self, ckpt):
+        if isinstance(ckpt, int):
+            return 'epoch_%04d.p' % ckpt
+        assert isinstance(ckpt, str)
+        return ckpt if ckpt.endswith('.p') else ckpt + '.p'
 
-                # 构建目标文件路径，使用指定的新文件名
-                target_file = os.path.join(model_dir, new_filename)
+    def _find_checkpoint_file(self, ckpt_dir, idx, ckpt):
+        base_dir = ckpt_dir[idx] if isinstance(ckpt_dir, (list, tuple)) else ckpt_dir
+        ckpt_name = self._checkpoint_name(ckpt)
+        candidates = [
+            os.path.join(base_dir, 'agent_%d' % idx, ckpt_name),
+            os.path.join(base_dir, ckpt_name),
+        ]
+        for cp_path in candidates:
+            if os.path.exists(cp_path):
+                return cp_path
+        return candidates[0]
 
-                try:
-                    # 复制文件
-                    shutil.copyfile(source_file, target_file)
-                    self.logger.info(f"Checkpoint {source_file} copied successfully to {target_file}")
-                except FileNotFoundError:
-                    self.logger.critical(f"Source file {source_file} not found.")
-                except Exception as e:
-                    self.logger.critical(f"Error copying checkpoint: {e}")
+    def copy_initial_checkpoint(self, ckpt_dir, ckpt):
+        def copy_checkpoint(source_file, model_dir, new_filename='epoch_0000.p'):
+            os.makedirs(model_dir, exist_ok=True)
+            target_file = os.path.join(model_dir, new_filename)
+            try:
+                shutil.copyfile(source_file, target_file)
+                self.logger.info(f"Checkpoint {source_file} copied successfully to {target_file}")
+            except FileNotFoundError:
+                self.logger.critical(f"Source file {source_file} not found.")
+            except Exception as e:
+                self.logger.critical(f"Error copying checkpoint: {e}")
 
-            if training: # consider the load ckpt is epoch_0
-                ckpt0 = ckpt[0]
-                if isinstance(ckpt0, str):
-                    ckpt0 = ckpt0 + '.p'
-                elif isinstance(ckpt0, int):
-                    ckpt0 = 'epoch_%04d.p' % (ckpt0)
-
-                ckpt1 = ckpt[1]
-                if isinstance(ckpt1, str):
-                    ckpt1 = ckpt1 + '.p'
-                elif isinstance(ckpt1, int):
-                    ckpt1 = 'epoch_%04d.p' % (ckpt1)
-
-                copy_checkpoint(ckpt_dir+'/agent_0', ckpt0, self.model_dir+'/agent_0')
-                copy_checkpoint(ckpt_dir+'/agent_1', ckpt1, self.model_dir+'/agent_1')
+        if isinstance(ckpt, (list, tuple)):
+            for idx, ckpt_i in enumerate(ckpt):
+                source_file = self._find_checkpoint_file(ckpt_dir, idx, ckpt_i)
+                copy_checkpoint(source_file, os.path.join(self.model_dir, 'agent_%d' % idx))
+        else:
+            source_file = self._find_checkpoint_file(ckpt_dir, 0, ckpt)
+            copy_checkpoint(source_file, self.model_dir)
 
     def setup_env(self, env_name):
+        env_kwargs = dict(getattr(self.cfg, "env_kwargs", dict()))
         if self.training:
             # self.env = gym.make(env_name, cfg=self.cfg, render_mode="human")
-            self.env = gym.make(env_name, cfg=self.cfg)
+            self.env = gym.make(env_name, cfg=self.cfg, **env_kwargs)
         else:
             render_kwargs = {
                 "render_mode": "human",
@@ -88,6 +99,7 @@ class BaseRunner:
                     },
                 ),
             }
+            render_kwargs.update(env_kwargs)
             self.env = gym.make(env_name, cfg=self.cfg, **render_kwargs)
             # self.env = gym.make(env_name, cfg=self.cfg)
 

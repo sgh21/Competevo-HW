@@ -1,0 +1,50 @@
+{
+  "config": "config/repro/fixed-ant-selfplay-sanity.yaml",
+  "env_name": "robo-sumo-ants-v0",
+  "ckpt_dir": "tmp/robo-sumo-ants-v0/20260603_113346/models",
+  "ckpt": "1",
+  "checkpoint_files": {
+    "0": "tmp/robo-sumo-ants-v0/20260603_113346/models/epoch_0001.p",
+    "1": "tmp/robo-sumo-ants-v0/20260603_113346/models/epoch_0001.p"
+  },
+  "episodes": 3,
+  "mean_action": true,
+  "avg_episode_reward": [
+    -810.7277369096106,
+    -877.4213176949488
+  ],
+  "std_episode_reward": [
+    356.67515313095623,
+    369.8287583801679
+  ],
+  "avg_episode_length": 500.0,
+  "wins": [
+    0,
+    0
+  ],
+  "draws": 3,
+  "win_rate": [
+    0.0,
+    0.0
+  ],
+  "draw_rate": 1.0,
+  "rewards_by_episode": [
+    [
+      -488.60797993533356,
+      -936.8364038133581
+    ],
+    [
+      -635.6256099341878,
+      -397.7000510186954
+    ],
+    [
+      -1307.9496208593105,
+      -1297.7274982527927
+    ]
+  ],
+  "episode_lengths": [
+    500,
+    500,
+    500
+  ]
+}

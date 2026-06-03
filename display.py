@@ -29,6 +29,10 @@ def main():
                         type=str)
     parser.add_argument('--ckpt_dir', type=str, default=None)
     parser.add_argument('--ckpt', type=str, default='best')
+    parser.add_argument('--agent0_ckpt_dir', type=str, default=None)
+    parser.add_argument('--agent0_ckpt', type=str, default=None)
+    parser.add_argument('--agent1_ckpt_dir', type=str, default=None)
+    parser.add_argument('--agent1_ckpt', type=str, default=None)
     parser.add_argument('--render_width', type=int, default=1280)
     parser.add_argument('--render_height', type=int, default=960)
     parser.add_argument('--camera_distance', type=float, default=9.0)
@@ -66,7 +70,18 @@ def main():
     logger.log_dir = '%slog' % logger.run_dir
     logger.tb_dir = '%stb' % logger.run_dir
 
-    ckpt = [int(args.ckpt) if args.ckpt.isdigit() else args.ckpt] * 2
+    ckpt0 = args.agent0_ckpt or args.ckpt
+    ckpt1 = args.agent1_ckpt or args.ckpt
+    ckpt = [
+        int(ckpt0) if ckpt0.isdigit() else ckpt0,
+        int(ckpt1) if ckpt1.isdigit() else ckpt1,
+    ]
+    ckpt_dir = args.ckpt_dir
+    if args.agent0_ckpt_dir or args.agent1_ckpt_dir:
+        ckpt_dir = [
+            args.agent0_ckpt_dir or args.ckpt_dir,
+            args.agent1_ckpt_dir or args.ckpt_dir,
+        ]
 
     # ----------------------------------------------------------------------------#
     # Set torch and random seed
@@ -85,11 +100,11 @@ def main():
     #                              num_threads=args.num_threads, training=False)
 
     if cfg.runner_type == "multi-agent-runner":
-        runner = MultiAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
+        runner = MultiAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=ckpt_dir, ckpt=ckpt)
     elif cfg.runner_type == "selfplay-agent-runner":
-        runner = SPAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
+        runner = SPAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=ckpt_dir, ckpt=ckpt)
     elif cfg.runner_type == "multi-evo-agent-runner":
-        runner = MultiEvoAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
+        runner = MultiEvoAgentRunner(cfg, logger, dtype, device, training=False, ckpt_dir=ckpt_dir, ckpt=ckpt)
     
     runner.display(num_episode=50, mean_action=True)
 

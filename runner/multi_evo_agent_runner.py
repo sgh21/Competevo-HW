@@ -461,18 +461,25 @@ class MultiEvoAgentRunner(BaseRunner):
             return b, l, win_rate
     
     def load_checkpoint(self, ckpt_dir, checkpoint):
-        assert isinstance(checkpoint, list) or isinstance(checkpoint, tuple)
+        if not isinstance(checkpoint, (list, tuple)):
+            checkpoint = [checkpoint] * len(self.learners)
         for i, learner in self.learners.items():
-            self.load_agent_checkpoint(checkpoint[i], i, ckpt_dir)
+            agent_ckpt_dir = ckpt_dir[i] if isinstance(ckpt_dir, (list, tuple)) else ckpt_dir
+            self.load_agent_checkpoint(checkpoint[i], i, agent_ckpt_dir)
     
     def load_agent_checkpoint(self, ckpt, idx, ckpt_dir=None):
         ckpt_dir = self.model_dir if not ckpt_dir else ckpt_dir
 
         if isinstance(ckpt, int):
-            cp_path = '%s/%s/epoch_%04d.p' % (ckpt_dir, "agent_"+str(idx), ckpt)
+            ckpt_name = 'epoch_%04d.p' % ckpt
         else:
             assert isinstance(ckpt, str)
-            cp_path = '%s/%s/%s.p' % (ckpt_dir, "agent_"+str(idx), ckpt)
+            ckpt_name = ckpt if ckpt.endswith('.p') else '%s.p' % ckpt
+        cp_candidates = [
+            '%s/%s/%s' % (ckpt_dir, "agent_"+str(idx), ckpt_name),
+            '%s/%s' % (ckpt_dir, ckpt_name),
+        ]
+        cp_path = next((path for path in cp_candidates if os.path.exists(path)), cp_candidates[0])
         self.logger.info('loading agent_%s model from checkpoint: %s' % (str(idx), cp_path))
         model_cp = pickle.load(open(cp_path, "rb"))
 

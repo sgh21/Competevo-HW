@@ -56,6 +56,24 @@ class DevPolicy(nn.Module):
 
         self.fixed_x = None
 
+    def morph_optim_enabled(self):
+        agents = getattr(self.cfg, "morph_optim_agents", None)
+        if agents is None:
+            return True
+        return getattr(self.agent, "id", None) in agents
+
+    def fixed_scale_action(self, device):
+        fixed_scale = getattr(self.cfg, "fixed_morph_scale", 0.0)
+        if np.isscalar(fixed_scale):
+            return torch.full(
+                [1, self.scale_state_dim],
+                float(fixed_scale),
+                dtype=torch.get_default_dtype(),
+                device=device,
+            )
+        fixed_scale = torch.tensor(fixed_scale, dtype=torch.get_default_dtype(), device=device)
+        return fixed_scale.reshape(1, self.scale_state_dim)
+
     def batch_data(self, x):
         stage_ind, scale_state, sim_obs = zip(*x)
         scale_state = torch.stack(scale_state, 0)
@@ -67,6 +85,7 @@ class DevPolicy(nn.Module):
         stages = ['attribute_transform', 'execution']
         x_dict = defaultdict(list)
         design_mask = defaultdict(list)
+        device = x[0][0].device
 
         for i, x_i in enumerate(x):
             cur_stage = stages[int(x_i[0].item())]
@@ -74,7 +93,7 @@ class DevPolicy(nn.Module):
             for stage in stages:
                 design_mask[stage].append(cur_stage == stage)
         for stage in stages:
-            design_mask[stage] = torch.BoolTensor(design_mask[stage])
+            design_mask[stage] = torch.BoolTensor(design_mask[stage]).to(device)
         # print(design_mask)
 
         if len(x_dict['attribute_transform']) > 0:
@@ -109,7 +128,7 @@ class DevPolicy(nn.Module):
         else:
             control_dist = None
 
-        return scale_dist, control_dist, design_mask, x.device
+        return scale_dist, control_dist, design_mask, device
 
     def select_action(self, x, mean_action=False):
         """
@@ -118,20 +137,23 @@ class DevPolicy(nn.Module):
         """
         if self.agent.stage == 'attribute_transform':
             self.fixed_x = x
-        scale_dist, control_dist, _, _ = self.forward(x)
+        scale_dist, control_dist, _, device = self.forward(x)
         if scale_dist is not None:
-            scale_action = scale_dist.mean_sample() if mean_action else scale_dist.sample()
-            scale = 1
-            scale_action = torch.clamp(scale_action, -scale, scale)
+            if self.morph_optim_enabled():
+                scale_action = scale_dist.mean_sample() if mean_action else scale_dist.sample()
+                scale = 1
+                scale_action = torch.clamp(scale_action, -scale, scale)
+            else:
+                scale_action = self.fixed_scale_action(device)
         else:
-            scale_action = torch.tensor(self.agent.scale_vector)
+            scale_action = torch.tensor(self.agent.scale_vector, dtype=torch.get_default_dtype(), device=device)
 
         if control_dist is not None:
             control_action = control_dist.mean_sample() if mean_action else control_dist.sample()
         else:
             control_action = None
 
-        action = torch.zeros([1, self.action_dim], dtype=torch.float)
+        action = torch.zeros([1, self.action_dim], dtype=torch.get_default_dtype(), device=device)
         if scale_action is not None:
             action[:, :self.scale_state_dim] = scale_action
         if control_action is not None:

@@ -2,8 +2,9 @@ from runner.base_runner import BaseRunner
 from custom.learners.learner import Learner
 from custom.learners.sampler import Sampler
 from custom.learners.evo_learner import EvoLearner
+from custom.learners.dev_learner import DevLearner
 from custom.utils.logger import LoggerRL
-from lib.rl.core.trajbatch import TrajBatch
+from lib.rl.core.trajbatch import TrajBatch, TrajBatchDisc
 from lib.utils.torch import *
 from lib.utils.memory import Memory
 
@@ -26,7 +27,7 @@ import collections
 
 def tensorfy(np_list, device=torch.device('cpu')):
     if isinstance(np_list[0], list):
-        return [[torch.tensor(x).to(device) if i < 2 else x for i, x in enumerate(y)] for y in np_list]
+        return [[torch.tensor(x).to(device) for i, x in enumerate(y)] for y in np_list]
     else:
         return [torch.tensor(y).to(device) for y in np_list]
 
@@ -36,20 +37,32 @@ class SPAgentRunner(BaseRunner):
         self.agent_num = self.learners.__len__()
 
         self.logger_cls = LoggerRL
-        self.traj_cls = TrajBatch
+        self.traj_cls = TrajBatchDisc if any(getattr(learner, "flag", None) in ("dev", "evo") for learner in self.learners.values()) else TrajBatch
         self.logger_kwargs = dict()
 
         self.end_reward = False
+
+    def make_learner(self, agent, is_shadow=False):
+        if hasattr(agent, "flag") and agent.flag == "evo":
+            return EvoLearner(self.cfg, self.dtype, self.device, agent, is_shadow=is_shadow)
+        if hasattr(agent, "flag") and agent.flag == "dev":
+            return DevLearner(self.cfg, self.dtype, self.device, agent, is_shadow=is_shadow)
+        return Learner(self.cfg, self.dtype, self.device, agent, is_shadow=is_shadow)
 
     def setup_learner(self):
         """ Set a selfplay learner and shadow agents, which load historical policy before every rollout. """
         self.learners = {}
         # Always set idx '0' learner to ego agent.
-        self.learners[0] = Learner(self.cfg, self.dtype, self.device, self.env)
+        self.learners[0] = self.make_learner(self.env.agents[0])
         """ If use opponent sampling strategy, one should fight with its old self which we call it shadow. """
         # Shadow agent owns unique policy that is loaded before every epoch but needn't an optimizer.
         for i in range(1, self.env.n_agents):
-            self.learners[i] = Learner(self.cfg, self.dtype, self.device, self.env, is_shadow=True)
+            self.learners[i] = self.make_learner(self.env.agents[i], is_shadow=True)
+
+    def select_action(self, learner, state, mean_action):
+        if getattr(learner, "flag", None) in ("dev", "evo"):
+            return learner.policy_net.select_action([state], mean_action)
+        return learner.policy_net.select_action(state, mean_action)
 
     def optimize_policy(self):
         epoch = self.epoch
@@ -71,7 +84,7 @@ class SPAgentRunner(BaseRunner):
         self.logger.info("Policy update, spending: {:.2f} s.".format(t2-t1))
 
         """evaluate policy"""
-        _, log_eval, win_rate = self.sample(self.cfg.eval_batch_size, mean_action=True, nthreads=10)
+        _, log_eval, win_rate = self.sample(self.cfg.eval_batch_size, mean_action=True, nthreads=self.cfg.eval_num_threads)
         t3 = time.time()
         self.logger.info("Evaluation time: {:.2f} s.".format(t3-t2))
 
@@ -185,7 +198,7 @@ class SPAgentRunner(BaseRunner):
                 
                 for i, learner in self.learners.items():
                     use_mean_action = mean_action or torch.bernoulli(torch.tensor([1 - self.noise_rate])).item() or i == 1
-                    actions.append(learner.policy_net.select_action(state_var[i], use_mean_action).squeeze().numpy().astype(np.float64))
+                    actions.append(self.select_action(learner, state_var[i], use_mean_action).squeeze().numpy().astype(np.float64))
                 
                 next_states, env_rewards, terminateds, truncated, infos = self.env.step(actions)
                 
@@ -232,8 +245,6 @@ class SPAgentRunner(BaseRunner):
 
                 # push ego memory
                 self.push_memory(memory, states[0], actions[0], masks[0], next_states[0], rewards[0], exps[0])
-                # use opp experience
-                self.push_memory(memory, states[1], actions[1], masks[1], next_states[1], rewards[1], exps[1])
 
                 if terminateds[0] or truncated:
                     total_score[-1] += 1
@@ -289,17 +300,24 @@ class SPAgentRunner(BaseRunner):
             return traj_batch, logger, win_rate
     
     def load_checkpoint(self, ckpt_dir, checkpoint):
-        assert isinstance(checkpoint, list) or isinstance(checkpoint, tuple)
+        if not isinstance(checkpoint, (list, tuple)):
+            checkpoint = [checkpoint] * len(self.learners)
         for i, learner in self.learners.items():
-            self.load_agent_checkpoint(checkpoint[i], i, ckpt_dir)
+            agent_ckpt_dir = ckpt_dir[i] if isinstance(ckpt_dir, (list, tuple)) else ckpt_dir
+            self.load_agent_checkpoint(checkpoint[i], i, agent_ckpt_dir)
     
     def load_agent_checkpoint(self, ckpt, idx, ckpt_dir=None):
         ckpt_dir = self.model_dir if not ckpt_dir else ckpt_dir
         if isinstance(ckpt, int):
-            cp_path = '%s/epoch_%04d.p' % (ckpt_dir, ckpt)
+            ckpt_name = 'epoch_%04d.p' % ckpt
         else:
             assert isinstance(ckpt, str)
-            cp_path = '%s/%s.p' % (ckpt_dir, ckpt)
+            ckpt_name = ckpt if ckpt.endswith('.p') else '%s.p' % ckpt
+        cp_candidates = [
+            '%s/%s' % (ckpt_dir, ckpt_name),
+            '%s/%s/%s' % (ckpt_dir, "agent_"+str(idx), ckpt_name),
+        ]
+        cp_path = next((path for path in cp_candidates if os.path.exists(path)), cp_candidates[0])
         self.logger.info('loading agent model from checkpoint: %s' % (cp_path))
         model_cp = pickle.load(open(cp_path, "rb"))
 
@@ -346,7 +364,7 @@ class SPAgentRunner(BaseRunner):
                 with torch.no_grad():
                     actions = []
                     for i, learner in self.learners.items():
-                        actions.append(learner.policy_net.select_action(state_var[i], use_mean_action).squeeze().numpy().astype(np.float64))
+                        actions.append(self.select_action(learner, state_var[i], use_mean_action).squeeze().numpy().astype(np.float64))
                 next_states, env_rewards, terminateds, truncated, infos = self.env.step(actions)
 
                 # normalize states

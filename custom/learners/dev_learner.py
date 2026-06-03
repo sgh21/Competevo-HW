@@ -126,6 +126,22 @@ class DevLearner:
         for param in self.scheduled_params.values():
             param.set_epoch(epoch)
 
+    def filter_execution_samples(self, states, actions, returns, advantages, fixed_log_probs):
+        if self.policy_net.morph_optim_enabled():
+            return states, actions, returns, advantages, fixed_log_probs
+
+        keep = [int(state[0].item()) == 1 for state in states]
+        if not any(keep):
+            return None
+
+        keep_tensor = torch.BoolTensor(keep).to(self.device)
+        states = [state for state, flag in zip(states, keep) if flag]
+        actions = [action for action, flag in zip(actions, keep) if flag]
+        returns = returns[keep_tensor].clone()
+        advantages = advantages[keep_tensor].clone()
+        fixed_log_probs = fixed_log_probs[keep_tensor].clone()
+        return states, actions, returns, advantages, fixed_log_probs
+
     def update_params(self, batch):
         to_train(*self.update_modules)
         states = tensorfy(batch.states, self.device)
@@ -139,6 +155,11 @@ class DevLearner:
 
         """get advantage estimation from the trajectories"""
         advantages, returns = estimate_advantages(rewards, masks, values, self.cfg.gamma, self.cfg.tau)
+
+        filtered = self.filter_execution_samples(states, actions, returns, advantages, fixed_log_probs)
+        if filtered is None:
+            return
+        states, actions, returns, advantages, fixed_log_probs = filtered
 
         """perform mini-batch PPO update"""
         optim_iter_num = int(math.ceil(len(states) / self.mini_batch_size))

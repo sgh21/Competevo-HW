@@ -22,6 +22,8 @@ class Config:
         self.cuda_deterministic = cfg.get('cuda_deterministic', bool)
 
         self.runner_type = cfg.get('runner_type', "multi-agent-runner")
+        self.game_mode = cfg.get('game_mode', None)
+        self.run_label = cfg.get('run_label', None)
 
         # training config
         self.gamma = cfg.get('gamma', 0.99)
@@ -75,6 +77,7 @@ class Config:
         self.env_init_height = cfg.get('env_init_height', False)
 
         self.use_parse_reward = cfg.get("use_parse_reward", True)
+        self.env_kwargs = cfg.get("env_kwargs", dict())
 
         # competition config
         self.use_opponent_sample = cfg.get('use_opponent_sample', False)
@@ -82,6 +85,8 @@ class Config:
         self.delta = cfg.get('delta', 0.)
         self.use_exploration_curriculum = cfg.get('use_exploration_curriculum', False)
         self.termination_epoch = cfg.get('termination_epoch', 200)
+        self.morph_optim_agents = cfg.get('morph_optim_agents', None)
+        self.fixed_morph_scale = cfg.get('fixed_morph_scale', 0.0)
 
         # robot config
         self.robot_param_scale = cfg.get('robot_param_scale', 0.1)

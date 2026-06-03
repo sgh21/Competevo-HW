@@ -20,6 +20,10 @@ class MultiDevAgentEnv(MujocoEnv):
     }
 
     AGENT_MAP = {
+        'robo_ant_fighter': (
+            os.path.join(os.path.dirname(__file__), "..", "..", "gym_compete", "new_envs", "assets", "ant_body.xml"),
+            RoboAntFighter
+        ),
         'dev_ant': (
             os.path.join(os.path.dirname(__file__), "assets", "dev_ant_body.xml"),
             DevAnt
@@ -99,7 +103,10 @@ class MultiDevAgentEnv(MujocoEnv):
         for i, name in enumerate(agent_names):
             # print("Creating agent", name)
             agent_xml_path, agent_class = agent_map[name]
-            self.agents[i] = agent_class(i, cfg, agent_xml_path, self.n_agents, **agent_args[i])
+            if hasattr(agent_class, 'flag'):
+                self.agents[i] = agent_class(i, cfg, agent_xml_path, self.n_agents, **agent_args[i])
+            else:
+                self.agents[i] = agent_class(i, agent_xml_path, self.n_agents, **agent_args[i])
             all_agent_xml_paths.append(agent_xml_path)
         return all_agent_xml_paths
 

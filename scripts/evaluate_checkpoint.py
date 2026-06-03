@@ -34,13 +34,34 @@ def checkpoint_file(ckpt_dir, agent_id, ckpt):
         name = ckpt
     else:
         name = ckpt + ".p"
-    return os.path.join(ckpt_dir, "agent_%d" % agent_id, name)
+    candidates = [
+        os.path.join(ckpt_dir, "agent_%d" % agent_id, name),
+        os.path.join(ckpt_dir, name),
+    ]
+    for cp_path in candidates:
+        if os.path.exists(cp_path):
+            return cp_path
+    return candidates[0]
+
+
+def selfplay_checkpoint_file(ckpt_dir, ckpt):
+    if ckpt.isdigit():
+        name = "epoch_%04d.p" % int(ckpt)
+    elif ckpt.endswith(".p"):
+        name = ckpt
+    else:
+        name = ckpt + ".p"
+    return os.path.join(ckpt_dir, name)
 
 
 def to_torch_state(states, device):
-    if isinstance(states[0], list):
-        return [[torch.tensor(x).to(device) for x in y] for y in states]
-    return [torch.tensor(y).to(device) for y in states]
+    result = []
+    for state in states:
+        if isinstance(state, list):
+            result.append([torch.tensor(x).to(device) for x in state])
+        else:
+            result.append(torch.tensor(state).to(device))
+    return result
 
 
 def main():
@@ -52,6 +73,12 @@ def main():
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--out", required=True)
     parser.add_argument("--stochastic", action="store_true")
+    parser.add_argument("--selfplay", action="store_true")
+    parser.add_argument("--opponent_ckpt", default=None)
+    parser.add_argument("--agent0_ckpt_dir", default=None)
+    parser.add_argument("--agent0_ckpt", default=None)
+    parser.add_argument("--agent1_ckpt_dir", default=None)
+    parser.add_argument("--agent1_ckpt", default=None)
     args = parser.parse_args()
 
     cfg = Config(args.cfg)
@@ -66,7 +93,17 @@ def main():
     checkpoint_files = {}
     for i, agent in env.agents.items():
         samplers[i] = build_sampler(cfg, dtype, device, agent)
-        cp_path = checkpoint_file(args.ckpt_dir, i, args.ckpt)
+        agent_ckpt_dir = getattr(args, "agent%d_ckpt_dir" % i) or args.ckpt_dir
+        agent_ckpt = getattr(args, "agent%d_ckpt" % i) or args.ckpt
+        if i > 0 and args.opponent_ckpt is not None:
+            agent_ckpt = args.opponent_ckpt
+
+        if (args.selfplay or cfg.runner_type == "selfplay-agent-runner") and \
+           getattr(args, "agent%d_ckpt_dir" % i) is None:
+            ckpt = args.opponent_ckpt if i > 0 and args.opponent_ckpt is not None else args.ckpt
+            cp_path = selfplay_checkpoint_file(agent_ckpt_dir, ckpt)
+        else:
+            cp_path = checkpoint_file(agent_ckpt_dir, i, agent_ckpt)
         checkpoint_files[str(i)] = cp_path
         with open(cp_path, "rb") as f:
             samplers[i].load_ckpt(pickle.load(f))

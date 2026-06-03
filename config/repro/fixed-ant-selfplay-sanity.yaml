@@ -1,0 +1,49 @@
+env_name: robo-sumo-ants-v0
+
+runner_type: selfplay-agent-runner
+
+gamma: 0.995
+tau: 0.95
+
+policy_specs:
+  name: v5
+  htype: tanh
+  control_mlp:
+    hdims: [128, 128]
+    rescale_linear: true
+  control_log_std: 0
+  fix_control_std: false
+
+policy_optimizer: Adam
+policy_lr: 5.0e-5
+policy_momentum: 0.0
+policy_weightdecay: 0.0
+
+value_specs:
+  htype: tanh
+  mlp: [512, 256]
+
+value_optimizer: Adam
+value_lr: 3.0e-4
+value_momentum: 0.0
+value_weightdecay: 0.0
+
+clip_epsilon: 0.2
+min_batch_size: 2048
+mini_batch_size: 1024
+num_optim_epoch: 2
+eval_batch_size: 1024
+eval_num_threads: 1
+max_epoch_num: 1
+seed: 7
+save_model_interval: 1
+
+done_condition:
+  max_ang: 60
+
+use_reward_scaling: false
+use_opponent_sample: true
+delta: 0.5
+
+use_exploration_curriculum: true
+termination_epoch: 1

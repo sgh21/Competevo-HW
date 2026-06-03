@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>固定形态 Ant Self-Play 对抗训练报告</title>
+  <style>
+    body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 32px; color: #1f2937; line-height: 1.55; }
+    h1, h2 { color: #111827; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0 24px; font-size: 14px; }
+    th, td { border: 1px solid #d1d5db; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #f3f4f6; }
+    code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; }
+    pre { background: #f9fafb; border: 1px solid #e5e7eb; padding: 12px; overflow-x: auto; }
+    .note { border-left: 4px solid #2563eb; background: #eff6ff; padding: 10px 14px; margin: 14px 0; }
+    .warn { border-left: 4px solid #d97706; background: #fffbeb; padding: 10px 14px; margin: 14px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+    .curve img { max-width: 100%; border: 1px solid #e5e7eb; background: white; }
+  </style>
+</head>
+<body>
+  <h1>固定形态 Ant Self-Play 对抗训练报告</h1>
+  <p>日期：2026-06-03。实验目标是训练一个固定形态 Ant 策略，不优化形态参数；环境为 sumo 对抗，算法形式为 self-play：物理环境中仍有两个 agent，但只有 agent0 的策略被优化，agent1 作为 shadow opponent 从 agent0 的历史 checkpoint 中加载。</p>
+
+  <div class="note">
+    <strong>结论：</strong>本实验不是 run-to-goal。当前配置使用 <code>robo-sumo-ants-v0</code> 和 <code>selfplay-agent-runner</code>，训练目标是固定形态 Ant 的 sumo 对抗策略。训练完成 1000 epoch，最终 checkpoint 和 best checkpoint 均已保存，并完成 100 episode 评测。
+  </div>
+
+  <h2>实验设置</h2>
+  <table>
+    <tr><th>项目</th><th>内容</th></tr>
+    <tr><td>环境</td><td><code>robo-sumo-ants-v0</code></td></tr>
+    <tr><td>Runner</td><td><code>selfplay-agent-runner</code></td></tr>
+    <tr><td>形态</td><td>固定 Ant 形态，不输出、不优化形态参数。</td></tr>
+    <tr><td>策略</td><td>只优化一个 PPO policy/value；shadow opponent 不更新参数。</td></tr>
+    <tr><td>对手采样</td><td><code>delta: 0.5</code>，训练中从历史 checkpoint 区间采样 opponent。</td></tr>
+    <tr><td>训练规模</td><td><code>max_epoch_num: 1000</code>，每 epoch 采样 <code>50000</code> steps。</td></tr>
+    <tr><td>正式 run</td><td><code>tmp/robo-sumo-ants-v0/20260603_113517</code></td></tr>
+  </table>
+
+  <h2>Checkpoint</h2>
+  <table>
+    <tr><th>类型</th><th>路径</th><th>说明</th></tr>
+    <tr><td>最终 checkpoint</td><td><code>tmp/robo-sumo-ants-v0/20260603_113517/models/epoch_1000.p</code></td><td>1000 epoch 训练完成后的单策略 checkpoint。</td></tr>
+    <tr><td>best checkpoint</td><td><code>tmp/robo-sumo-ants-v0/20260603_113517/models/best.p</code></td><td>训练过程中按 eval reward 或 win rate 触发保存。</td></tr>
+    <tr><td>sanity checkpoint</td><td><code>tmp/robo-sumo-ants-v0/20260603_113346/models/epoch_0001.p</code></td><td>1 epoch 短训练，用于验证训练和评测链路。</td></tr>
+  </table>
+
+  <h2>训练命令</h2>
+  <pre><code># sanity check
+conda run -n EAI python train.py \
+  --cfg config/repro/fixed-ant-selfplay-sanity.yaml \
+  --num_threads 1 --use_cuda True --gpu_index 0
+
+# 正式训练
+conda run -n EAI python train.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --num_threads 50 --use_cuda True --gpu_index 0</code></pre>
+
+  <h2>评测命令</h2>
+  <pre><code># final self-match
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models \
+  --ckpt 1000 --episodes 100 --seed 501 \
+  --out reports/selfplay_fixed_ant/eval/final_epoch1000_selfmatch.json --selfplay
+
+# best self-match
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models \
+  --ckpt best --episodes 100 --seed 502 \
+  --out reports/selfplay_fixed_ant/eval/best_selfmatch.json --selfplay
+
+# final policy vs historical opponents
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models \
+  --ckpt 1000 --opponent_ckpt 250 --episodes 100 --seed 503 \
+  --out reports/selfplay_fixed_ant/eval/final_vs_epoch0250.json --selfplay
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models \
+  --ckpt 1000 --opponent_ckpt 500 --episodes 100 --seed 504 \
+  --out reports/selfplay_fixed_ant/eval/final_vs_epoch0500.json --selfplay
+
+conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models \
+  --ckpt 1000 --opponent_ckpt 750 --episodes 100 --seed 505 \
+  --out reports/selfplay_fixed_ant/eval/final_vs_epoch0750.json --selfplay</code></pre>
+
+  <h2>评测结果</h2>
+  <table>
+    <tr><th>评测</th><th>agent0 checkpoint</th><th>agent1/opponent checkpoint</th><th>平均回报 agent0 / agent1</th><th>胜率 agent0 / agent1</th><th>平局率</th><th>平均长度</th><th>JSON</th></tr>
+    <tr><td>final self-match</td><td><code>epoch_1000.p</code></td><td><code>epoch_1000.p</code></td><td>1161.83 / -211.60</td><td>0.60 / 0.40</td><td>0.00</td><td>158.36</td><td><a href="selfplay_fixed_ant/eval/final_epoch1000_selfmatch.json">JSON</a></td></tr>
+    <tr><td>best self-match</td><td><code>best.p</code></td><td><code>best.p</code></td><td>729.05 / 246.24</td><td>0.50 / 0.50</td><td>0.00</td><td>162.55</td><td><a href="selfplay_fixed_ant/eval/best_selfmatch.json">JSON</a></td></tr>
+    <tr><td>final vs history 250</td><td><code>epoch_1000.p</code></td><td><code>epoch_0250.p</code></td><td>636.03 / 212.20</td><td>0.52 / 0.48</td><td>0.00</td><td>158.67</td><td><a href="selfplay_fixed_ant/eval/final_vs_epoch0250.json">JSON</a></td></tr>
+    <tr><td>final vs history 500</td><td><code>epoch_1000.p</code></td><td><code>epoch_0500.p</code></td><td>838.07 / 92.95</td><td>0.52 / 0.48</td><td>0.00</td><td>159.12</td><td><a href="selfplay_fixed_ant/eval/final_vs_epoch0500.json">JSON</a></td></tr>
+    <tr><td>final vs history 750</td><td><code>epoch_1000.p</code></td><td><code>epoch_0750.p</code></td><td>910.80 / -34.00</td><td>0.57 / 0.43</td><td>0.00</td><td>153.17</td><td><a href="selfplay_fixed_ant/eval/final_vs_epoch0750.json">JSON</a></td></tr>
+  </table>
+
+  <h2>训练曲线</h2>
+  <p>TensorBoard 标量已导出为 SVG。最后一个 epoch 的记录为：train reward -21.10，eval reward 0.51，eval win rate 0.50，episode length 134.25。</p>
+  <div class="grid">
+    <div class="curve"><h3>Train Reward</h3><img src="selfplay_fixed_ant/curves/20260603_113517__train_R_eps_avg.svg" alt="train reward"></div>
+    <div class="curve"><h3>Eval Reward</h3><img src="selfplay_fixed_ant/curves/20260603_113517__eval_R_eps_avg.svg" alt="eval reward"></div>
+    <div class="curve"><h3>Eval Win Rate</h3><img src="selfplay_fixed_ant/curves/20260603_113517__eval_win_rate.svg" alt="eval win rate"></div>
+    <div class="curve"><h3>Episode Length</h3><img src="selfplay_fixed_ant/curves/20260603_113517__episode_length.svg" alt="episode length"></div>
+  </div>
+
+  <h2>问题与处理</h2>
+  <table>
+    <tr><th>问题</th><th>处理</th></tr>
+    <tr><td>原 <code>selfplay-agent-runner</code> 按 env 而不是具体 agent 初始化 learner，不适合直接接入当前多智能体固定形态 sumo 环境。</td><td>最小修改为按 <code>self.env.agents[0]</code> 初始化可训练 learner，按 <code>self.env.agents[i]</code> 初始化 shadow learner。</td></tr>
+    <tr><td>self-play 保存单个 checkpoint，原评测脚本默认读取 <code>agent_0/agent_1</code> 目录。</td><td>给评测脚本增加 <code>--selfplay</code> 与 <code>--opponent_ckpt</code> 支持，同一个目录下的单策略 checkpoint 可加载给双方。</td></tr>
+    <tr><td>并行评测会同时写同一个 MuJoCo scene XML，导致 XML 竞争写入。</td><td>改为串行评测。该问题不影响训练 checkpoint，但后续批量评测应避免同一 env 并行创建。</td></tr>
+  </table>
+
+  <h2>后续继续训练</h2>
+  <pre><code>conda run -n EAI python train.py \
+  --cfg config/repro/fixed-ant-selfplay-long.yaml \
+  --ckpt_dir tmp/robo-sumo-ants-v0/20260603_113517/models --ckpt 1000 \
+  --num_threads 50 --use_cuda True --gpu_index 0</code></pre>
+
+</body>
+</html>
