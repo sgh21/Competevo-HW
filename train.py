@@ -63,6 +63,8 @@ def apply_cli_overrides(cfg, args):
 
     simple_overrides = [
         "run_label",
+        "resume_run_dir",
+        "start_epoch",
         "max_epoch_num",
         "min_batch_size",
         "mini_batch_size",
@@ -103,6 +105,10 @@ def main():
                         help='sumo or run_to_goal_warmup')
     parser.add_argument('--run_label', type=str, default=None,
                         help='human-readable prefix for the run directory')
+    parser.add_argument('--resume_run_dir', type=str, default=None,
+                        help='existing run directory to continue writing checkpoints/logs into')
+    parser.add_argument('--start_epoch', type=int, default=None,
+                        help='first epoch index for a resumed run')
     parser.add_argument('--max_epoch_num', type=int, default=None)
     parser.add_argument('--min_batch_size', type=int, default=None)
     parser.add_argument('--mini_batch_size', type=int, default=None)
@@ -133,9 +139,13 @@ def main():
     logger.critical("The current environment is {}.".format(cfg.env_name))
     logger.info("Running directory: {}".format(logger.run_dir))
     logger.info('Type of current running: Training')
-    logger.set_file_handler()
+    is_resume = getattr(cfg, "resume_run_dir", None) is not None
+    logger.set_file_handler(exist_ok=is_resume, mode='a' if is_resume else 'w')
+    if is_resume:
+        logger.critical("Resuming run from epoch {} in {}.".format(cfg.start_epoch, cfg.resume_run_dir))
     # Save the config file
-    cfg.save_config(logger.run_dir)
+    if not is_resume:
+        cfg.save_config(logger.run_dir)
 
     # ----------------------------------------------------------------------------#
     # Set torch and random seed
@@ -172,7 +182,7 @@ def main():
                                      num_threads=args.num_threads, training=True, ckpt_dir=args.ckpt_dir, ckpt=ckpt)
     
     # main loop
-    for epoch in range(0, cfg.max_epoch_num):
+    for epoch in range(cfg.start_epoch, cfg.max_epoch_num):
         runner.optimize(epoch)
         runner.save_checkpoint(epoch)
 

@@ -65,6 +65,65 @@ conda run -n EAI python display.py --cfg config/robo-sumo-devants-v0.yaml --ckpt
 - `competevo/evo_envs/`：CompetEvo 形态进化环境、agent 定义、XML 资产和 XML 生成工具。
 - `gym_compete/`：OpenAI multiagent-competition 风格环境的本地改写，包括 humanoid/ant/bug/spider 等基础 agent。
 
+## 固定形态训练与混合评测
+
+如果目标是“形态不更新，只更新对抗策略”，应用层优先使用 `gym_compete` 注册的 fixed morphology
+环境和 `multi-agent-runner`，例如：
+
+```bash
+conda run -n EAI python train.py --cfg config/run-to-goal-ants-v0.yaml
+conda run -n EAI python train.py --cfg config/robo-sumo-ants-v0.yaml
+```
+
+这些 fixed morphology 配置中的 `env_name` 通常来自 `gym_compete/__init__.py`，例如
+`run-to-goal-ants-v0`、`run-to-goal-bugs-v0`、`run-to-goal-spiders-v0`、`robo-sumo-ants-v0`、
+`robo-sumo-bugs-v0`、`robo-sumo-spiders-v0`；`runner_type` 应为 `multi-agent-runner`。
+底层调用链是 `train.py -> MultiAgentRunner -> Learner -> NormalPolicy/NormalValue`：
+`MultiAgentRunner.setup_learner()` 为环境中每个 fixed agent 创建普通 `Learner`，
+`MultiAgentRunner.optimize_policy()` 会对每个 learner 执行 PPO 更新。普通 `Learner` 只保存和加载
+`policy_dict`、`value_dict`、`running_state` 等策略/价值网络状态；形态来自当前环境 XML 和 agent
+类本身，不在 checkpoint 中演化。
+
+注意：`use_opponent_sample` 不是“冻结对手”的开关。它会在采样阶段从同一个 run 的历史 checkpoint
+中抽样旧策略作为对手，但 `MultiAgentRunner.optimize_policy()` 仍会更新两个 agent 的 learner。
+如果只想训练 agent0、让 agent1 固定为某个外部 checkpoint，当前 CLI 和 runner 没有直接配置项；
+需要最小代码扩展，例如增加 `trainable_agents`/`frozen_agents` 配置，在 update/save 时跳过冻结 agent，
+并在采样器中为冻结 agent 固定加载指定 checkpoint。`selfplay-agent-runner` 是单策略自博弈/历史影子策略
+路径，不等价于任意两个外部固定 checkpoint 的通用混合训练入口。
+
+混合评测方面，`display.py` 当前原生支持“同一个 `--ckpt_dir` 下 agent0/agent1 使用同名 checkpoint”：
+
+```bash
+conda run -n EAI python display.py \
+  --cfg runs/robo-sumo-devants-v0/config.yml \
+  --ckpt_dir runs/robo-sumo-devants-v0/models \
+  --ckpt best
+```
+
+底层 `MultiAgentRunner.load_checkpoint()` 和 `MultiEvoAgentRunner.load_checkpoint()` 会从
+`<ckpt_dir>/agent_0/<ckpt>.p` 与 `<ckpt_dir>/agent_1/<ckpt>.p` 分别加载。`display.py` 入口层目前把
+单个 `--ckpt` 扩展成 `[ckpt, ckpt]`，且只接收一个 `--ckpt_dir`，所以不直接支持命令行传入
+“agent0 来自 run A 的 epoch X、agent1 来自 run B 的 epoch Y”。可行的无代码 workaround 是建一个
+临时 staging 目录，把两个 run 的 checkpoint 复制或软链接到当前 loader 期望的结构中，并统一文件名：
+
+```bash
+mkdir -p tmp/mixed_eval/models/agent_0 tmp/mixed_eval/models/agent_1
+ln -sf /abs/path/run_A/models/agent_0/epoch_0100.p tmp/mixed_eval/models/agent_0/mix.p
+ln -sf /abs/path/run_B/models/agent_1/best.p       tmp/mixed_eval/models/agent_1/mix.p
+
+conda run -n EAI python display.py \
+  --cfg /abs/path/compatible_config.yml \
+  --ckpt_dir tmp/mixed_eval/models \
+  --ckpt mix
+```
+
+混合评测必须保证配置兼容：`runner_type`、agent 类型、obs/action 维度、`policy_specs`/`value_specs`
+或 dev/evo 模型规格要与 checkpoint 匹配。fixed morphology checkpoint 只携带网络权重，不携带可迁移的
+形态定义；跨 ant/bug/spider/humanoid 或 fixed/dev/evo checkpoint 混用通常会因为网络形状不匹配而失败。
+若需要长期使用任意两条 run/任意 checkpoint 的混合评测，优先给 `display.py` 增加
+`--ckpt_dir_agent0`、`--ckpt_agent0`、`--ckpt_dir_agent1`、`--ckpt_agent1` 参数，或让 runner 直接接受
+per-agent checkpoint 绝对路径。
+
 已知代码注意点：
 
 - `lib/rl/agents/*` 与 `lib/rl/envs/visual/humanoid_vis.py` 中仍有旧的 `khrylib.*` import 残留；当前主入口不依赖这些模块，修改时不要误判为当前 runner 的必经路径。

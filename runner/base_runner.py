@@ -33,7 +33,7 @@ class BaseRunner:
         has_checkpoint = not self._checkpoint_is_zero(ckpt)
         if has_checkpoint or not training:
             self.load_checkpoint(ckpt_dir, ckpt)
-            if training and has_checkpoint and ckpt_dir is not None:
+            if training and has_checkpoint and ckpt_dir is not None and not getattr(cfg, "resume_run_dir", None):
                 self.copy_initial_checkpoint(ckpt_dir, ckpt)
 
     def _checkpoint_is_zero(self, ckpt):

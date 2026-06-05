@@ -55,12 +55,17 @@ class Logger(logging.Logger):
         self.sub_dir = '/%s' % (cfg.env_name)
         self.time_str = datetime.now().strftime("%Y%m%d_%H%M%S")
         run_label = getattr(cfg, "run_label", None)
-        if run_label:
+        resume_run_dir = getattr(cfg, "resume_run_dir", None)
+        if resume_run_dir:
+            self.target_dir = ''
+            self.run_dir = resume_run_dir.rstrip('/')
+        elif run_label:
             safe_label = re.sub(r"[^A-Za-z0-9_.-]+", "-", str(run_label)).strip("-")
             self.target_dir = '/' + safe_label + '-' + self.time_str
+            self.run_dir = self.output_dir + self.sub_dir + self.target_dir
         else:
             self.target_dir = '/' + self.time_str
-        self.run_dir = self.output_dir + self.sub_dir + self.target_dir
+            self.run_dir = self.output_dir + self.sub_dir + self.target_dir
         self.model_dir = '%s/models' % self.run_dir
         self.log_dir = '%s/log' % self.run_dir
         self.tb_dir = '%s/tb' % self.run_dir
@@ -96,18 +101,18 @@ class Logger(logging.Logger):
         self.addHandler(con_handler)
         return
 
-    def set_file_handler(self):
+    def set_file_handler(self, exist_ok=False, mode='w'):
         """ Create and save log file. Set the log file handler. """
         # create directories
-        os.makedirs(self.model_dir, exist_ok=False)
-        os.makedirs(self.log_dir, exist_ok=False)
-        os.makedirs(self.tb_dir, exist_ok=False)
+        os.makedirs(self.model_dir, exist_ok=exist_ok)
+        os.makedirs(self.log_dir, exist_ok=exist_ok)
+        os.makedirs(self.tb_dir, exist_ok=exist_ok)
 
         if not os.path.exists(self.log_dir):
             os.makedirs(self.log_dir)
         self.file_path = os.path.join(self.log_dir, self.file_name)
         file_handler = logging.FileHandler(
-            filename=self.file_path, encoding='utf-8', mode='w')
+            filename=self.file_path, encoding='utf-8', mode=mode)
         file_handler.setFormatter(MyFormatter(datefmt='%Y%m%d %H:%M:%S'))
         self.addHandler(file_handler)
         self.info('Log file set to {}'.format(self.file_path))

@@ -24,6 +24,8 @@ class Config:
         self.runner_type = cfg.get('runner_type', "multi-agent-runner")
         self.game_mode = cfg.get('game_mode', None)
         self.run_label = cfg.get('run_label', None)
+        self.resume_run_dir = cfg.get('resume_run_dir', None)
+        self.start_epoch = cfg.get('start_epoch', 0)
 
         # training config
         self.gamma = cfg.get('gamma', 0.99)
