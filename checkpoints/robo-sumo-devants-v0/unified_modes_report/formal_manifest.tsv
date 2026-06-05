@@ -1,0 +1,2 @@
+label	mode	morph_optim_agents	run_dir	stdout_log	pid	started_at	finished_at	status
+formal-sp-fixed	selfplay	none	tmp/robo-sumo-devants-v0/formal-sp-fixed-20260603_193715	reports/unified_modes/logs/formal-sp-fixed.stdout.log	374775	2026-06-03 19:37:13		RUNNING

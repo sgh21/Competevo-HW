@@ -88,6 +88,8 @@ class Config:
         self.use_exploration_curriculum = cfg.get('use_exploration_curriculum', False)
         self.termination_epoch = cfg.get('termination_epoch', 200)
         self.morph_optim_agents = cfg.get('morph_optim_agents', None)
+        self.morph_target_agents = cfg.get('morph_target_agents', self.morph_optim_agents)
+        self.morph_start_epoch = cfg.get('morph_start_epoch', 0)
         self.fixed_morph_scale = cfg.get('fixed_morph_scale', 0.0)
 
         # robot config

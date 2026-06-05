@@ -52,6 +52,7 @@ def apply_cli_overrides(cfg, args):
     if args.morph_optim_agents is not None:
         morph_agents = parse_agent_ids(args.morph_optim_agents)
         set_cfg_attr(cfg, "morph_optim_agents", morph_agents)
+        set_cfg_attr(cfg, "morph_target_agents", morph_agents)
 
     if args.reward_mode is not None:
         cfg.reward_specs = dict(cfg.reward_specs)
@@ -73,6 +74,7 @@ def apply_cli_overrides(cfg, args):
         "num_optim_epoch",
         "save_model_interval",
         "termination_epoch",
+        "morph_start_epoch",
         "delta",
         "use_opponent_sample",
         "use_exploration_curriculum",
@@ -117,6 +119,8 @@ def main():
     parser.add_argument('--num_optim_epoch', type=int, default=None)
     parser.add_argument('--save_model_interval', type=int, default=None)
     parser.add_argument('--termination_epoch', type=int, default=None)
+    parser.add_argument('--morph_start_epoch', type=int, default=None,
+                        help='delay morphology optimization until this epoch')
     parser.add_argument('--delta', type=float, default=None)
     parser.add_argument('--use_opponent_sample', type=str2bool, default=None)
     parser.add_argument('--use_exploration_curriculum', type=str2bool, default=None)

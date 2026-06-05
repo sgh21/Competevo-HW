@@ -1,0 +1,5 @@
+[20260605 12:31:24 @logger.py:118] Log file set to tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-mixed-a0morph-20260604_134344/log/robo-sumo-devants-v0-20260605_123124.log
+[20260605 12:31:24 @train.py:145] CRITICAL Resuming run from epoch 912 in tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-mixed-a0morph-20260604_134344.
+[20260605 12:31:25 @multi_evo_agent_runner.py:483] loading agent_0 model from checkpoint: tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-mixed-a0morph-20260604_134344/models/agent_0/epoch_0912.p
+[20260605 12:31:25 @multi_evo_agent_runner.py:483] loading agent_1 model from checkpoint: tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-mixed-a0morph-20260604_134344/models/agent_1/epoch_0912.p
+[20260605 12:31:25 @train.py:193] training done!

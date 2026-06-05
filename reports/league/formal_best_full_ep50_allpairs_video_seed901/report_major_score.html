@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>League Ranking With Major-Match Score</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #60707c;
+      --line: #d8dee4;
+      --panel: #f7f9fb;
+      --blue: #2457a6;
+      --green: #1f8a5b;
+      --red: #b42318;
+      --amber: #9a6a00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { width: min(1180px, calc(100vw - 40px)); margin: 28px auto 56px; }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin: 34px 0 12px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 21px; }
+    h3 { margin: 20px 0 8px; font-size: 16px; }
+    p { margin: 8px 0; }
+    code { padding: 1px 4px; border-radius: 4px; background: #eef2f6; }
+    table { width: 100%; margin: 12px 0 18px; border-collapse: collapse; }
+    th, td { padding: 7px 8px; border: 1px solid var(--line); vertical-align: top; }
+    th { background: #eef3f8; text-align: left; font-weight: 650; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .subtle { color: var(--muted); }
+    .small { font-size: 12px; }
+    .pos { color: var(--green); font-weight: 650; }
+    .neg { color: var(--red); font-weight: 650; }
+    .warn { color: var(--amber); font-weight: 650; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 10px;
+      margin: 18px 0 22px;
+    }
+    .metric {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .metric b { display: block; margin-bottom: 4px; font-size: 22px; line-height: 1.1; }
+    .formula {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 210px 1fr 86px;
+      gap: 10px;
+      align-items: center;
+      margin: 7px 0;
+    }
+    .bar-track {
+      height: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #e7edf3;
+    }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, #2e7bcf, #28a27a); }
+    .component {
+      display: flex;
+      width: 190px;
+      height: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #edf1f5;
+      margin-left: auto;
+    }
+    .c-points { background: #2e7bcf; }
+    .c-reward { background: #28a27a; }
+    .c-major { background: #d29a22; }
+    .legend { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 14px;
+      margin: 12px 0;
+    }
+    .video-card {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    video { width: 100%; max-width: 560px; border: 1px solid var(--line); border-radius: 8px; background: #000; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Formal Best 积分赛：大赛积分加权排名</h1>
+  <p class="subtle">数据源：<code>reports/league/formal_best_full_ep50_allpairs_video_seed901/league_results.json</code></p>
+  <p>本报告按新的综合规则重新计算排名：总积分占 50%，平均 reward 占 20%，大赛积分占 30%。大赛积分用于衡量智能体面对强者时的表现。</p>
+
+  <section class="summary">
+    <div class="metric"><b>8</b>参赛智能体</div>
+    <div class="metric"><b>56</b>fixtures</div>
+    <div class="metric"><b>2800</b>episodes</div>
+    <div class="metric"><b>3</b>强者池智能体</div>
+    <div class="metric"><b>28</b>pair 视频</div>
+  </section>
+
+  <h2>1. 新评分规则</h2>
+  <div class="formula">
+    <p><b>局内积分：</b>胜 4 分，平 1 分，负 0 分。</p>
+    <p><b>强者池：</b>先只根据 <code>总积分</code> 与 <code>平均 reward</code> 计算预排名，取前三名作为“大赛对手”。本次强者池为 <code>sp_morph</code>、<code>tp_morph_a0</code>、<code>tp_mixed_a0_morph</code>。</p>
+    <p><b>大赛积分：</b>每个智能体与强者池成员对局时获得的 4/1/0 积分。为了公平，最终使用 <code>major_points_per_episode</code> 归一化；前三名自身只统计与另外两个强者的对局，其他智能体统计与三个强者的对局。</p>
+    <p><b>最终评分：</b><code>final_score = 50 * points_norm + 20 * reward_norm + 30 * major_norm</code>。</p>
+  </div>
+
+  <h2>2. 新总排名</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Rank</th>
+        <th>Agent</th>
+        <th>类型</th>
+        <th class="num">Final</th>
+        <th class="num">总积分</th>
+        <th class="num">points norm</th>
+        <th class="num">Avg reward</th>
+        <th class="num">reward norm</th>
+        <th class="num">大赛积分</th>
+        <th class="num">大赛局数</th>
+        <th class="num">大赛每局分</th>
+        <th class="num">major norm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>tp_morph_a0</b></td><td>形态优化，two-player agent0</td><td class="num"><b>98.59</b></td><td class="num">1380</td><td class="num">0.990</td><td class="num">814.9</td><td class="num">0.954</td><td class="num">385</td><td class="num">200</td><td class="num">1.925</td><td class="num">1.000</td></tr>
+      <tr><td class="num">2</td><td><b>tp_mixed_a0_morph</b></td><td>形态优化，mixed agent0</td><td class="num"><b>93.87</b></td><td class="num">1394</td><td class="num">1.000</td><td class="num">737.1</td><td class="num">0.912</td><td class="num">329</td><td class="num">200</td><td class="num">1.645</td><td class="num">0.855</td></tr>
+      <tr><td class="num">3</td><td><b>sp_morph</b></td><td>形态优化，self-play</td><td class="num"><b>91.49</b></td><td class="num">1363</td><td class="num">0.978</td><td class="num">898.2</td><td class="num">1.000</td><td class="num">290</td><td class="num">200</td><td class="num">1.450</td><td class="num">0.753</td></tr>
+      <tr><td class="num">4</td><td><b>tp_morph_a1</b></td><td>形态优化，two-player agent1</td><td class="num"><b>80.60</b></td><td class="num">1267</td><td class="num">0.909</td><td class="num">132.1</td><td class="num">0.581</td><td class="num">453</td><td class="num">300</td><td class="num">1.510</td><td class="num">0.784</td></tr>
+      <tr><td class="num">5</td><td><b>sp_fixed</b></td><td>固定形态，self-play</td><td class="num"><b>77.58</b></td><td class="num">1166</td><td class="num">0.836</td><td class="num">424.9</td><td class="num">0.741</td><td class="num">403</td><td class="num">300</td><td class="num">1.343</td><td class="num">0.698</td></tr>
+      <tr><td class="num">6</td><td><b>tp_mixed_a1_fixed</b></td><td>固定形态，mixed agent1</td><td class="num"><b>64.95</b></td><td class="num">1057</td><td class="num">0.758</td><td class="num">-31.4</td><td class="num">0.492</td><td class="num">331</td><td class="num">300</td><td class="num">1.103</td><td class="num">0.573</td></tr>
+      <tr><td class="num">7</td><td><b>tp_fixed_a0</b></td><td>固定形态，two-player agent0</td><td class="num"><b>62.33</b></td><td class="num">952</td><td class="num">0.683</td><td class="num">111.8</td><td class="num">0.570</td><td class="num">323</td><td class="num">300</td><td class="num">1.077</td><td class="num">0.559</td></tr>
+      <tr><td class="num">8</td><td><b>tp_fixed_a1</b></td><td>固定形态，two-player agent1</td><td class="num"><b>23.42</b></td><td class="num">417</td><td class="num">0.299</td><td class="num">-931.4</td><td class="num">0.000</td><td class="num">163</td><td class="num">300</td><td class="num">0.543</td><td class="num">0.282</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Final score 条形图</h3>
+  <div class="bar-row"><span>tp_morph_a0</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="num">98.59</span></div>
+  <div class="bar-row"><span>tp_mixed_a0_morph</span><div class="bar-track"><div class="bar-fill" style="width:95.2%"></div></div><span class="num">93.87</span></div>
+  <div class="bar-row"><span>sp_morph</span><div class="bar-track"><div class="bar-fill" style="width:92.8%"></div></div><span class="num">91.49</span></div>
+  <div class="bar-row"><span>tp_morph_a1</span><div class="bar-track"><div class="bar-fill" style="width:81.8%"></div></div><span class="num">80.60</span></div>
+  <div class="bar-row"><span>sp_fixed</span><div class="bar-track"><div class="bar-fill" style="width:78.7%"></div></div><span class="num">77.58</span></div>
+  <div class="bar-row"><span>tp_mixed_a1_fixed</span><div class="bar-track"><div class="bar-fill" style="width:65.9%"></div></div><span class="num">64.95</span></div>
+  <div class="bar-row"><span>tp_fixed_a0</span><div class="bar-track"><div class="bar-fill" style="width:63.2%"></div></div><span class="num">62.33</span></div>
+  <div class="bar-row"><span>tp_fixed_a1</span><div class="bar-track"><div class="bar-fill" style="width:23.8%"></div></div><span class="num">23.42</span></div>
+
+  <h3>三项贡献</h3>
+  <p class="legend small">
+    <span><span class="swatch c-points"></span>总积分 50%</span>
+    <span><span class="swatch c-reward"></span>reward 20%</span>
+    <span><span class="swatch c-major"></span>大赛积分 30%</span>
+  </p>
+  <table class="small">
+    <thead><tr><th>Agent</th><th class="num">总积分贡献</th><th class="num">reward贡献</th><th class="num">大赛贡献</th><th class="num">合计</th></tr></thead>
+    <tbody>
+      <tr><td>tp_morph_a0</td><td class="num">49.50</td><td class="num">19.09</td><td class="num">30.00</td><td class="num">98.59</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td class="num">50.00</td><td class="num">18.24</td><td class="num">25.64</td><td class="num">93.87</td></tr>
+      <tr><td>sp_morph</td><td class="num">48.89</td><td class="num">20.00</td><td class="num">22.60</td><td class="num">91.49</td></tr>
+      <tr><td>tp_morph_a1</td><td class="num">45.45</td><td class="num">11.62</td><td class="num">23.53</td><td class="num">80.60</td></tr>
+      <tr><td>sp_fixed</td><td class="num">41.82</td><td class="num">14.82</td><td class="num">20.94</td><td class="num">77.58</td></tr>
+      <tr><td>tp_mixed_a1_fixed</td><td class="num">37.91</td><td class="num">9.85</td><td class="num">17.19</td><td class="num">64.95</td></tr>
+      <tr><td>tp_fixed_a0</td><td class="num">34.15</td><td class="num">11.40</td><td class="num">16.78</td><td class="num">62.33</td></tr>
+      <tr><td>tp_fixed_a1</td><td class="num">14.96</td><td class="num">0.00</td><td class="num">8.47</td><td class="num">23.42</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. 大赛对局明细</h2>
+  <p>下表展示每个智能体面对强者池成员时的表现。格式为 <code>胜-平-负，积分，每局分，平均 reward</code>。</p>
+  <table class="small">
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>vs sp_morph</th>
+        <th>vs tp_morph_a0</th>
+        <th>vs tp_mixed_a0_morph</th>
+        <th class="num">大赛每局分</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><b>tp_morph_a0</b></td><td>48-25-27，217，2.17，reward 941.9</td><td class="subtle">self</td><td>32-40-28，168，1.68，reward 721.0</td><td class="num"><b>1.925</b></td></tr>
+      <tr><td><b>tp_mixed_a0_morph</b></td><td>36-33-31，177，1.77，reward 593.2</td><td>28-40-32，152，1.52，reward 203.1</td><td class="subtle">self</td><td class="num"><b>1.645</b></td></tr>
+      <tr><td><b>sp_morph</b></td><td class="subtle">self</td><td>27-25-48，133，1.33，reward 342.8</td><td>31-33-36，157，1.57，reward 611.8</td><td class="num"><b>1.450</b></td></tr>
+      <tr><td><b>tp_morph_a1</b></td><td>35-46-19，186，1.86，reward 153.7</td><td>22-54-24，142，1.42，reward -365.1</td><td>15-65-20，125，1.25，reward -521.5</td><td class="num"><b>1.510</b></td></tr>
+      <tr><td><b>sp_fixed</b></td><td>33-21-46，153，1.53，reward 319.1</td><td>28-31-41，143，1.43，reward 218.7</td><td>15-47-38，107，1.07，reward 65.9</td><td class="num"><b>1.343</b></td></tr>
+      <tr><td><b>tp_mixed_a1_fixed</b></td><td>14-60-26，116，1.16，reward -453.3</td><td>13-69-18，121，1.21，reward -461.0</td><td>7-66-27，94，0.94，reward -771.7</td><td class="num"><b>1.103</b></td></tr>
+      <tr><td><b>tp_fixed_a0</b></td><td>21-19-60，103，1.03，reward -189.3</td><td>26-31-43，135，1.35，reward 213.4</td><td>10-45-45，85，0.85，reward -374.2</td><td class="num"><b>1.077</b></td></tr>
+      <tr><td><b>tp_fixed_a1</b></td><td>14-7-79，63，0.63，reward -899.4</td><td>7-22-71，50，0.50，reward -1178.7</td><td>9-14-77，50，0.50，reward -1051.9</td><td class="num"><b>0.543</b></td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. 组别对比</h2>
+  <table>
+    <thead><tr><th>组别</th><th class="num">平均 final score</th><th class="num">平均 points norm</th><th class="num">平均 reward norm</th><th class="num">平均 major norm</th></tr></thead>
+    <tbody>
+      <tr><td>形态优化智能体</td><td class="num pos">91.14</td><td class="num">0.969</td><td class="num">0.862</td><td class="num">0.848</td></tr>
+      <tr><td>固定形态智能体</td><td class="num neg">57.07</td><td class="num">0.644</td><td class="num">0.451</td><td class="num">0.528</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. 关键视频</h2>
+  <div class="videos">
+    <div class="video-card">
+      <h3>新冠军 vs sp_morph</h3>
+      <video controls src="videos/sp_morph__vs__tp_morph_a0__slot0_sp_morph__slot1_tp_morph_a0__seed937.mp4"></video>
+    </div>
+    <div class="video-card">
+      <h3>新冠军 vs tp_mixed_a0_morph</h3>
+      <video controls src="videos/tp_morph_a0__vs__tp_mixed_a0_morph__slot0_tp_morph_a0__slot1_tp_mixed_a0_morph__seed947.mp4"></video>
+    </div>
+  </div>
+
+  <h2>6. 结论</h2>
+  <p><b>新冠军是 <code>tp_morph_a0</code></b>。它的总积分不是最高，平均 reward 也不是最高，但它面对强者池时表现最好：大赛每局分 1.925，是所有智能体最高。这正好符合“和有水平的人对抗才能体现真正实力”的评价目标。</p>
+  <p><code>tp_mixed_a0_morph</code> 总积分最高，因此仍排第二；但它面对 <code>tp_morph_a0</code> 时处于劣势。<code>sp_morph</code> 平均 reward 最高，但面对强者池时输给 <code>tp_morph_a0</code> 较多，因此从上一版第一降到第三。</p>
+  <p>整体结论没有改变：形态优化智能体仍显著强于固定形态智能体，前四名全部是 morph agent。新的大赛项让排名更重视强强对抗，能更好地区分“刷弱者得分高”和“面对强者也能得分高”的策略。</p>
+</main>
+</body>
+</html>

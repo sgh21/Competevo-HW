@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unified Modes Formal Training Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #d9dfe7;
+      --band: #f5f7fa;
+      --accent: #0f766e;
+      --warn: #9a3412;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: white;
+      line-height: 1.55;
+    }
+    header, main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 28px 12px;
+    }
+    header {
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 30px 0 10px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 8px 0;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .note {
+      border-left: 4px solid var(--accent);
+      background: var(--band);
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+    .warn {
+      border-left-color: var(--warn);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 22px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 9px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: var(--band);
+      font-weight: 650;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: #eef2f6;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+    pre {
+      overflow-x: auto;
+      background: #111827;
+      color: #f9fafb;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>五种统一训练模式正式实验报告</h1>
+    <p class="meta">Run set: <code>formal-parallel-20260603_1950</code>；报告时间：2026-06-05 15:19 CST。</p>
+    <p>五组实验均使用统一配置入口 <code>config/repro/unified-devant-training.yaml</code>，通过命令行参数切换 <code>game_mode</code> 与 <code>morph_optim_agents</code>。所有正式训练均从 warmup checkpoint <code>base-rtg-fixed-epoch100-20260603_183245/models/best.p</code> 初始化。</p>
+  </header>
+
+  <main>
+    <h2>结论摘要</h2>
+    <div class="note">
+      <p><strong>自博弈 + 形态优化</strong>是这批实验里最强的最终策略：50-episode 外部评测中 agent0 平均回报 2192.39，胜率 0.58，对手胜率 0.06。</p>
+      <p><strong>自博弈 + 固定形态</strong>也很强：agent0 平均回报 2024.88，胜率 0.54，但对手胜率更高 0.20。</p>
+      <p><strong>双人博弈</strong>最终 checkpoint 更不稳定，平局率较高；混合模式中形态优化一方 agent0 明显占优，但仍有 0.64 平局率。</p>
+    </div>
+
+    <h2>训练配置</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>模式</th>
+          <th>game_mode</th>
+          <th>morph_optim_agents</th>
+          <th>run dir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>自博弈，形态不优化</td>
+          <td><code>selfplay</code></td>
+          <td><code>none</code></td>
+          <td><code>tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-sp-fixed-20260603_194831</code></td>
+        </tr>
+        <tr>
+          <td>双人博弈，形态不优化</td>
+          <td><code>two_player</code></td>
+          <td><code>none</code></td>
+          <td><code>tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-fixed-20260603_194833</code></td>
+        </tr>
+        <tr>
+          <td>自博弈，形态优化</td>
+          <td><code>selfplay</code></td>
+          <td><code>all</code></td>
+          <td><code>tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-sp-morph-20260604_041837</code></td>
+        </tr>
+        <tr>
+          <td>双人博弈，形态优化</td>
+          <td><code>two_player</code></td>
+          <td><code>all</code></td>
+          <td><code>tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-morph-20260604_121341</code></td>
+        </tr>
+        <tr>
+          <td>双人博弈，agent0 形态优化，agent1 固定形态</td>
+          <td><code>two_player</code></td>
+          <td><code>0</code></td>
+          <td><code>tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-tp-mixed-a0morph-20260604_134344</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>外部评测结果</h2>
+    <p>评测命令使用 <code>scripts/evaluate_checkpoint.py</code>，每组最终 checkpoint <code>epoch_1000</code>，确定性动作，50 episodes，seed <code>20260605</code>。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>模式</th>
+          <th>avg reward [agent0, agent1]</th>
+          <th>std reward [agent0, agent1]</th>
+          <th>win rate [agent0, agent1]</th>
+          <th>draw rate</th>
+          <th>avg episode length</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>sp-fixed</td>
+          <td>[2024.88, -1084.02]</td>
+          <td>[2132.83, 1938.34]</td>
+          <td>[0.54, 0.20]</td>
+          <td>0.26</td>
+          <td>309.5</td>
+        </tr>
+        <tr>
+          <td>tp-fixed</td>
+          <td>[771.16, -1121.37]</td>
+          <td>[1430.69, 1372.59]</td>
+          <td>[0.14, 0.10]</td>
+          <td>0.76</td>
+          <td>465.3</td>
+        </tr>
+        <tr>
+          <td>sp-morph</td>
+          <td>[2192.39, -1364.06]</td>
+          <td>[1864.98, 1314.13]</td>
+          <td>[0.58, 0.06]</td>
+          <td>0.36</td>
+          <td>333.0</td>
+        </tr>
+        <tr>
+          <td>tp-morph</td>
+          <td>[894.21, -98.85]</td>
+          <td>[2088.47, 2048.52]</td>
+          <td>[0.24, 0.22]</td>
+          <td>0.54</td>
+          <td>413.2</td>
+        </tr>
+        <tr>
+          <td>tp-mixed-a0morph</td>
+          <td>[1411.10, -992.06]</td>
+          <td>[1760.23, 1214.99]</td>
+          <td>[0.30, 0.06]</td>
+          <td>0.64</td>
+          <td>415.4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>训练日志摘要</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>模式</th>
+          <th>最终训练 eval reward</th>
+          <th>最终训练 win rate</th>
+          <th>训练中 best reward</th>
+          <th>训练中 best win</th>
+          <th>wall time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>sp-fixed</td>
+          <td>agent0 -421.08</td>
+          <td>agent0 0.23</td>
+          <td>agent0 1988.66</td>
+          <td>agent0 0.92</td>
+          <td>8.48 h</td>
+        </tr>
+        <tr>
+          <td>tp-fixed</td>
+          <td>[-1044.60, -856.63]</td>
+          <td>[0.00, 0.05]</td>
+          <td>[1550.05, 937.57]</td>
+          <td>[0.83, 0.65]</td>
+          <td>16.41 h</td>
+        </tr>
+        <tr>
+          <td>sp-morph</td>
+          <td>agent0 1268.76</td>
+          <td>agent0 0.78</td>
+          <td>agent0 1901.05</td>
+          <td>agent0 0.91</td>
+          <td>9.39 h</td>
+        </tr>
+        <tr>
+          <td>tp-morph</td>
+          <td>[-926.31, -356.21]</td>
+          <td>[0.11, 0.25]</td>
+          <td>[1246.89, 921.88]</td>
+          <td>[0.81, 0.71]</td>
+          <td>26.97 h</td>
+        </tr>
+        <tr>
+          <td>tp-mixed-a0morph</td>
+          <td>[-357.90, -1158.99]</td>
+          <td>[0.20, 0.04]</td>
+          <td>[1451.29, 1187.08]</td>
+          <td>[0.76, 0.77]</td>
+          <td>25.46 h</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>分析</h2>
+    <p>1. 自博弈路线明显更稳定，尤其是 <code>sp-morph</code>。形态优化让 agent0 在最终外部评测中比 <code>sp-fixed</code> 多出约 167.5 平均回报，并把对手胜率从 0.20 压到 0.06。</p>
+    <p>2. 双人博弈最终 checkpoint 的表现更依赖博弈状态。<code>tp-fixed</code> 的外部平局率达到 0.76，说明双方最终策略较多进入僵持；<code>tp-morph</code> 的双方胜率更均衡，但同样有 0.54 平局。</p>
+    <p>3. 混合模式符合预期方向：agent0 形态优化、agent1 固定形态时，agent0 外部评测胜率 0.30，高于 agent1 的 0.06，平均回报优势约 2403。但 0.64 平局率说明它还没有形成稳定终结优势。</p>
+    <p>4. 训练中 best 指标普遍高于最终指标，尤其双人博弈更明显。后续如果用于展示或 league 评测，建议同时保留 <code>best.p</code> 和 <code>epoch_1000.p</code>，不要只看最终 epoch。</p>
+    <div class="note warn">
+      <p><strong>稳定性记录：</strong><code>tp-morph</code> 原始长训在 epoch 827 后发生一次 segmentation fault，后续又在 epoch 983 采样阶段卡住；<code>tp-mixed-a0morph</code> 在 epoch 912 采样阶段卡住。两者均从最近完整 checkpoint 恢复并补齐到 epoch 1000。建议后续长训按 100-200 epoch 分段运行，或给采样 worker 加 watchdog/retry，降低单次长进程风险。</p>
+    </div>
+
+    <h2>任意两组智能体对战模板</h2>
+    <h3>确定性胜率评测</h3>
+    <p>选择一个兼容配置来决定 slot0/slot1 是否采样形态动作：两边固定形态用 <code>tp-fixed/config.yml</code>；两边形态优化用 <code>tp-morph/config.yml</code>；slot0 形态优化、slot1 固定形态用 <code>tp-mixed-a0morph/config.yml</code>。然后把两个 agent 的 checkpoint 分别传入。</p>
+    <pre><code>conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg &lt;compatible_config.yml&gt; \
+  --ckpt_dir &lt;fallback_models_dir&gt; \
+  --agent0_ckpt_dir &lt;run_A&gt;/models \
+  --agent0_ckpt epoch_1000 \
+  --agent1_ckpt_dir &lt;run_B&gt;/models \
+  --agent1_ckpt best \
+  --episodes 100 \
+  --seed 20260605 \
+  --out reports/unified_modes/eval/custom_A_vs_B.json</code></pre>
+    <p class="small">self-play run 的 checkpoint 直接位于 <code>models/epoch_1000.p</code>；two-player run 的 checkpoint 位于 <code>models/agent_0/...</code> 和 <code>models/agent_1/...</code>。当前评测脚本会同时兼容这两种目录结构。</p>
+
+    <h3>可视化对战</h3>
+    <pre><code>conda run -n EAI python display.py \
+  --cfg &lt;compatible_config.yml&gt; \
+  --ckpt_dir &lt;fallback_models_dir&gt; \
+  --agent0_ckpt_dir &lt;run_A&gt;/models \
+  --agent0_ckpt epoch_1000 \
+  --agent1_ckpt_dir &lt;run_B&gt;/models \
+  --agent1_ckpt epoch_1000 \
+  --render_width 1280 \
+  --render_height 960</code></pre>
+
+    <h3>本次五组最终评测复现</h3>
+    <pre><code>conda run -n EAI python scripts/evaluate_checkpoint.py \
+  --cfg tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-sp-morph-20260604_041837/config.yml \
+  --ckpt_dir tmp/robo-sumo-devants-v0/formal-parallel-20260603_1950-sp-morph-20260604_041837/models \
+  --ckpt epoch_1000 \
+  --selfplay \
+  --episodes 50 \
+  --seed 20260605 \
+  --out reports/unified_modes/eval/sp-morph_epoch1000_50eps.json</code></pre>
+  </main>
+</body>
+</html>

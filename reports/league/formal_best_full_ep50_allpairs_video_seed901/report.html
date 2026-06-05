@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formal Best League Tournament Report - 4/1/0 + Reward</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #60707c;
+      --line: #d8dee4;
+      --panel: #f7f9fb;
+      --blue: #2457a6;
+      --green: #1f8a5b;
+      --red: #b42318;
+      --amber: #9a6a00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: white;
+      font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { width: min(1200px, calc(100vw - 40px)); margin: 28px auto 56px; }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin: 34px 0 12px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 21px; }
+    h3 { margin: 20px 0 8px; font-size: 16px; }
+    p { margin: 8px 0; }
+    code { padding: 1px 4px; border-radius: 4px; background: #eef2f6; }
+    table { width: 100%; margin: 12px 0 18px; border-collapse: collapse; }
+    th, td { padding: 7px 8px; border: 1px solid var(--line); vertical-align: top; }
+    th { background: #eef3f8; text-align: left; font-weight: 650; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .subtle { color: var(--muted); }
+    .small { font-size: 12px; }
+    .pos { color: var(--green); font-weight: 650; }
+    .neg { color: var(--red); font-weight: 650; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 10px;
+      margin: 18px 0 22px;
+    }
+    .metric {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .metric b { display: block; margin-bottom: 4px; font-size: 22px; line-height: 1.1; }
+    .formula {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 210px 1fr 82px;
+      gap: 10px;
+      align-items: center;
+      margin: 7px 0;
+    }
+    .bar-track {
+      height: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #e7edf3;
+    }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, #2e7bcf, #28a27a); }
+    .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+    .scroll table { margin: 0; }
+    .matrix { font-size: 12px; }
+    .matrix th, .matrix td { min-width: 92px; text-align: center; }
+    .matrix th:first-child { position: sticky; left: 0; text-align: left; background: #eef3f8; }
+    .self { background: #f2f2f2; color: #777; }
+    .good { background: #eaf7ef; }
+    .bad { background: #fff0ee; }
+    .drawish { background: #fff8e3; }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 14px;
+      margin: 12px 0;
+    }
+    .video-card {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    video { width: 100%; max-width: 560px; border: 1px solid var(--line); border-radius: 8px; background: #000; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Formal Best 8-Agent 积分赛报告</h1>
+  <p class="subtle">数据源：<code>reports/league/formal_best_full_ep50_allpairs_video_seed901/league_results.json</code></p>
+  <p>本报告采用修正后的计分规则重新计算排名：胜局更高权重，同时把平均 reward 纳入最终评分。不需要重跑积分赛，因为 JSON 中已经保留了逐局 winner 和 reward。</p>
+
+  <section class="summary">
+    <div class="metric"><b>8</b>参赛智能体</div>
+    <div class="metric"><b>28</b>unordered pairs</div>
+    <div class="metric"><b>56</b>双回合 fixtures</div>
+    <div class="metric"><b>2800</b>总 episode</div>
+    <div class="metric"><b>28</b>pair 视频</div>
+  </section>
+
+  <h2>1. 修正后的评分规则</h2>
+  <div class="formula">
+    <p><b>局内积分：</b>胜 4 分，平 1 分，负 0 分。</p>
+    <p><b>最终评分：</b><code>final_score = 70 * points_norm + 30 * reward_norm</code></p>
+    <p><b>归一化：</b><code>points_norm = points_4_1_0 / max(points_4_1_0)</code>；<code>reward_norm = minmax(avg_reward)</code>。这里 reward 使用每个智能体的平均 episode reward；<code>avg_reward_margin</code> 作为辅助解释指标保留。</p>
+  </div>
+
+  <h2>2. 修正后总排名</h2>
+  <table>
+    <thead>
+      <tr>
+        <th class="num">Rank</th>
+        <th>Agent</th>
+        <th>类型</th>
+        <th class="num">4/1/0 积分</th>
+        <th class="num">胜-平-负</th>
+        <th class="num">胜率</th>
+        <th class="num">平均 reward</th>
+        <th class="num">reward norm</th>
+        <th class="num">points norm</th>
+        <th class="num">final score</th>
+        <th class="num">avg margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>sp_morph</b></td><td>形态优化，self-play</td><td class="num">1363</td><td class="num">288-211-201</td><td class="num">41.1%</td><td class="num">898.2</td><td class="num">1.000</td><td class="num">0.978</td><td class="num"><b>98.44</b></td><td class="num pos">+831.7</td></tr>
+      <tr><td class="num">2</td><td><b>tp_morph_a0</b></td><td>形态优化，two-player agent0</td><td class="num">1380</td><td class="num">277-272-151</td><td class="num">39.6%</td><td class="num">814.9</td><td class="num">0.954</td><td class="num">0.990</td><td class="num"><b>97.93</b></td><td class="num pos">+961.6</td></tr>
+      <tr><td class="num">3</td><td><b>tp_mixed_a0_morph</b></td><td>形态优化，mixed agent0</td><td class="num">1394</td><td class="num">271-310-119</td><td class="num">38.7%</td><td class="num">737.1</td><td class="num">0.912</td><td class="num">1.000</td><td class="num"><b>97.36</b></td><td class="num pos">+925.7</td></tr>
+      <tr><td class="num">4</td><td><b>tp_morph_a1</b></td><td>形态优化，two-player agent1</td><td class="num">1267</td><td class="num">226-363-111</td><td class="num">32.3%</td><td class="num">132.1</td><td class="num">0.581</td><td class="num">0.909</td><td class="num"><b>81.06</b></td><td class="num pos">+242.5</td></tr>
+      <tr><td class="num">5</td><td><b>sp_fixed</b></td><td>固定形态，self-play</td><td class="num">1166</td><td class="num">221-282-197</td><td class="num">31.6%</td><td class="num">424.9</td><td class="num">0.741</td><td class="num">0.836</td><td class="num"><b>80.79</b></td><td class="num pos">+283.6</td></tr>
+      <tr><td class="num">6</td><td><b>tp_mixed_a1_fixed</b></td><td>固定形态，mixed agent1</td><td class="num">1057</td><td class="num">163-405-132</td><td class="num">23.3%</td><td class="num">-31.4</td><td class="num">0.492</td><td class="num">0.758</td><td class="num"><b>67.83</b></td><td class="num neg">-48.9</td></tr>
+      <tr><td class="num">7</td><td><b>tp_fixed_a0</b></td><td>固定形态，two-player agent0</td><td class="num">952</td><td class="num">176-248-276</td><td class="num">25.1%</td><td class="num">111.8</td><td class="num">0.570</td><td class="num">0.683</td><td class="num"><b>64.91</b></td><td class="num neg">-453.1</td></tr>
+      <tr><td class="num">8</td><td><b>tp_fixed_a1</b></td><td>固定形态，two-player agent1</td><td class="num">417</td><td class="num">76-113-511</td><td class="num">10.9%</td><td class="num">-931.4</td><td class="num">0.000</td><td class="num">0.299</td><td class="num"><b>20.94</b></td><td class="num neg">-2743.3</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Final score 条形图</h3>
+  <div class="bar-row"><span>sp_morph</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="num">98.44</span></div>
+  <div class="bar-row"><span>tp_morph_a0</span><div class="bar-track"><div class="bar-fill" style="width:99.5%"></div></div><span class="num">97.93</span></div>
+  <div class="bar-row"><span>tp_mixed_a0_morph</span><div class="bar-track"><div class="bar-fill" style="width:99.0%"></div></div><span class="num">97.36</span></div>
+  <div class="bar-row"><span>tp_morph_a1</span><div class="bar-track"><div class="bar-fill" style="width:82.3%"></div></div><span class="num">81.06</span></div>
+  <div class="bar-row"><span>sp_fixed</span><div class="bar-track"><div class="bar-fill" style="width:82.1%"></div></div><span class="num">80.79</span></div>
+  <div class="bar-row"><span>tp_mixed_a1_fixed</span><div class="bar-track"><div class="bar-fill" style="width:68.9%"></div></div><span class="num">67.83</span></div>
+  <div class="bar-row"><span>tp_fixed_a0</span><div class="bar-track"><div class="bar-fill" style="width:65.9%"></div></div><span class="num">64.91</span></div>
+  <div class="bar-row"><span>tp_fixed_a1</span><div class="bar-track"><div class="bar-fill" style="width:21.3%"></div></div><span class="num">20.94</span></div>
+
+  <h2>3. 每个 pair 的双回合聚合结果</h2>
+  <p>每行聚合两个 slot-swap fixture，共 100 局。胜平负写法为 <code>A胜-平-B胜</code>，pair 积分也已经按 4/1/0 重算。</p>
+  <table class="small">
+    <thead>
+      <tr><th>A</th><th>B</th><th class="num">局数</th><th class="num">A胜-平-B胜</th><th class="num">A reward</th><th class="num">B reward</th><th class="num">A margin</th><th class="num">4/1/0 积分 A:B</th><th class="num">平均长度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>tp_mixed_a0_morph</td><td>tp_morph_a0</td><td class="num">100</td><td class="num">28-40-32</td><td class="num">203.1</td><td class="num">721.0</td><td class="num neg">-517.9</td><td class="num">152:168</td><td class="num">357.9</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>sp_morph</td><td class="num">100</td><td class="num">36-33-31</td><td class="num">593.2</td><td class="num">611.8</td><td class="num neg">-18.6</td><td class="num">177:157</td><td class="num">355.8</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>tp_morph_a1</td><td class="num">100</td><td class="num">20-65-15</td><td class="num">198.1</td><td class="num">-521.5</td><td class="num pos">+719.6</td><td class="num">145:125</td><td class="num">421.8</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>sp_fixed</td><td class="num">100</td><td class="num">38-47-15</td><td class="num">657.5</td><td class="num">65.9</td><td class="num pos">+591.6</td><td class="num">199:107</td><td class="num">360.0</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>tp_mixed_a1_fixed</td><td class="num">100</td><td class="num">27-66-7</td><td class="num">558.1</td><td class="num">-771.7</td><td class="num pos">+1329.8</td><td class="num">174:94</td><td class="num">420.4</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">45-45-10</td><td class="num">1079.1</td><td class="num">-374.2</td><td class="num pos">+1453.3</td><td class="num">225:85</td><td class="num">378.6</td></tr>
+      <tr><td>tp_mixed_a0_morph</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">77-14-9</td><td class="num">1870.5</td><td class="num">-1051.9</td><td class="num pos">+2922.4</td><td class="num">322:50</td><td class="num">258.4</td></tr>
+      <tr><td>tp_morph_a0</td><td>sp_morph</td><td class="num">100</td><td class="num">48-25-27</td><td class="num">941.9</td><td class="num">342.8</td><td class="num pos">+599.1</td><td class="num">217:133</td><td class="num">308.0</td></tr>
+      <tr><td>tp_morph_a0</td><td>tp_morph_a1</td><td class="num">100</td><td class="num">24-54-22</td><td class="num">324.4</td><td class="num">-365.1</td><td class="num pos">+689.4</td><td class="num">150:142</td><td class="num">389.3</td></tr>
+      <tr><td>tp_morph_a0</td><td>sp_fixed</td><td class="num">100</td><td class="num">41-31-28</td><td class="num">774.5</td><td class="num">218.7</td><td class="num pos">+555.8</td><td class="num">195:143</td><td class="num">319.7</td></tr>
+      <tr><td>tp_morph_a0</td><td>tp_mixed_a1_fixed</td><td class="num">100</td><td class="num">18-69-13</td><td class="num">343.2</td><td class="num">-461.0</td><td class="num pos">+804.2</td><td class="num">141:121</td><td class="num">425.6</td></tr>
+      <tr><td>tp_morph_a0</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">43-31-26</td><td class="num">822.7</td><td class="num">213.4</td><td class="num pos">+609.3</td><td class="num">203:135</td><td class="num">320.6</td></tr>
+      <tr><td>tp_morph_a0</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">71-22-7</td><td class="num">1776.9</td><td class="num">-1178.7</td><td class="num pos">+2955.7</td><td class="num">306:50</td><td class="num">275.2</td></tr>
+      <tr><td>sp_morph</td><td>tp_morph_a1</td><td class="num">100</td><td class="num">19-46-35</td><td class="num">281.6</td><td class="num">153.7</td><td class="num pos">+127.9</td><td class="num">122:186</td><td class="num">368.8</td></tr>
+      <tr><td>sp_morph</td><td>sp_fixed</td><td class="num">100</td><td class="num">46-21-33</td><td class="num">861.6</td><td class="num">319.1</td><td class="num pos">+542.5</td><td class="num">205:153</td><td class="num">291.4</td></tr>
+      <tr><td>sp_morph</td><td>tp_mixed_a1_fixed</td><td class="num">100</td><td class="num">26-60-14</td><td class="num">573.9</td><td class="num">-453.3</td><td class="num pos">+1027.2</td><td class="num">164:116</td><td class="num">398.9</td></tr>
+      <tr><td>sp_morph</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">60-19-21</td><td class="num">1510.0</td><td class="num">-189.3</td><td class="num pos">+1699.2</td><td class="num">259:103</td><td class="num">288.8</td></tr>
+      <tr><td>sp_morph</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">79-7-14</td><td class="num">2105.9</td><td class="num">-899.4</td><td class="num pos">+3005.3</td><td class="num">323:63</td><td class="num">238.8</td></tr>
+      <tr><td>tp_morph_a1</td><td>sp_fixed</td><td class="num">100</td><td class="num">19-68-13</td><td class="num">-307.5</td><td class="num">-84.1</td><td class="num neg">-223.4</td><td class="num">144:120</td><td class="num">422.6</td></tr>
+      <tr><td>tp_morph_a1</td><td>tp_mixed_a1_fixed</td><td class="num">100</td><td class="num">27-57-16</td><td class="num">-12.8</td><td class="num">-54.1</td><td class="num pos">+41.3</td><td class="num">165:121</td><td class="num">404.5</td></tr>
+      <tr><td>tp_morph_a1</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">36-54-10</td><td class="num">360.1</td><td class="num">-529.7</td><td class="num pos">+889.9</td><td class="num">198:94</td><td class="num">376.7</td></tr>
+      <tr><td>tp_morph_a1</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">72-19-9</td><td class="num">1617.8</td><td class="num">-909.3</td><td class="num pos">+2527.1</td><td class="num">307:55</td><td class="num">288.3</td></tr>
+      <tr><td>sp_fixed</td><td>tp_mixed_a1_fixed</td><td class="num">100</td><td class="num">13-73-14</td><td class="num">-172.7</td><td class="num">-336.4</td><td class="num pos">+163.7</td><td class="num">125:129</td><td class="num">440.8</td></tr>
+      <tr><td>sp_fixed</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">46-26-28</td><td class="num">780.5</td><td class="num">193.0</td><td class="num pos">+587.5</td><td class="num">210:138</td><td class="num">299.6</td></tr>
+      <tr><td>sp_fixed</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">73-16-11</td><td class="num">1847.0</td><td class="num">-853.7</td><td class="num pos">+2700.7</td><td class="num">308:60</td><td class="num">288.0</td></tr>
+      <tr><td>tp_mixed_a1_fixed</td><td>tp_fixed_a0</td><td class="num">100</td><td class="num">27-59-14</td><td class="num">102.2</td><td class="num">-241.3</td><td class="num pos">+343.5</td><td class="num">167:115</td><td class="num">397.5</td></tr>
+      <tr><td>tp_mixed_a1_fixed</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">72-21-7</td><td class="num">1754.4</td><td class="num">-926.2</td><td class="num pos">+2680.6</td><td class="num">309:49</td><td class="num">306.9</td></tr>
+      <tr><td>tp_fixed_a0</td><td>tp_fixed_a1</td><td class="num">100</td><td class="num">67-14-19</td><td class="num">1710.5</td><td class="num">-700.5</td><td class="num pos">+2411.0</td><td class="num">282:90</td><td class="num">284.8</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. 对战矩阵</h2>
+  <p class="small">单元格格式：<code>W=行智能体胜率, D=平局率, M=行智能体平均 reward margin</code>。</p>
+  <div class="scroll">
+    <table class="matrix">
+      <thead><tr><th>row vs column</th><th>sp_morph</th><th>tp_morph_a0</th><th>tp_mixed_a0_morph</th><th>tp_morph_a1</th><th>sp_fixed</th><th>tp_mixed_a1_fixed</th><th>tp_fixed_a0</th><th>tp_fixed_a1</th></tr></thead>
+      <tbody>
+        <tr><th>sp_morph</th><td class="self">--</td><td class="bad">W27 D25 M-599</td><td class="drawish">W31 D33 M+19</td><td class="bad">W19 D46 M+128</td><td class="good">W46 D21 M+542</td><td class="drawish">W26 D60 M+1027</td><td class="good">W60 D19 M+1699</td><td class="good">W79 D7 M+3005</td></tr>
+        <tr><th>tp_morph_a0</th><td class="good">W48 D25 M+599</td><td class="self">--</td><td class="good">W32 D40 M+518</td><td class="drawish">W24 D54 M+689</td><td class="good">W41 D31 M+556</td><td class="drawish">W18 D69 M+804</td><td class="good">W43 D31 M+609</td><td class="good">W71 D22 M+2956</td></tr>
+        <tr><th>tp_mixed_a0_morph</th><td class="drawish">W36 D33 M-19</td><td class="bad">W28 D40 M-518</td><td class="self">--</td><td class="drawish">W20 D65 M+720</td><td class="good">W38 D47 M+592</td><td class="drawish">W27 D66 M+1330</td><td class="good">W45 D45 M+1453</td><td class="good">W77 D14 M+2922</td></tr>
+        <tr><th>tp_morph_a1</th><td class="good">W35 D46 M-128</td><td class="drawish">W22 D54 M-689</td><td class="drawish">W15 D65 M-720</td><td class="self">--</td><td class="drawish">W19 D68 M-223</td><td class="drawish">W27 D57 M+41</td><td class="good">W36 D54 M+890</td><td class="good">W72 D19 M+2527</td></tr>
+        <tr><th>sp_fixed</th><td class="bad">W33 D21 M-542</td><td class="bad">W28 D31 M-556</td><td class="bad">W15 D47 M-592</td><td class="drawish">W13 D68 M+223</td><td class="self">--</td><td class="drawish">W13 D73 M+164</td><td class="good">W46 D26 M+587</td><td class="good">W73 D16 M+2701</td></tr>
+        <tr><th>tp_mixed_a1_fixed</th><td class="bad">W14 D60 M-1027</td><td class="bad">W13 D69 M-804</td><td class="bad">W7 D66 M-1330</td><td class="drawish">W16 D57 M-41</td><td class="drawish">W14 D73 M-164</td><td class="self">--</td><td class="drawish">W27 D59 M+343</td><td class="good">W72 D21 M+2681</td></tr>
+        <tr><th>tp_fixed_a0</th><td class="bad">W21 D19 M-1699</td><td class="bad">W26 D31 M-609</td><td class="bad">W10 D45 M-1453</td><td class="drawish">W10 D54 M-890</td><td class="bad">W28 D26 M-587</td><td class="drawish">W14 D59 M-343</td><td class="self">--</td><td class="good">W67 D14 M+2411</td></tr>
+        <tr><th>tp_fixed_a1</th><td class="bad">W14 D7 M-3005</td><td class="bad">W7 D22 M-2956</td><td class="bad">W9 D14 M-2922</td><td class="bad">W9 D19 M-2527</td><td class="bad">W11 D16 M-2701</td><td class="bad">W7 D21 M-2681</td><td class="bad">W19 D14 M-2411</td><td class="self">--</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>5. 视频</h2>
+  <p>本次仍保留 28 个 pair 视频，位于 <code>reports/league/formal_best_full_ep50_allpairs_video_seed901/videos/</code>。</p>
+  <div class="videos">
+    <div class="video-card">
+      <h3>新冠军 vs 第二名：sp_morph vs tp_morph_a0</h3>
+      <video controls src="videos/sp_morph__vs__tp_morph_a0__slot0_sp_morph__slot1_tp_morph_a0__seed937.mp4"></video>
+    </div>
+    <div class="video-card">
+      <h3>新冠军 vs 旧冠军：sp_morph vs tp_mixed_a0_morph</h3>
+      <video controls src="videos/sp_morph__vs__tp_mixed_a0_morph__slot0_sp_morph__slot1_tp_mixed_a0_morph__seed941.mp4"></video>
+    </div>
+  </div>
+
+  <h2>6. 训练曲线与 checkpoints 归档</h2>
+  <p>五组 formal 训练目录已经整理到 <code>checkpoints/robo-sumo-devants-v0/</code>。每个 run 保留 <code>config.yml</code>、<code>log/</code>、<code>tb/</code>，并且 <code>models/</code> 下只保留 <code>best.p</code>。</p>
+  <p>TensorBoard 查看命令：</p>
+  <pre><code>tensorboard --logdir checkpoints/robo-sumo-devants-v0 --port 6006</code></pre>
+  <p class="small">如果在远程服务器上查看，可加 <code>--bind_all</code>，然后通过端口转发访问。</p>
+
+  <h2>7. 结论与评价</h2>
+  <p>在 4/1/0 与 reward 加权后，<code>sp_morph</code> 排到第一。原因是它虽然纯积分略低于 <code>tp_mixed_a0_morph</code> 和 <code>tp_morph_a0</code>，但胜率最高、平均 reward 最高，因此在“鼓励战斗取胜 + reward 表现”的综合目标下更符合强智能体定义。</p>
+  <p><code>tp_morph_a0</code> 与 <code>tp_mixed_a0_morph</code> 仍然非常接近，三者 final score 都在 97 分以上，属于同一强度梯队。固定形态智能体整体仍明显落后，最好的 <code>sp_fixed</code> 排第 5。形态优化依然是本轮实验里最稳定的增强因素。</p>
+  <p>需要注意，<code>tp_morph_a0</code> 在 head-to-head 中压制 <code>sp_morph</code>，pair 积分为 217:133，reward margin +599.1。因此如果后续目标是选择单一冠军，可以考虑继续增加 episode 数或引入 Elo/TrueSkill 作为补充；如果目标是选择训练改进方向，前三名都应该保留作为强基线。</p>
+</main>
+</body>
+</html>

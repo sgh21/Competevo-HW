@@ -25,6 +25,7 @@ class BaseRunner:
         self.t_start = time.time()
 
         self.noise_rate = 1.0
+        self._last_morph_optim_agents = object()
 
         self.setup_env(self.env_name)
         self.setup_writer()
@@ -108,6 +109,35 @@ class BaseRunner:
 
     def setup_learner(self):
         raise NotImplementedError
+
+    def _copy_agent_ids(self, agents):
+        if agents is None:
+            return None
+        return [int(agent_id) for agent_id in agents]
+
+    def apply_morph_schedule(self, epoch):
+        target_agents = self._copy_agent_ids(
+            getattr(self.cfg, "morph_target_agents", getattr(self.cfg, "morph_optim_agents", None))
+        )
+        start_epoch = getattr(self.cfg, "morph_start_epoch", 0)
+
+        if start_epoch is not None and epoch < start_epoch:
+            active_agents = []
+        else:
+            active_agents = target_agents
+
+        self.cfg.morph_target_agents = target_agents
+        self.cfg.morph_optim_agents = active_agents
+        self.cfg.cfg["morph_target_agents"] = target_agents
+        self.cfg.cfg["morph_optim_agents"] = active_agents
+
+        if active_agents != self._last_morph_optim_agents:
+            self.logger.info(
+                "Morph optimization active agents at epoch %s: %s "
+                "(target=%s, start_epoch=%s)"
+                % (epoch, active_agents, target_agents, start_epoch)
+            )
+            self._last_morph_optim_agents = self._copy_agent_ids(active_agents)
 
     def optimize(self, epoch):
         raise NotImplementedError

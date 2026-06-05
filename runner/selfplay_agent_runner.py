@@ -121,6 +121,7 @@ class SPAgentRunner(BaseRunner):
     
     def optimize(self, epoch):
         self.epoch = epoch
+        self.apply_morph_schedule(epoch)
         # set annealing params
         for i in self.learners:
             self.learners[i].pre_epoch_update(epoch)

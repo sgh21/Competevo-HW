@@ -141,3 +141,38 @@ alpha = max((termination_epoch - epoch) / termination_epoch, 0)
 目标入口可以支持若干候选名、cfg、agent0/agent1 checkpoint 路径；自动跑 all-vs-all 和 side-swap；输出 `match_matrix.json`、`leaderboard.csv`、简洁 HTML/Markdown 表格；指标包括 win/draw/loss、win rate、reward mean/std、episode length、Elo/积分；可选为指定 pair 生成 `rgb_array` 视频。
 
 这样后续训练改动，例如调 `delta`、加 league sampling、改 reward curriculum，都能通过同一套评测协议比较，结论会比单看 TensorBoard 曲线稳很多。
+
+## Q11：先训练控制动作，epoch 300 后再开启形态变化是否可行？
+
+这个思路可行，而且很值得作为下一组训练 ablation。核心动机是降低联合优化难度：早期先让智能体在固定形态下学会站稳、接近对手、推挤和避免出界；等控制策略有基本能力后，再开启形态分支，让形态优化服务于已有的对抗技能。
+
+当前代码结构也支持这种策略。`DevPolicy.morph_optim_enabled()` 会根据 `cfg.morph_optim_agents` 判断当前 agent 是否允许输出真实 scale action；不允许时，scale action 会被替换为 `fixed_morph_scale`。`DevLearner.filter_execution_samples()` 在形态优化未启用时会过滤掉 `attribute_transform` 样本，只训练执行阶段控制动作。因此可以通过 epoch 调度动态修改 `morph_optim_agents`：前 300 epoch 设为空列表，300 epoch 后恢复为目标设置，例如 `[0, 1]` 或 `[0]`。
+
+预期收益：
+
+- 降低早期非平稳性。对抗训练本身已经因为对手变化而非平稳，如果形态和动作同时漂移，学习问题会更难。
+- 让控制策略先形成基本技能。形态优化后期可以围绕已有控制能力做局部增强，而不是从随机身体和随机控制同时摸索。
+- 减少早期形态塌缩或奇异形态。固定形态阶段能避免 scale 分支过早利用 reward shaping 找到不稳定捷径。
+- 积分赛上可能提升强强对抗表现，尤其是当前前三名差距不大时，更稳定的控制基础可能带来更好的 head-to-head 得分。
+
+主要风险：
+
+- epoch 300 突然放开形态可能造成分布突变。scale 分支前 300 epoch 基本没被训练，突然启用后可能输出较随机的形态，导致已学会的控制策略失效。
+- 控制策略可能过拟合固定形态。若固定阶段太长，后期控制策略适应新形态的速度可能变慢。
+- 形态分支学习时间减少。1000 epoch 总训练中 300 epoch 不训形态，若形态本身需要很长探索，可能放开太晚。
+
+更稳妥的版本是“延迟 + ramp”：
+
+```text
+epoch 0-300: 固定形态，只训练 control
+epoch 300-500: 逐步放开形态变化幅度或形态采样概率
+epoch 500-1000: 完全联合优化 control + morphology
+```
+
+推荐同时做 3 组 ablation：
+
+- `morph_start_epoch=100`：较早放开，检验是否比直接联合优化更稳；
+- `morph_start_epoch=300`：主方案；
+- `morph_start_epoch=300, morph_ramp_epochs=200`：推荐方案，避免 epoch 300 突变。
+
+评估仍使用当前 league tournament，不只看训练 reward。重点比较最终积分、强者池大赛积分、平均 reward、reward margin、胜率、平局率，以及形态变化前后 TensorBoard 曲线是否出现明显断崖。

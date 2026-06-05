@@ -1,0 +1,5 @@
+[2026-06-03 19:47:02] PARALLEL FORMAL TRAINING START run_set=formal-parallel-20260603_1945 max_parallel=2 threads=12
+[2026-06-03 19:47:02] START formal-sp-fixed mode=selfplay morph=none threads=12
+[2026-06-03 19:47:02] formal-sp-fixed epoch=22 total_min=7.27 reward=1304.50. win=0.32. latest_ckpt=epoch_0022.p run_dir=tmp/robo-sumo-devants-v0/formal-sp-fixed-20260603_193715
+[2026-06-03 19:47:02] START formal-tp-fixed mode=two_player morph=none threads=12
+[2026-06-03 19:47:05] formal-tp-fixed epoch=0 total_min=? reward0=? reward1=? win0=? win1=? latest_ckpt=epoch_0000.p run_dir=tmp/robo-sumo-devants-v0/formal-tp-fixed-20260603_194704
