@@ -1,0 +1,312 @@
+%==============================================================================
+%== 具身智能课程 · 大作业 Poster ==============================================
+%==============================================================================
+%
+% 编译方式：必须使用 XeLaTeX（不要用 pdfLaTeX）。
+% 本版本按课程交付要求改为 A4 竖版，同时保留模板的蓝色标题栏、
+% 三栏正文、渐变分区线和中文字体风格。
+%
+\documentclass[final]{beamer}
+\usepackage[orientation=portrait,size=a4,scale=0.78]{beamerposter}
+
+\geometry{
+  hmargin=1.0cm,
+  vmargin=0.7cm,
+}
+
+\usepackage[fontset=fandol]{ctex}
+\linespread{1.08}
+
+\usetheme{sharelatex}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{positioning,arrows.meta}
+
+% A4 下压缩模板间距；配色和视觉元素仍沿用 sharelatex 主题。
+\setlength{\columnsep}{0.55cm}
+\setlength{\columnseprule}{0pt}
+\setbeamersize{text margin left=0.1cm,text margin right=0.1cm}
+
+\definecolor{accentorange}{RGB}{212,115,0}
+\definecolor{accentgreen}{RGB}{25,135,84}
+\definecolor{accentpurple}{RGB}{123,97,255}
+\definecolor{softline}{RGB}{217,215,208}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\agent}[1]{{\ttfamily\scriptsize #1}}
+\newcommand{\tightv}{\vspace{-0.55ex}}
+
+\setbeamertemplate{headline}{
+  \leavevmode
+  \begin{columns}[T,totalwidth=\paperwidth]
+    \begin{column}{0.13\paperwidth}
+      \vskip0.45cm
+      \centering\includegraphics[width=0.48\linewidth]{logo}
+    \end{column}
+    \begin{column}{0.74\paperwidth}
+      \vskip0.28cm
+      \centering
+      {\color{color2}\textbf{\Large\inserttitle}}\\[0.35ex]
+      {\color{color0}\small\insertauthor}\\[-0.15ex]
+      {\color{color0}\scriptsize\insertinstitute}
+      \vskip0.22cm
+    \end{column}
+    \begin{column}{0.13\paperwidth}
+      \vskip0.45cm
+      \centering\includegraphics[width=0.48\linewidth]{logo}
+    \end{column}
+  \end{columns}
+}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+  \begin{center}
+    \begin{minipage}{0.95\textwidth}
+      \begin{tikzpicture}[remember picture,overlay]
+        \shade[inner color=color2,outer color=color3] (0,0) rectangle (\textwidth,0.035cm);
+      \end{tikzpicture}
+      \vskip0.18cm
+      \centering{\color{color0}\scriptsize\textbf{\insertshorttitle}}
+    \end{minipage}
+  \end{center}
+  \vskip0.08cm
+}
+
+\title
+[具身智能课程 ~$\cdot$~ 多智能体对抗进化 ~$\cdot$~ 2026 年春]
+{多智能体对抗中的形态与策略共同进化}
+
+\author{作者姓名（学号）待补充}
+\institute
+[清华大学]
+{
+指导教师：刘华平\\[-0.2ex]
+具身智能课程大作业，清华大学
+}
+\date{2026 年春}
+
+\begin{document}
+\begin{frame}[t]
+\begin{multicols}{3}
+\raggedcolumns
+
+%==============================================================================
+\section{问题背景与动机}
+
+多智能体机器人对抗不仅考验控制策略，也考验身体形态是否适合冲撞、防守和突破。
+CompetEvo 将形态参数与控制策略共同优化，使智能体可以在竞争中“改造身体并学习打法”。
+
+\structure{核心问题：} 在相同 MuJoCo robo-sumo 环境中，比较自进化/对抗进化与形态是否可优化对最终对抗能力的影响。
+
+\begin{itemize}
+  \item 固定形态只学习控制，容易受初始身体结构限制。
+  \item 形态可优化时，动作同时包含形态向量与控制器动作。
+  \item 对抗训练引入双策略非平稳性，可能带来更广探索，也可能产生强弱失衡。
+\end{itemize}
+
+\begin{table}
+\centering
+\scriptsize
+\caption{四个概念在实验中的操作化定义。}
+\begin{tabularx}{\columnwidth}{@{}lY@{}}
+\toprule
+概念 & 实验含义\\
+\midrule
+自进化 & Agent 0/1 共享策略；对手由 $\delta$-Uniform 从历史 Agent 0 采样。\\
+对抗进化 & 两个智能体使用独立策略网络和不同权重。\\
+形态可优化 & 每个 epoch/episode 初始阶段采样形态，形态与控制共同更新。\\
+形态不优化 & 形态固定；loss 中 mask 形态向量，只更新控制策略。\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%==============================================================================
+\section{方法}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.42cm,
+  box/.style={draw=color2,rounded corners=1pt,thick,align=center,inner sep=2.2pt,font=\scriptsize,fill=color3},
+  sbox/.style={draw=color1,rounded corners=1pt,align=center,inner sep=2.2pt,font=\scriptsize,fill=color3},
+  arr/.style={-{Latex[length=1.5mm]},thick,color1}
+]
+\node[box] (obs) {观测\\本体状态 $s$\\对手位置 $o$\\形态编码 $m$};
+\node[box,right=0.55cm of obs] (mlp) {MLP Policy\\PPO 更新};
+\node[sbox,above right=0.26cm and 0.42cm of mlp] (morph) {形态子策略\\输出 $m$};
+\node[sbox,below right=0.26cm and 0.42cm of mlp] (ctrl) {控制子策略\\输出 $a$};
+\node[box,right=0.60cm of mlp] (arena) {MuJoCo\\Robo-sumo};
+\draw[arr] (obs) -- (mlp);
+\draw[arr] (mlp) -- (morph);
+\draw[arr] (mlp) -- (ctrl);
+\draw[arr] (morph) -- (arena);
+\draw[arr] (ctrl) -- (arena);
+\draw[arr] (arena.south) .. controls +(0,-0.55) and +(0,-0.55) .. node[below,font=\tiny] {reward / trajectory} (obs.south);
+\end{tikzpicture}
+\end{center}
+\tightv
+
+\textbf{网络与训练框架。} 学习算法为 PPO，actor/critic 均为 MLP。训练分两阶段：
+\begin{enumerate}
+  \item Run-to-Goal：学习面向对手移动和基础接触能力；
+  \item Robo-sumo：在相同观测/动作空间下更换奖励，学习推出、压制和防守。
+\end{enumerate}
+
+\textbf{优化目标。} 对每个智能体 $i$，策略 $\pi_i(\theta,\phi)$ 同时生成形态 $m_i$ 与控制动作 $a_i$，最大化折扣回报：
+\[
+J_i=\mathbb{E}_{\pi_i,M_i}\left[\sum_{t=0}^{T}\gamma^t R_i(s_t,a_t,m_i)\right],
+\]
+形态不优化组在 PPO loss 中屏蔽 $m_i$ 对应梯度。
+
+%==============================================================================
+\section{实验设计}
+
+\begin{table}
+\centering
+\scriptsize
+\caption{6 组训练产生 10 个参赛策略。}
+\begin{tabularx}{\columnwidth}{@{}lY@{}}
+\toprule
+训练组 & 参赛策略\\
+\midrule
+自进化 + 固定形态 & \agent{sp\_fixed}\\
+对抗进化 + 固定形态 & \agent{tp\_fixed\_a0}, \agent{tp\_fixed\_a1}\\
+自进化 + 形态优化 & \agent{sp\_morph}\\
+对抗进化 + 形态优化 & \agent{tp\_morph\_a0}, \agent{tp\_morph\_a1}\\
+一方形态优化 & \agent{tp\_mixed\_a0\_morph}, \agent{tp\_mixed\_a1\_fixed}\\
+200 代后形态优化 & \agent{tp\_morph\_delay200\_a0}, \agent{tp\_morph\_delay200\_a1}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{itemize}
+  \item \textbf{积分赛：}10 agent 全循环；45 unordered pairs；双回合换 slot；每 fixture 50 局，共 4500 局。
+  \item \textbf{积分：}胜 $+4$，平 $+1$，负 $0$。
+  \item \textbf{综合分：}积分赛 50\%，Reward 20\%，对原积分前三的大赛积分 30\%。
+  \item \textbf{数据来源：}\agent{formal\_best10\_full\_ep50\_allpairs\_color\_video\_seed901/report.html}。
+\end{itemize}
+
+%==============================================================================
+\section{结果：排行榜}
+
+\begin{table}
+\centering
+\scriptsize
+\caption{积分榜 Top 10：前三均为形态优化相关策略。}
+\begin{tabular}{@{}r l r r r@{}}
+\toprule
+Rank & Agent & Points & Win & $\Delta R$\\
+\midrule
+1 & \agent{tp\_mixed\_a0\_morph} & 1949 & 43.9\% & 1214.8\\
+2 & \agent{tp\_morph\_a0} & 1885 & 43.1\% & 1212.0\\
+3 & \agent{sp\_morph} & 1841 & 43.7\% & 972.5\\
+4 & \agent{tp\_morph\_a1} & 1767 & 36.9\% & 609.7\\
+5 & \agent{sp\_fixed} & 1585 & 34.6\% & 375.6\\
+6 & \agent{tp\_mixed\_a1\_fixed} & 1532 & 30.0\% & 302.7\\
+7 & \agent{tp\_fixed\_a0} & 1521 & 34.7\% & 85.9\\
+8 & \agent{tp\_morph\_delay200\_a1} & 1080 & 23.0\% & -1222.9\\
+9 & \agent{tp\_morph\_delay200\_a0} & 1065 & 23.3\% & -1116.9\\
+10 & \agent{tp\_fixed\_a1} & 663 & 14.0\% & -2433.4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\scriptsize
+\caption{综合榜：Reward 与强者池对局使 \agent{tp\_morph\_a0} 升至第一。}
+\begin{tabular}{@{}r l r r@{}}
+\toprule
+Rank & Agent & Score & Major P/Ep\\
+\midrule
+1 & \agent{tp\_morph\_a0} & 98.36 & 1.740\\
+2 & \agent{tp\_mixed\_a0\_morph} & 97.97 & 1.680\\
+3 & \agent{sp\_morph} & 92.70 & 1.480\\
+4 & \agent{tp\_morph\_a1} & 83.03 & 1.437\\
+5 & \agent{sp\_fixed} & 76.91 & 1.247\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\structure{组级对比：}
+\begin{itemize}
+  \item \agent{sp\_morph} 比 \agent{sp\_fixed} 积分高 16.4\%。
+  \item \agent{tp\_morph} 组均分 1826，显著高于 \agent{tp\_fixed} 组均分 1092。
+  \item 仅一方形态优化时，上限很高但同组另一方下滑，说明对手势均力敌更利于双方共同强化。
+\end{itemize}
+
+%==============================================================================
+\section{训练曲线诊断}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=\columnwidth,
+  height=4.9cm,
+  xmin=0,xmax=1000,
+  ymin=0,ymax=0.86,
+  xlabel={epoch},
+  ylabel={eval win rate},
+  ticklabel style={font=\tiny},
+  label style={font=\tiny},
+  legend style={font=\tiny,draw=none,fill=none,at={(0.50,-0.22)},anchor=north,legend columns=2},
+  grid=major,
+  grid style={draw=softline},
+]
+\addplot[color=color2,thick,mark=none] coordinates {(0,0.286) (100,0.554) (201,0.634) (401,0.715) (598,0.584) (798,0.641) (999,0.550)};
+\addlegendentry{SP fixed}
+\addplot[color=accentgreen,thick,mark=none] coordinates {(0,0.354) (100,0.509) (201,0.609) (401,0.571) (598,0.670) (798,0.749) (999,0.741)};
+\addlegendentry{SP morph}
+\addplot[color=accentorange,thick,mark=none] coordinates {(0,0.349) (100,0.567) (201,0.652) (401,0.368) (598,0.277) (798,0.154) (999,0.097)};
+\addlegendentry{TP fixed}
+\addplot[color=color1,thick,mark=none] coordinates {(0,0.403) (100,0.493) (201,0.474) (401,0.404) (598,0.276) (798,0.240) (999,0.264)};
+\addlegendentry{TP morph}
+\addplot[color=accentpurple,thick,mark=none] coordinates {(0,0.327) (100,0.507) (201,0.490) (401,0.474) (598,0.370) (798,0.351) (999,0.427)};
+\addlegendentry{TP mixed}
+\addplot[color=black,densely dashed,mark=none] coordinates {(0,0.423) (100,0.629) (201,0.526) (401,0.388) (598,0.329) (798,0.160) (999,0.220)};
+\addlegendentry{delay200}
+\draw[densely dashed,color=accentorange] (axis cs:200,0) -- (axis cs:200,0.86);
+\node[font=\tiny,color=accentorange,anchor=west] at (axis cs:210,0.81) {morph start};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+  \item 对抗训练曲线常出现先升后降：独立双策略造成非平稳对手，单轮训练胜率不等价于最终固定池能力。
+  \item 自进化曲线更平滑；形态优化后，固定池积分与 reward margin 同时上升。
+  \item delay200 在第 200 代后启用形态，但最终排名靠后，说明形态--控制早期协同很重要。
+\end{itemize}
+
+%==============================================================================
+\section{结论}
+
+\begin{enumerate}
+  \item \textbf{形态优化是最关键因素。} Top 4 均为 morph 相关策略，且 fixed 组整体落后。
+  \item \textbf{对抗进化提高上限，但需要处理双边失衡。} 独立策略探索更广，强者池表现最好的是 \agent{tp\_morph\_a0}；但固定形态对抗组出现 agent0/agent1 明显不平衡。
+  \item \textbf{势均力敌的共同形态优化更稳。} 双方均可优化形态时，两名 agent 同时进入前四；只优化一方会强化主动方、削弱固定方。
+\end{enumerate}
+
+\structure{局限：} 本轮统计基于一个正式 seed 与 best checkpoint；训练曲线面对的对手分布不同，不能直接当作跨策略泛化指标。
+
+\subsection{参考文献}
+\begin{thebibliography}{9}
+\bibitem{huang2024competevo}
+K. Huang, D. Guo, X. Zhang, X. Ji, H. Liu.
+\newblock CompetEvo: Towards Morphological Evolution from Competition.
+\newblock arXiv:2405.18300, 2024.
+\bibitem{bansal2018competition}
+T. Bansal, J. Pachocki, S. Sidor, I. Sutskever, I. Mordatch.
+\newblock Emergent Complexity via Multi-Agent Competition.
+\newblock ICLR, 2018.
+\bibitem{yuan2022transform2act}
+Y. Yuan, Y. Song, Z. Luo, W. Sun, K. Kitani.
+\newblock Transform2Act: Learning a Transform-and-Control Policy for Efficient Agent Design.
+\newblock ICLR, 2022.
+\end{thebibliography}
+
+\end{multicols}
+\end{frame}
+\end{document}

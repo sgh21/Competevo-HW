@@ -37,16 +37,18 @@ REWARD_KEYS = [
     "push_opp_reward",
 ]
 
-
-def str2bool(value):
-    if isinstance(value, bool):
-        return value
-    value = str(value).lower()
-    if value in ("yes", "true", "t", "1", "y"):
-        return True
-    if value in ("no", "false", "f", "0", "n"):
-        return False
-    raise argparse.ArgumentTypeError("Boolean value expected.")
+VIDEO_AGENT_COLORS = [
+    {
+        "name": "cyan",
+        "rgba": (0.0, 0.78, 1.0, 1.0),
+        "accent": (0, 200, 255, 255),
+    },
+    {
+        "name": "orange",
+        "rgba": (1.0, 0.55, 0.05, 1.0),
+        "accent": (255, 150, 0, 255),
+    },
+]
 
 
 def build_sampler(cfg, dtype, device, agent):
@@ -82,7 +84,7 @@ def require_file(path, desc):
 
 
 def agent_entry(agent_id, display_name, training_line, training_mode, source_role,
-                run_dir, checkpoint_file, morph_enabled):
+                run_dir, checkpoint_file, morph_enabled, notes=""):
     return {
         "agent_id": agent_id,
         "display_name": display_name,
@@ -95,10 +97,13 @@ def agent_entry(agent_id, display_name, training_line, training_mode, source_rol
         "morph_enabled": bool(morph_enabled),
         "fixed_morph_scale": 0.0,
         "train_cfg": os.path.join(run_dir, "config.yml"),
+        "notes": notes,
     }
 
 
-def discover_formal_best_agents(root="tmp/robo-sumo-devants-v0"):
+def discover_formal_best_agents(root="tmp/robo-sumo-devants-v0",
+                                include_delayed_morph=False,
+                                delayed_root=None):
     patterns = {
         "sp_fixed": [
             os.path.join(root, "formal-parallel-*-sp-fixed-*"),
@@ -121,6 +126,14 @@ def discover_formal_best_agents(root="tmp/robo-sumo-devants-v0"):
             os.path.join(root, "formal-tp-mixed-a0morph-*"),
         ],
     }
+    if include_delayed_morph:
+        delayed_root = delayed_root or root
+        patterns["tp_morph_delay200"] = [
+            os.path.join(delayed_root, "delayed-morph-start200-tp-morph-*"),
+            os.path.join(delayed_root, "formal-*-delayed-morph-start200-tp-morph-*"),
+            os.path.join(delayed_root, "*delayed*morph*start200*tp*morph*"),
+        ]
+
     run_dirs = {}
     for key, pats in patterns.items():
         for pattern in pats:
@@ -136,6 +149,7 @@ def discover_formal_best_agents(root="tmp/robo-sumo-devants-v0"):
     sp_morph = run_dirs["sp_morph"]
     tp_morph = run_dirs["tp_morph"]
     tp_mixed = run_dirs["tp_mixed"]
+    tp_morph_delay200 = run_dirs.get("tp_morph_delay200")
 
     agents = [
         agent_entry(
@@ -219,6 +233,37 @@ def discover_formal_best_agents(root="tmp/robo-sumo-devants-v0"):
             False,
         ),
     ]
+    if include_delayed_morph:
+        agents.extend([
+            agent_entry(
+                "tp_morph_delay200_a0",
+                "Two-player delayed morphology start200 agent0",
+                "tp-morph-delay200",
+                "two_player",
+                "agent_0",
+                tp_morph_delay200,
+                require_file(
+                    os.path.join(tp_morph_delay200, "models", "agent_0", "best.p"),
+                    "tp_morph_delay200_a0 best checkpoint",
+                ),
+                True,
+                notes="morph actions are enabled after epoch 200 during training",
+            ),
+            agent_entry(
+                "tp_morph_delay200_a1",
+                "Two-player delayed morphology start200 agent1",
+                "tp-morph-delay200",
+                "two_player",
+                "agent_1",
+                tp_morph_delay200,
+                require_file(
+                    os.path.join(tp_morph_delay200, "models", "agent_1", "best.p"),
+                    "tp_morph_delay200_a1 best checkpoint",
+                ),
+                True,
+                notes="morph actions are enabled after epoch 200 during training",
+            ),
+        ])
     return agents
 
 
@@ -332,6 +377,99 @@ def determine_winner(infos):
     return None
 
 
+def video_agent_color_assignments(fixture):
+    assignments = []
+    for slot, agent in enumerate(fixture["slot_agents"]):
+        color = VIDEO_AGENT_COLORS[slot]
+        assignments.append({
+            "slot": slot,
+            "agent_id": agent["agent_id"],
+            "color": color["name"],
+            "rgba": list(color["rgba"]),
+        })
+    return assignments
+
+
+def apply_video_agent_colors(env, fixture):
+    if not hasattr(env, "env_scene"):
+        return video_agent_color_assignments(fixture)
+
+    geom_names = env.env_scene.geom_names
+    geom_rgba = env.env_scene.model.geom_rgba
+    assignments = video_agent_color_assignments(fixture)
+    for assignment in assignments:
+        scope = "agent%d" % assignment["slot"]
+        rgba = np.asarray(assignment["rgba"], dtype=np.float64)
+        geom_count = 0
+        for geom_id, geom_name in enumerate(geom_names):
+            if geom_name == scope or geom_name.startswith(scope + "/"):
+                geom_rgba[geom_id] = rgba
+                geom_count += 1
+        assignment["geom_count"] = geom_count
+    return assignments
+
+
+def video_agent_label(assignment):
+    return "%s: %s" % (assignment["color"], assignment["agent_id"])
+
+
+def load_overlay_font(frame_width):
+    from PIL import ImageFont
+
+    size = max(14, min(26, frame_width // 46))
+    for font_path in (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+    ):
+        if os.path.exists(font_path):
+            return ImageFont.truetype(font_path, size=size)
+    return ImageFont.load_default()
+
+
+def draw_text_row(draw, xy, text, font, accent):
+    x, y = xy
+    try:
+        bbox = draw.textbbox((x, y), text, font=font)
+        width = bbox[2] - bbox[0]
+        height = bbox[3] - bbox[1]
+    except AttributeError:
+        width, height = draw.textsize(text, font=font)
+    pad_x = 8
+    pad_y = 5
+    draw.rectangle(
+        [x, y, x + width + pad_x * 2 + 8, y + height + pad_y * 2],
+        fill=(0, 0, 0, 170),
+    )
+    draw.rectangle(
+        [x, y, x + 6, y + height + pad_y * 2],
+        fill=accent,
+    )
+    draw.text((x + pad_x + 8, y + pad_y), text, font=font, fill=(255, 255, 255, 255))
+    return y + height + pad_y * 2 + 5
+
+
+def annotate_frame(frame, fixture):
+    try:
+        from PIL import Image, ImageDraw
+    except ImportError:
+        return frame
+
+    image = Image.fromarray(frame.astype(np.uint8))
+    draw = ImageDraw.Draw(image, "RGBA")
+    font = load_overlay_font(image.width)
+    y = 12
+    for assignment in video_agent_color_assignments(fixture):
+        color = VIDEO_AGENT_COLORS[assignment["slot"]]
+        y = draw_text_row(
+            draw,
+            (12, y),
+            video_agent_label(assignment),
+            font,
+            color["accent"],
+        )
+    return np.asarray(image)
+
+
 def capture_frame(env):
     if not hasattr(env, "env_scene"):
         return None
@@ -343,7 +481,7 @@ def capture_frame(env):
 
 def evaluate_fixture(fixture, base_cfg, episodes, seed, mean_action=True,
                      record_video=False, video_path=None, video_episodes=1,
-                     video_fps=30, video_stride=2):
+                     video_fps=30, video_stride=2, video_overlay=True):
     dtype = torch.float64
     torch.set_default_dtype(dtype)
     device = torch.device("cpu")
@@ -356,6 +494,7 @@ def evaluate_fixture(fixture, base_cfg, episodes, seed, mean_action=True,
 
     episode_records = []
     video_meta = None
+    video_color_assignments = []
     writer = None
     frames_written = 0
     if record_video:
@@ -373,6 +512,7 @@ def evaluate_fixture(fixture, base_cfg, episodes, seed, mean_action=True,
             truncated_flag = False
             winner = None
             length = 0
+            colors_applied = False
 
             for t in range(10000):
                 actions = select_actions(states, samplers, mean_action, device)
@@ -387,9 +527,14 @@ def evaluate_fixture(fixture, base_cfg, episodes, seed, mean_action=True,
                     episode_reward[i] += float(reward)
 
                 if record_video and ep < video_episodes and getattr(env, "stage", None) == "execution":
+                    if not colors_applied:
+                        video_color_assignments = apply_video_agent_colors(env, fixture)
+                        colors_applied = True
                     if t % max(video_stride, 1) == 0:
                         frame = capture_frame(env)
                         if frame is not None:
+                            if video_overlay:
+                                frame = annotate_frame(frame, fixture)
                             writer.append_data(frame)
                             frames_written += 1
 
@@ -428,6 +573,14 @@ def evaluate_fixture(fixture, base_cfg, episodes, seed, mean_action=True,
                 "fps": video_fps,
                 "stride": video_stride,
                 "frames_written": frames_written,
+                "overlay": bool(video_overlay),
+                "body_colors": video_color_assignments or video_agent_color_assignments(fixture),
+                "labels": [
+                    video_agent_label(assignment)
+                    for assignment in (
+                        video_color_assignments or video_agent_color_assignments(fixture)
+                    )
+                ],
             }
         env.close()
 
@@ -534,7 +687,7 @@ def empty_stats(agent):
     }
 
 
-def aggregate_results(agents, fixture_results):
+def aggregate_results(agents, fixture_results, win_points=4, draw_points=1, loss_points=0):
     stats = {agent["agent_id"]: empty_stats(agent) for agent in agents}
     matrix = {
         a["agent_id"]: {
@@ -576,16 +729,17 @@ def aggregate_results(agents, fixture_results):
 
                 if winner is None:
                     st["draws"] += 1
-                    st["points"] += 1
+                    st["points"] += draw_points
                     cell["draws"] += 1
                 elif winner == slot:
                     st["wins"] += 1
-                    st["points"] += 3
+                    st["points"] += win_points
                     st["slot_wins"][slot_key] += 1
                     st["side_wins"][side] += 1
                     cell["wins"] += 1
                 else:
                     st["losses"] += 1
+                    st["points"] += loss_points
                     cell["losses"] += 1
 
     leaderboard = []
@@ -649,6 +803,91 @@ def aggregate_results(agents, fixture_results):
             cell["avg_reward_margin"] = cell["reward_margin_sum"] / n if n else 0.0
 
     return leaderboard, matrix
+
+
+def summarize_pair_results(fixture_results, win_points=4, draw_points=1, loss_points=0):
+    pair_stats = {}
+    for fixture in fixture_results:
+        pair_id = fixture["pair_id"]
+        if pair_id not in pair_stats:
+            agent_a_id, agent_b_id = pair_id.split("__vs__")
+            pair_stats[pair_id] = {
+                "pair_id": pair_id,
+                "agent_a_id": agent_a_id,
+                "agent_b_id": agent_b_id,
+                "episodes": 0,
+                "wins": {agent_a_id: 0, agent_b_id: 0},
+                "draws": 0,
+                "losses": {agent_a_id: 0, agent_b_id: 0},
+                "points": {agent_a_id: 0, agent_b_id: 0},
+                "rewards": {agent_a_id: [], agent_b_id: []},
+                "reward_margin_a": [],
+                "lengths": [],
+                "fixture_ids": [],
+                "video_paths": [],
+            }
+        stats = pair_stats[pair_id]
+        stats["fixture_ids"].append(fixture["fixture_id"])
+        if fixture.get("video"):
+            stats["video_paths"].append(fixture["video"]["path"])
+
+        slot_ids = [fixture["slot0_agent_id"], fixture["slot1_agent_id"]]
+        agent_a_id = stats["agent_a_id"]
+        agent_b_id = stats["agent_b_id"]
+        for ep in fixture["episodes"]:
+            stats["episodes"] += 1
+            rewards_by_agent = {
+                slot_ids[0]: float(ep["rewards"][0]),
+                slot_ids[1]: float(ep["rewards"][1]),
+            }
+            stats["rewards"][agent_a_id].append(rewards_by_agent[agent_a_id])
+            stats["rewards"][agent_b_id].append(rewards_by_agent[agent_b_id])
+            stats["reward_margin_a"].append(
+                rewards_by_agent[agent_a_id] - rewards_by_agent[agent_b_id]
+            )
+            stats["lengths"].append(int(ep["length"]))
+
+            winner_slot = ep["winner_slot"]
+            if winner_slot is None:
+                stats["draws"] += 1
+                stats["points"][agent_a_id] += draw_points
+                stats["points"][agent_b_id] += draw_points
+            else:
+                winner_id = slot_ids[winner_slot]
+                loser_id = slot_ids[1 - winner_slot]
+                stats["wins"][winner_id] += 1
+                stats["losses"][loser_id] += 1
+                stats["points"][winner_id] += win_points
+                stats["points"][loser_id] += loss_points
+
+    rows = []
+    for pair_id, stats in sorted(pair_stats.items()):
+        agent_a_id = stats["agent_a_id"]
+        agent_b_id = stats["agent_b_id"]
+        n = stats["episodes"]
+        rows.append({
+            "pair_id": pair_id,
+            "agent_a_id": agent_a_id,
+            "agent_b_id": agent_b_id,
+            "episodes": n,
+            "agent_a_wins": stats["wins"][agent_a_id],
+            "agent_b_wins": stats["wins"][agent_b_id],
+            "draws": stats["draws"],
+            "agent_a_losses": stats["losses"][agent_a_id],
+            "agent_b_losses": stats["losses"][agent_b_id],
+            "agent_a_points": stats["points"][agent_a_id],
+            "agent_b_points": stats["points"][agent_b_id],
+            "agent_a_win_rate": stats["wins"][agent_a_id] / n if n else 0.0,
+            "agent_b_win_rate": stats["wins"][agent_b_id] / n if n else 0.0,
+            "draw_rate": stats["draws"] / n if n else 0.0,
+            "agent_a_avg_reward": safe_mean(stats["rewards"][agent_a_id]),
+            "agent_b_avg_reward": safe_mean(stats["rewards"][agent_b_id]),
+            "agent_a_avg_reward_margin": safe_mean(stats["reward_margin_a"]),
+            "avg_episode_length": safe_mean(stats["lengths"]),
+            "fixture_ids": stats["fixture_ids"],
+            "video_paths": stats["video_paths"],
+        })
+    return rows
 
 
 def write_leaderboard_csv(path, leaderboard):
@@ -728,6 +967,39 @@ def write_fixtures_csv(path, fixture_results):
             writer.writerow(row)
 
 
+def write_pairs_csv(path, pair_results):
+    fieldnames = [
+        "pair_id",
+        "agent_a_id",
+        "agent_b_id",
+        "episodes",
+        "agent_a_wins",
+        "agent_b_wins",
+        "draws",
+        "agent_a_losses",
+        "agent_b_losses",
+        "agent_a_points",
+        "agent_b_points",
+        "agent_a_win_rate",
+        "agent_b_win_rate",
+        "draw_rate",
+        "agent_a_avg_reward",
+        "agent_b_avg_reward",
+        "agent_a_avg_reward_margin",
+        "avg_episode_length",
+        "fixture_ids",
+        "video_paths",
+    ]
+    with open(path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in pair_results:
+            out = dict(row)
+            out["fixture_ids"] = "|".join(row.get("fixture_ids", []))
+            out["video_paths"] = "|".join(row.get("video_paths", []))
+            writer.writerow({key: out.get(key, "") for key in fieldnames})
+
+
 def video_filename(fixture, seed):
     slot0 = fixture["slot_agents"][0]["agent_id"]
     slot1 = fixture["slot_agents"][1]["agent_id"]
@@ -767,7 +1039,7 @@ def json_default(obj):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--preset", default="formal_best", choices=["formal_best"])
+    parser.add_argument("--preset", default="formal_best", choices=["formal_best", "formal_best10"])
     parser.add_argument("--base_cfg", default="config/repro/unified-devant-training.yaml")
     parser.add_argument("--out_dir", required=True)
     parser.add_argument("--episodes", type=int, default=100)
@@ -779,8 +1051,13 @@ def parse_args():
     parser.add_argument("--video_episodes", type=int, default=1)
     parser.add_argument("--video_fps", type=int, default=30)
     parser.add_argument("--video_stride", type=int, default=2)
+    parser.add_argument("--no_video_overlay", action="store_true")
     parser.add_argument("--stochastic", action="store_true")
     parser.add_argument("--formal_root", default="tmp/robo-sumo-devants-v0")
+    parser.add_argument("--delayed_root", default=None)
+    parser.add_argument("--win_points", type=float, default=4.0)
+    parser.add_argument("--draw_points", type=float, default=1.0)
+    parser.add_argument("--loss_points", type=float, default=0.0)
     return parser.parse_args()
 
 
@@ -789,7 +1066,12 @@ def main():
     os.makedirs(args.out_dir, exist_ok=True)
     os.makedirs(os.path.join(args.out_dir, "videos"), exist_ok=True)
 
-    agents = discover_formal_best_agents(args.formal_root)
+    include_delayed_morph = args.preset == "formal_best10"
+    agents = discover_formal_best_agents(
+        args.formal_root,
+        include_delayed_morph=include_delayed_morph,
+        delayed_root=args.delayed_root,
+    )
     agent_by_id = {agent["agent_id"]: agent for agent in agents}
     fixtures = build_fixtures(agents, smoke=args.smoke, smoke_pairs=args.smoke_pairs)
 
@@ -838,6 +1120,7 @@ def main():
             video_episodes=args.video_episodes,
             video_fps=args.video_fps,
             video_stride=args.video_stride,
+            video_overlay=not args.no_video_overlay,
         )
         fixture_results.append(result)
         if result.get("video"):
@@ -872,12 +1155,25 @@ def main():
             video_episodes=args.video_episodes,
             video_fps=args.video_fps,
             video_stride=args.video_stride,
+            video_overlay=not args.no_video_overlay,
         )
         result["video_only"] = True
         video_exhibitions.append(result)
         video_records.append(add_video_context(result["video"], result))
 
-    leaderboard, match_matrix = aggregate_results(agents, fixture_results)
+    leaderboard, match_matrix = aggregate_results(
+        agents,
+        fixture_results,
+        win_points=args.win_points,
+        draw_points=args.draw_points,
+        loss_points=args.loss_points,
+    )
+    pair_results = summarize_pair_results(
+        fixture_results,
+        win_points=args.win_points,
+        draw_points=args.draw_points,
+        loss_points=args.loss_points,
+    )
 
     result = {
         "settings": {
@@ -894,9 +1190,16 @@ def main():
             "video_episodes": args.video_episodes,
             "video_fps": args.video_fps,
             "video_stride": args.video_stride,
+            "video_overlay": not args.no_video_overlay,
+            "win_points": args.win_points,
+            "draw_points": args.draw_points,
+            "loss_points": args.loss_points,
+            "formal_root": args.formal_root,
+            "delayed_root": args.delayed_root,
         },
         "agents": agents,
         "fixtures": fixture_results,
+        "pairs": pair_results,
         "video_exhibitions": video_exhibitions,
         "leaderboard": leaderboard,
         "match_matrix": match_matrix,
@@ -909,6 +1212,7 @@ def main():
 
     write_leaderboard_csv(os.path.join(args.out_dir, "leaderboard.csv"), leaderboard)
     write_fixtures_csv(os.path.join(args.out_dir, "fixtures.csv"), fixture_results)
+    write_pairs_csv(os.path.join(args.out_dir, "pairs.csv"), pair_results)
     print("Wrote %s" % results_path)
 
 

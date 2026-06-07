@@ -1,0 +1,6062 @@
+/home/user/Data/miniconda3/envs/EAI/lib/python3.11/site-packages/gymnasium/spaces/box.py:130: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  gym.logger.warn(f"Box bound precision lowered by casting to {self.dtype}")
+{
+  "fixture_id": "sp_fixed__vs__tp_fixed_a0__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      26,
+      6
+    ],
+    "draws": 18,
+    "win_rate": [
+      0.52,
+      0.12
+    ],
+    "draw_rate": 0.36,
+    "avg_episode_reward": [
+      1955.1689383151333,
+      -1141.6111043914843
+    ],
+    "std_episode_reward": [
+      2003.8628222547686,
+      1551.4956040014238
+    ],
+    "avg_reward_margin_slot0": 3096.780042706618,
+    "avg_episode_length": 356.86,
+    "side_counts": {
+      "slot0": {
+        "right": 31,
+        "left": 19
+      },
+      "slot1": {
+        "left": 31,
+        "right": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 11,
+        "left": 15
+      },
+      "slot1": {
+        "left": 5,
+        "right": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_fixed_a0__slot0_sp_fixed__slot1_tp_fixed_a0__seed901.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 771,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_fixed_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_fixed_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_fixed_a0__leg1",
+  "slot0": "tp_fixed_a0",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      29,
+      12
+    ],
+    "draws": 9,
+    "win_rate": [
+      0.58,
+      0.24
+    ],
+    "draw_rate": 0.18,
+    "avg_episode_reward": [
+      2141.0484692748696,
+      -930.2180581156786
+    ],
+    "std_episode_reward": [
+      2156.9584909114697,
+      1893.5829905726039
+    ],
+    "avg_reward_margin_slot0": 3071.266527390548,
+    "avg_episode_length": 291.6,
+    "side_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 27
+      },
+      "slot1": {
+        "right": 23,
+        "left": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 12,
+        "right": 17
+      },
+      "slot1": {
+        "right": 6,
+        "left": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_fixed_a1__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      44,
+      2
+    ],
+    "draws": 4,
+    "win_rate": [
+      0.88,
+      0.04
+    ],
+    "draw_rate": 0.08,
+    "avg_episode_reward": [
+      2991.716871522771,
+      -1410.9804693916512
+    ],
+    "std_episode_reward": [
+      1259.049812717501,
+      1321.1182260700327
+    ],
+    "avg_reward_margin_slot0": 4402.697340914422,
+    "avg_episode_length": 268.48,
+    "side_counts": {
+      "slot0": {
+        "right": 31,
+        "left": 19
+      },
+      "slot1": {
+        "left": 31,
+        "right": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 27,
+        "left": 17
+      },
+      "slot1": {
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_fixed_a1__slot0_sp_fixed__slot1_tp_fixed_a1__seed903.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 842,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_fixed_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_fixed_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_fixed_a1__leg1",
+  "slot0": "tp_fixed_a1",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      10,
+      21
+    ],
+    "draws": 19,
+    "win_rate": [
+      0.2,
+      0.42
+    ],
+    "draw_rate": 0.38,
+    "avg_episode_reward": [
+      24.692432426859472,
+      226.1395264704962
+    ],
+    "std_episode_reward": [
+      1864.2264440064725,
+      2019.9416236672562
+    ],
+    "avg_reward_margin_slot0": -201.44709404363675,
+    "avg_episode_length": 362.68,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 3,
+        "right": 7
+      },
+      "slot1": {
+        "left": 12,
+        "right": 9
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__sp_morph__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      24,
+      9
+    ],
+    "draws": 17,
+    "win_rate": [
+      0.48,
+      0.18
+    ],
+    "draw_rate": 0.34,
+    "avg_episode_reward": [
+      2046.6442053300257,
+      -945.0728794332333
+    ],
+    "std_episode_reward": [
+      1976.4222909290595,
+      1889.9644526079717
+    ],
+    "avg_reward_margin_slot0": 2991.717084763259,
+    "avg_episode_length": 339.22,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 12,
+        "right": 12
+      },
+      "slot1": {
+        "right": 9
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__sp_morph__slot0_sp_fixed__slot1_sp_morph__seed905.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 949,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "sp_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: sp_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__sp_morph__leg1",
+  "slot0": "sp_morph",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      37,
+      6
+    ],
+    "draws": 7,
+    "win_rate": [
+      0.74,
+      0.12
+    ],
+    "draw_rate": 0.14,
+    "avg_episode_reward": [
+      2675.3821033602962,
+      -1560.8852408522653
+    ],
+    "std_episode_reward": [
+      1877.734694195407,
+      1442.4568834636368
+    ],
+    "avg_reward_margin_slot0": 4236.2673442125615,
+    "avg_episode_length": 252.58,
+    "side_counts": {
+      "slot0": {
+        "right": 31,
+        "left": 19
+      },
+      "slot1": {
+        "left": 31,
+        "right": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 23,
+        "left": 14
+      },
+      "slot1": {
+        "right": 1,
+        "left": 5
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_a0__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      20,
+      9
+    ],
+    "draws": 21,
+    "win_rate": [
+      0.4,
+      0.18
+    ],
+    "draw_rate": 0.42,
+    "avg_episode_reward": [
+      1839.9760624302844,
+      -941.7921614028311
+    ],
+    "std_episode_reward": [
+      2004.7294467133136,
+      1651.8928973435513
+    ],
+    "avg_reward_margin_slot0": 2781.7682238331167,
+    "avg_episode_length": 369.72,
+    "side_counts": {
+      "slot0": {
+        "right": 28,
+        "left": 22
+      },
+      "slot1": {
+        "left": 28,
+        "right": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 15,
+        "left": 5
+      },
+      "slot1": {
+        "left": 5,
+        "right": 4
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_morph_a0__slot0_sp_fixed__slot1_tp_morph_a0__seed907.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1022,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_morph_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_a0__leg1",
+  "slot0": "tp_morph_a0",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      33,
+      6
+    ],
+    "draws": 11,
+    "win_rate": [
+      0.66,
+      0.12
+    ],
+    "draw_rate": 0.22,
+    "avg_episode_reward": [
+      2849.4032236270073,
+      -1485.9048903868108
+    ],
+    "std_episode_reward": [
+      1750.797834887929,
+      1629.4555059496142
+    ],
+    "avg_reward_margin_slot0": 4335.308114013818,
+    "avg_episode_length": 298.26,
+    "side_counts": {
+      "slot0": {
+        "right": 32,
+        "left": 18
+      },
+      "slot1": {
+        "left": 32,
+        "right": 18
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 12
+      },
+      "slot1": {
+        "left": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_a1__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      6,
+      13
+    ],
+    "draws": 31,
+    "win_rate": [
+      0.12,
+      0.26
+    ],
+    "draw_rate": 0.62,
+    "avg_episode_reward": [
+      -48.49665070485521,
+      145.97221560446908
+    ],
+    "std_episode_reward": [
+      1769.4157894331574,
+      1842.4238086774558
+    ],
+    "avg_reward_margin_slot0": -194.46886630932428,
+    "avg_episode_length": 394.54,
+    "side_counts": {
+      "slot0": {
+        "left": 16,
+        "right": 34
+      },
+      "slot1": {
+        "right": 16,
+        "left": 34
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 5,
+        "left": 1
+      },
+      "slot1": {
+        "left": 4,
+        "right": 9
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_morph_a1__slot0_sp_fixed__slot1_tp_morph_a1__seed909.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1095,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_morph_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_a1__leg1",
+  "slot0": "tp_morph_a1",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      9,
+      10
+    ],
+    "draws": 31,
+    "win_rate": [
+      0.18,
+      0.2
+    ],
+    "draw_rate": 0.62,
+    "avg_episode_reward": [
+      -692.6556379592984,
+      -365.37431222291366
+    ],
+    "std_episode_reward": [
+      1430.2291889298815,
+      2003.2829561952494
+    ],
+    "avg_reward_margin_slot0": -327.2813257363845,
+    "avg_episode_length": 410.0,
+    "side_counts": {
+      "slot0": {
+        "right": 28,
+        "left": 22
+      },
+      "slot1": {
+        "left": 28,
+        "right": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 6,
+        "left": 3
+      },
+      "slot1": {
+        "right": 9,
+        "left": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      11,
+      6
+    ],
+    "draws": 33,
+    "win_rate": [
+      0.22,
+      0.12
+    ],
+    "draw_rate": 0.66,
+    "avg_episode_reward": [
+      1602.9908300550271,
+      -1037.6353793475544
+    ],
+    "std_episode_reward": [
+      1648.900493587631,
+      1321.8425376472803
+    ],
+    "avg_reward_margin_slot0": 2640.6262094025815,
+    "avg_episode_length": 441.26,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 5,
+        "right": 6
+      },
+      "slot1": {
+        "right": 3,
+        "left": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_mixed_a0_morph__slot0_sp_fixed__slot1_tp_mixed_a0_morph__seed911.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1108,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      36,
+      1
+    ],
+    "draws": 13,
+    "win_rate": [
+      0.72,
+      0.02
+    ],
+    "draw_rate": 0.26,
+    "avg_episode_reward": [
+      2779.249077534925,
+      -1869.2564591426897
+    ],
+    "std_episode_reward": [
+      1279.741457418826,
+      883.0456360196147
+    ],
+    "avg_reward_margin_slot0": 4648.505536677615,
+    "avg_episode_length": 278.46,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 19,
+        "left": 17
+      },
+      "slot1": {
+        "right": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      7,
+      7
+    ],
+    "draws": 36,
+    "win_rate": [
+      0.14,
+      0.14
+    ],
+    "draw_rate": 0.72,
+    "avg_episode_reward": [
+      172.17542389036177,
+      -329.01368296555074
+    ],
+    "std_episode_reward": [
+      1697.5109121481207,
+      1736.9574850353
+    ],
+    "avg_reward_margin_slot0": 501.18910685591254,
+    "avg_episode_length": 454.26,
+    "side_counts": {
+      "slot0": {
+        "left": 19,
+        "right": 31
+      },
+      "slot1": {
+        "right": 19,
+        "left": 31
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 7
+      },
+      "slot1": {
+        "left": 5,
+        "right": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_mixed_a1_fixed__slot0_sp_fixed__slot1_tp_mixed_a1_fixed__seed913.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1185,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      6,
+      9
+    ],
+    "draws": 35,
+    "win_rate": [
+      0.12,
+      0.18
+    ],
+    "draw_rate": 0.7,
+    "avg_episode_reward": [
+      -264.3288548466307,
+      -377.0527640171498
+    ],
+    "std_episode_reward": [
+      1504.925494329098,
+      1829.1022601725056
+    ],
+    "avg_reward_margin_slot0": 112.72390917051912,
+    "avg_episode_length": 425.3,
+    "side_counts": {
+      "slot0": {
+        "right": 24,
+        "left": 26
+      },
+      "slot1": {
+        "left": 24,
+        "right": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 2,
+        "right": 4
+      },
+      "slot1": {
+        "left": 3,
+        "right": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      30,
+      7
+    ],
+    "draws": 13,
+    "win_rate": [
+      0.6,
+      0.14
+    ],
+    "draw_rate": 0.26,
+    "avg_episode_reward": [
+      2297.0269157753614,
+      -1018.9700775710537
+    ],
+    "std_episode_reward": [
+      1870.7521420545702,
+      1671.7711538083988
+    ],
+    "avg_reward_margin_slot0": 3315.996993346415,
+    "avg_episode_length": 294.86,
+    "side_counts": {
+      "slot0": {
+        "right": 29,
+        "left": 21
+      },
+      "slot1": {
+        "left": 29,
+        "right": 21
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 18,
+        "left": 12
+      },
+      "slot1": {
+        "right": 5,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_morph_delay200_a0__slot0_sp_fixed__slot1_tp_morph_delay200_a0__seed915.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 661,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      16,
+      22
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.32,
+      0.44
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      807.0078771436304,
+      -33.21196750560634
+    ],
+    "std_episode_reward": [
+      2034.301117058646,
+      2074.527374935213
+    ],
+    "avg_reward_margin_slot0": 840.2198446492367,
+    "avg_episode_length": 292.24,
+    "side_counts": {
+      "slot0": {
+        "left": 30,
+        "right": 20
+      },
+      "slot1": {
+        "right": 30,
+        "left": 20
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 8,
+        "left": 8
+      },
+      "slot1": {
+        "right": 13,
+        "left": 9
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "sp_fixed",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      34,
+      6
+    ],
+    "draws": 10,
+    "win_rate": [
+      0.68,
+      0.12
+    ],
+    "draw_rate": 0.2,
+    "avg_episode_reward": [
+      2158.3428794824895,
+      -982.0716975836197
+    ],
+    "std_episode_reward": [
+      1931.5383445073328,
+      1602.364977441463
+    ],
+    "avg_reward_margin_slot0": 3140.414577066109,
+    "avg_episode_length": 293.54,
+    "side_counts": {
+      "slot0": {
+        "right": 24,
+        "left": 26
+      },
+      "slot1": {
+        "left": 24,
+        "right": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 15,
+        "left": 19
+      },
+      "slot1": {
+        "right": 4,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_fixed__vs__tp_morph_delay200_a1__slot0_sp_fixed__slot1_tp_morph_delay200_a1__seed917.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 574,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_fixed",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_fixed__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "sp_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      7,
+      22
+    ],
+    "draws": 21,
+    "win_rate": [
+      0.14,
+      0.44
+    ],
+    "draw_rate": 0.42,
+    "avg_episode_reward": [
+      -253.29257738236902,
+      545.9661520782244
+    ],
+    "std_episode_reward": [
+      1671.110948304362,
+      1845.2206962461826
+    ],
+    "avg_reward_margin_slot0": -799.2587294605933,
+    "avg_episode_length": 347.5,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 3,
+        "right": 4
+      },
+      "slot1": {
+        "left": 9,
+        "right": 13
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_fixed_a1__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      42,
+      5
+    ],
+    "draws": 3,
+    "win_rate": [
+      0.84,
+      0.1
+    ],
+    "draw_rate": 0.06,
+    "avg_episode_reward": [
+      2622.163176502584,
+      -1302.5551906090068
+    ],
+    "std_episode_reward": [
+      1666.703124461992,
+      1358.0341068569955
+    ],
+    "avg_reward_margin_slot0": 3924.7183671115913,
+    "avg_episode_length": 235.82,
+    "side_counts": {
+      "slot0": {
+        "left": 24,
+        "right": 26
+      },
+      "slot1": {
+        "right": 24,
+        "left": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 21,
+        "right": 21
+      },
+      "slot1": {
+        "left": 3,
+        "right": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_fixed_a1__slot0_tp_fixed_a0__slot1_tp_fixed_a1__seed919.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 642,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_fixed_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_fixed_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_fixed_a1__leg1",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      8,
+      28
+    ],
+    "draws": 14,
+    "win_rate": [
+      0.16,
+      0.56
+    ],
+    "draw_rate": 0.28,
+    "avg_episode_reward": [
+      -433.78175852038976,
+      679.1725830331765
+    ],
+    "std_episode_reward": [
+      1534.3360247821738,
+      1692.0031008905642
+    ],
+    "avg_reward_margin_slot0": -1112.9543415535663,
+    "avg_episode_length": 309.28,
+    "side_counts": {
+      "slot0": {
+        "left": 30,
+        "right": 20
+      },
+      "slot1": {
+        "right": 30,
+        "left": 20
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 2,
+        "left": 6
+      },
+      "slot1": {
+        "right": 11,
+        "left": 17
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__sp_morph__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      28,
+      8
+    ],
+    "draws": 14,
+    "win_rate": [
+      0.56,
+      0.16
+    ],
+    "draw_rate": 0.28,
+    "avg_episode_reward": [
+      2132.7950497374045,
+      -1032.8277474960457
+    ],
+    "std_episode_reward": [
+      2069.4556555947725,
+      1895.086781316144
+    ],
+    "avg_reward_margin_slot0": 3165.6227972334514,
+    "avg_episode_length": 340.62,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 13,
+        "left": 15
+      },
+      "slot1": {
+        "right": 5,
+        "left": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__sp_morph__slot0_tp_fixed_a0__slot1_sp_morph__seed921.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 978,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "sp_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: sp_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__sp_morph__leg1",
+  "slot0": "sp_morph",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      39,
+      4
+    ],
+    "draws": 7,
+    "win_rate": [
+      0.78,
+      0.08
+    ],
+    "draw_rate": 0.14,
+    "avg_episode_reward": [
+      2914.812397613076,
+      -1709.7530836013582
+    ],
+    "std_episode_reward": [
+      1768.0185860052447,
+      1382.3779332423321
+    ],
+    "avg_reward_margin_slot0": 4624.565481214435,
+    "avg_episode_length": 300.3,
+    "side_counts": {
+      "slot0": {
+        "right": 19,
+        "left": 31
+      },
+      "slot1": {
+        "left": 19,
+        "right": 31
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 17,
+        "left": 22
+      },
+      "slot1": {
+        "right": 2,
+        "left": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_a0__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      16,
+      11
+    ],
+    "draws": 23,
+    "win_rate": [
+      0.32,
+      0.22
+    ],
+    "draw_rate": 0.46,
+    "avg_episode_reward": [
+      1544.797204884035,
+      -831.6145159749904
+    ],
+    "std_episode_reward": [
+      1854.6895589332557,
+      1647.7957222813625
+    ],
+    "avg_reward_margin_slot0": 2376.411720859025,
+    "avg_episode_length": 371.68,
+    "side_counts": {
+      "slot0": {
+        "right": 26,
+        "left": 24
+      },
+      "slot1": {
+        "left": 26,
+        "right": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 12,
+        "left": 4
+      },
+      "slot1": {
+        "right": 6,
+        "left": 5
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_morph_a0__slot0_tp_fixed_a0__slot1_tp_morph_a0__seed923.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 685,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_morph_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_a0__leg1",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      33,
+      5
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.66,
+      0.1
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      2776.4697899785574,
+      -1549.2564454300925
+    ],
+    "std_episode_reward": [
+      1637.43466357079,
+      1338.3135171643053
+    ],
+    "avg_reward_margin_slot0": 4325.726235408651,
+    "avg_episode_length": 281.16,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 17,
+        "right": 16
+      },
+      "slot1": {
+        "left": 4,
+        "right": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_a1__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      10,
+      22
+    ],
+    "draws": 18,
+    "win_rate": [
+      0.2,
+      0.44
+    ],
+    "draw_rate": 0.36,
+    "avg_episode_reward": [
+      165.49492849952446,
+      859.3089919876985
+    ],
+    "std_episode_reward": [
+      1902.47704242783,
+      2155.38801562909
+    ],
+    "avg_reward_margin_slot0": -693.814063488174,
+    "avg_episode_length": 315.88,
+    "side_counts": {
+      "slot0": {
+        "right": 22,
+        "left": 28
+      },
+      "slot1": {
+        "left": 22,
+        "right": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 6,
+        "right": 4
+      },
+      "slot1": {
+        "left": 8,
+        "right": 14
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_morph_a1__slot0_tp_fixed_a0__slot1_tp_morph_a1__seed925.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 701,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_morph_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_a1__leg1",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      18,
+      2
+    ],
+    "draws": 30,
+    "win_rate": [
+      0.36,
+      0.04
+    ],
+    "draw_rate": 0.6,
+    "avg_episode_reward": [
+      231.3174489738646,
+      -970.0102067817566
+    ],
+    "std_episode_reward": [
+      1691.5750409673776,
+      1139.672688298863
+    ],
+    "avg_reward_margin_slot0": 1201.327655755621,
+    "avg_episode_length": 380.08,
+    "side_counts": {
+      "slot0": {
+        "right": 23,
+        "left": 27
+      },
+      "slot1": {
+        "left": 23,
+        "right": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 5,
+        "left": 13
+      },
+      "slot1": {
+        "right": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      13,
+      15
+    ],
+    "draws": 22,
+    "win_rate": [
+      0.26,
+      0.3
+    ],
+    "draw_rate": 0.44,
+    "avg_episode_reward": [
+      1171.3153698424685,
+      -678.9692010057114
+    ],
+    "std_episode_reward": [
+      2009.1231683741555,
+      2059.2010440036547
+    ],
+    "avg_reward_margin_slot0": 1850.2845708481798,
+    "avg_episode_length": 377.68,
+    "side_counts": {
+      "slot0": {
+        "right": 26,
+        "left": 24
+      },
+      "slot1": {
+        "left": 26,
+        "right": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 4,
+        "right": 9
+      },
+      "slot1": {
+        "left": 7,
+        "right": 8
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_mixed_a0_morph__slot0_tp_fixed_a0__slot1_tp_mixed_a0_morph__seed927.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 899,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      38,
+      3
+    ],
+    "draws": 9,
+    "win_rate": [
+      0.76,
+      0.06
+    ],
+    "draw_rate": 0.18,
+    "avg_episode_reward": [
+      2874.3517322673874,
+      -1688.76773003083
+    ],
+    "std_episode_reward": [
+      1458.184913497554,
+      1274.2887754335245
+    ],
+    "avg_reward_margin_slot0": 4563.119462298218,
+    "avg_episode_length": 276.12,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 15
+      },
+      "slot1": {
+        "left": 3
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      8,
+      12
+    ],
+    "draws": 30,
+    "win_rate": [
+      0.16,
+      0.24
+    ],
+    "draw_rate": 0.6,
+    "avg_episode_reward": [
+      185.1214067350515,
+      -289.1177334485146
+    ],
+    "std_episode_reward": [
+      1770.379264804915,
+      1864.3512525067977
+    ],
+    "avg_reward_margin_slot0": 474.2391401835663,
+    "avg_episode_length": 405.38,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 7,
+        "right": 1
+      },
+      "slot1": {
+        "left": 9,
+        "right": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_mixed_a1_fixed__slot0_tp_fixed_a0__slot1_tp_mixed_a1_fixed__seed929.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 717,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      18,
+      5
+    ],
+    "draws": 27,
+    "win_rate": [
+      0.36,
+      0.1
+    ],
+    "draw_rate": 0.54,
+    "avg_episode_reward": [
+      571.3447776598581,
+      -982.3976990264207
+    ],
+    "std_episode_reward": [
+      1786.3757593630648,
+      1509.030241098257
+    ],
+    "avg_reward_margin_slot0": 1553.742476686279,
+    "avg_episode_length": 362.0,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 10,
+        "right": 8
+      },
+      "slot1": {
+        "right": 1,
+        "left": 4
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      41,
+      5
+    ],
+    "draws": 4,
+    "win_rate": [
+      0.82,
+      0.1
+    ],
+    "draw_rate": 0.08,
+    "avg_episode_reward": [
+      2943.7511659617553,
+      -1510.0121061264435
+    ],
+    "std_episode_reward": [
+      1641.7206881941263,
+      1396.2339370114091
+    ],
+    "avg_reward_margin_slot0": 4453.763272088199,
+    "avg_episode_length": 230.08,
+    "side_counts": {
+      "slot0": {
+        "right": 19,
+        "left": 31
+      },
+      "slot1": {
+        "left": 19,
+        "right": 31
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 17,
+        "left": 24
+      },
+      "slot1": {
+        "left": 2,
+        "right": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_morph_delay200_a0__slot0_tp_fixed_a0__slot1_tp_morph_delay200_a0__seed931.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 486,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      19,
+      19
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.38,
+      0.38
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      1048.875510689297,
+      -275.7333530755596
+    ],
+    "std_episode_reward": [
+      1688.5505293492595,
+      1981.9057549113168
+    ],
+    "avg_reward_margin_slot0": 1324.6088637648563,
+    "avg_episode_length": 292.58,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 8,
+        "left": 11
+      },
+      "slot1": {
+        "left": 9,
+        "right": 10
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_fixed_a0",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      36,
+      6
+    ],
+    "draws": 8,
+    "win_rate": [
+      0.72,
+      0.12
+    ],
+    "draw_rate": 0.16,
+    "avg_episode_reward": [
+      2232.9460800739716,
+      -1091.2297995872543
+    ],
+    "std_episode_reward": [
+      1745.9423543297403,
+      1446.3785552325694
+    ],
+    "avg_reward_margin_slot0": 3324.175879661226,
+    "avg_episode_length": 268.74,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 18,
+        "right": 18
+      },
+      "slot1": {
+        "left": 5,
+        "right": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a0__vs__tp_morph_delay200_a1__slot0_tp_fixed_a0__slot1_tp_morph_delay200_a1__seed933.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 819,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a0",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a0__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_fixed_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      20,
+      17
+    ],
+    "draws": 13,
+    "win_rate": [
+      0.4,
+      0.34
+    ],
+    "draw_rate": 0.26,
+    "avg_episode_reward": [
+      667.1365109124312,
+      -156.58818814245328
+    ],
+    "std_episode_reward": [
+      1790.8294525276222,
+      1988.2772402706664
+    ],
+    "avg_reward_margin_slot0": 823.7246990548844,
+    "avg_episode_length": 301.68,
+    "side_counts": {
+      "slot0": {
+        "right": 29,
+        "left": 21
+      },
+      "slot1": {
+        "left": 29,
+        "right": 21
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 13,
+        "left": 7
+      },
+      "slot1": {
+        "left": 10,
+        "right": 7
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__sp_morph__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      11,
+      27
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.22,
+      0.54
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      -80.0909561234525,
+      1013.4324981950537
+    ],
+    "std_episode_reward": [
+      1934.6199038651991,
+      2183.7844703838014
+    ],
+    "avg_reward_margin_slot0": -1093.5234543185059,
+    "avg_episode_length": 304.32,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 5,
+        "right": 6
+      },
+      "slot1": {
+        "right": 12,
+        "left": 15
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__sp_morph__slot0_tp_fixed_a1__slot1_sp_morph__seed935.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 864,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "sp_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: sp_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__sp_morph__leg1",
+  "slot0": "sp_morph",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      47,
+      2
+    ],
+    "draws": 1,
+    "win_rate": [
+      0.94,
+      0.04
+    ],
+    "draw_rate": 0.02,
+    "avg_episode_reward": [
+      3036.2090936497766,
+      -1564.0548466880396
+    ],
+    "std_episode_reward": [
+      1152.396552983722,
+      1035.108643631618
+    ],
+    "avg_reward_margin_slot0": 4600.263940337816,
+    "avg_episode_length": 232.96,
+    "side_counts": {
+      "slot0": {
+        "right": 35,
+        "left": 15
+      },
+      "slot1": {
+        "left": 35,
+        "right": 15
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 33,
+        "left": 14
+      },
+      "slot1": {
+        "left": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_a0__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      7,
+      28
+    ],
+    "draws": 15,
+    "win_rate": [
+      0.14,
+      0.56
+    ],
+    "draw_rate": 0.3,
+    "avg_episode_reward": [
+      -541.9656829945834,
+      769.2847236648329
+    ],
+    "std_episode_reward": [
+      1559.790747307774,
+      1713.1565107971353
+    ],
+    "avg_reward_margin_slot0": -1311.2504066594163,
+    "avg_episode_length": 285.56,
+    "side_counts": {
+      "slot0": {
+        "right": 24,
+        "left": 26
+      },
+      "slot1": {
+        "left": 24,
+        "right": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 3,
+        "right": 4
+      },
+      "slot1": {
+        "left": 17,
+        "right": 11
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_morph_a0__slot0_tp_fixed_a1__slot1_tp_morph_a0__seed937.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 946,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_morph_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_a0__leg1",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      49,
+      1
+    ],
+    "draws": 0,
+    "win_rate": [
+      0.98,
+      0.02
+    ],
+    "draw_rate": 0.0,
+    "avg_episode_reward": [
+      3179.135919748435,
+      -1835.875516522473
+    ],
+    "std_episode_reward": [
+      819.5357376177805,
+      802.313033341291
+    ],
+    "avg_reward_margin_slot0": 5015.011436270908,
+    "avg_episode_length": 209.68,
+    "side_counts": {
+      "slot0": {
+        "right": 23,
+        "left": 27
+      },
+      "slot1": {
+        "left": 23,
+        "right": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 22,
+        "left": 27
+      },
+      "slot1": {
+        "left": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_a1__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      5,
+      34
+    ],
+    "draws": 11,
+    "win_rate": [
+      0.1,
+      0.68
+    ],
+    "draw_rate": 0.22,
+    "avg_episode_reward": [
+      -1085.3915287716698,
+      2037.1594078482944
+    ],
+    "std_episode_reward": [
+      1383.0919359925297,
+      1731.018754609453
+    ],
+    "avg_reward_margin_slot0": -3122.550936619964,
+    "avg_episode_length": 305.26,
+    "side_counts": {
+      "slot0": {
+        "right": 24,
+        "left": 26
+      },
+      "slot1": {
+        "left": 24,
+        "right": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 2,
+        "left": 3
+      },
+      "slot1": {
+        "right": 17,
+        "left": 17
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_morph_a1__slot0_tp_fixed_a1__slot1_tp_morph_a1__seed939.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 850,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_morph_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_a1__leg1",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      40,
+      3
+    ],
+    "draws": 7,
+    "win_rate": [
+      0.8,
+      0.06
+    ],
+    "draw_rate": 0.14,
+    "avg_episode_reward": [
+      1346.1182173008956,
+      -738.2322180232626
+    ],
+    "std_episode_reward": [
+      1501.415983893029,
+      1346.8627171456405
+    ],
+    "avg_reward_margin_slot0": 2084.3504353241583,
+    "avg_episode_length": 277.9,
+    "side_counts": {
+      "slot0": {
+        "left": 27,
+        "right": 23
+      },
+      "slot1": {
+        "right": 27,
+        "left": 23
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 21,
+        "right": 19
+      },
+      "slot1": {
+        "right": 3
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      1,
+      30
+    ],
+    "draws": 19,
+    "win_rate": [
+      0.02,
+      0.6
+    ],
+    "draw_rate": 0.38,
+    "avg_episode_reward": [
+      -1195.181699339418,
+      971.5504040429353
+    ],
+    "std_episode_reward": [
+      1033.1125512897975,
+      1540.7888330202952
+    ],
+    "avg_reward_margin_slot0": -2166.732103382353,
+    "avg_episode_length": 337.18,
+    "side_counts": {
+      "slot0": {
+        "left": 28,
+        "right": 22
+      },
+      "slot1": {
+        "right": 28,
+        "left": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 1
+      },
+      "slot1": {
+        "right": 12,
+        "left": 18
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_mixed_a0_morph__slot0_tp_fixed_a1__slot1_tp_mixed_a0_morph__seed941.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 822,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      43,
+      4
+    ],
+    "draws": 3,
+    "win_rate": [
+      0.86,
+      0.08
+    ],
+    "draw_rate": 0.06,
+    "avg_episode_reward": [
+      2783.7159848307037,
+      -1293.062564407288
+    ],
+    "std_episode_reward": [
+      1679.1035964865926,
+      1343.1530292115374
+    ],
+    "avg_reward_margin_slot0": 4076.778549237992,
+    "avg_episode_length": 248.16,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 22
+      },
+      "slot1": {
+        "left": 3,
+        "right": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      1,
+      37
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.02,
+      0.74
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      -1759.4215050182079,
+      2535.2431681203416
+    ],
+    "std_episode_reward": [
+      789.3556382825238,
+      1329.474817755362
+    ],
+    "avg_reward_margin_slot0": -4294.66467313855,
+    "avg_episode_length": 297.92,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 1
+      },
+      "slot1": {
+        "right": 14,
+        "left": 23
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_mixed_a1_fixed__slot0_tp_fixed_a1__slot1_tp_mixed_a1_fixed__seed943.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 839,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      31,
+      9
+    ],
+    "draws": 10,
+    "win_rate": [
+      0.62,
+      0.18
+    ],
+    "draw_rate": 0.2,
+    "avg_episode_reward": [
+      979.9125461980261,
+      -207.13164740397355
+    ],
+    "std_episode_reward": [
+      1857.2666826278526,
+      1866.2680932125522
+    ],
+    "avg_reward_margin_slot0": 1187.0441936019995,
+    "avg_episode_length": 294.92,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 16,
+        "left": 15
+      },
+      "slot1": {
+        "right": 4,
+        "left": 5
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      20,
+      18
+    ],
+    "draws": 12,
+    "win_rate": [
+      0.4,
+      0.36
+    ],
+    "draw_rate": 0.24,
+    "avg_episode_reward": [
+      495.6219644203032,
+      -47.44508548650395
+    ],
+    "std_episode_reward": [
+      1847.726676145758,
+      1985.592769756504
+    ],
+    "avg_reward_margin_slot0": 543.0670499068073,
+    "avg_episode_length": 287.92,
+    "side_counts": {
+      "slot0": {
+        "left": 32,
+        "right": 18
+      },
+      "slot1": {
+        "right": 32,
+        "left": 18
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 14,
+        "right": 6
+      },
+      "slot1": {
+        "right": 9,
+        "left": 9
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_morph_delay200_a0__slot0_tp_fixed_a1__slot1_tp_morph_delay200_a0__seed945.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 766,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      36,
+      10
+    ],
+    "draws": 4,
+    "win_rate": [
+      0.72,
+      0.2
+    ],
+    "draw_rate": 0.08,
+    "avg_episode_reward": [
+      2082.9465794074354,
+      -791.0096926366375
+    ],
+    "std_episode_reward": [
+      2062.7832780907866,
+      1900.4519285829315
+    ],
+    "avg_reward_margin_slot0": 2873.956272044073,
+    "avg_episode_length": 245.72,
+    "side_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 27
+      },
+      "slot1": {
+        "right": 23,
+        "left": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 18,
+        "right": 18
+      },
+      "slot1": {
+        "right": 4,
+        "left": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_fixed_a1",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      13,
+      28
+    ],
+    "draws": 9,
+    "win_rate": [
+      0.26,
+      0.56
+    ],
+    "draw_rate": 0.18,
+    "avg_episode_reward": [
+      -331.20041696581035,
+      1434.480157017598
+    ],
+    "std_episode_reward": [
+      1780.4994382545624,
+      2313.087148918692
+    ],
+    "avg_reward_margin_slot0": -1765.6805739834087,
+    "avg_episode_length": 307.02,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 7,
+        "right": 6
+      },
+      "slot1": {
+        "right": 15,
+        "left": 13
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_fixed_a1__vs__tp_morph_delay200_a1__slot0_tp_fixed_a1__slot1_tp_morph_delay200_a1__seed947.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1035,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_fixed_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_fixed_a1",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_fixed_a1__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_fixed_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      32,
+      14
+    ],
+    "draws": 4,
+    "win_rate": [
+      0.64,
+      0.28
+    ],
+    "draw_rate": 0.08,
+    "avg_episode_reward": [
+      1083.650144138271,
+      -27.880382920968938
+    ],
+    "std_episode_reward": [
+      2104.7977531679776,
+      2208.3902252298476
+    ],
+    "avg_reward_margin_slot0": 1111.53052705924,
+    "avg_episode_length": 224.52,
+    "side_counts": {
+      "slot0": {
+        "left": 31,
+        "right": 19
+      },
+      "slot1": {
+        "right": 31,
+        "left": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 17,
+        "right": 15
+      },
+      "slot1": {
+        "right": 11,
+        "left": 3
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_a0__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      20,
+      9
+    ],
+    "draws": 21,
+    "win_rate": [
+      0.4,
+      0.18
+    ],
+    "draw_rate": 0.42,
+    "avg_episode_reward": [
+      1994.881963602092,
+      -899.5520943198032
+    ],
+    "std_episode_reward": [
+      2052.1396071068057,
+      1699.673886835751
+    ],
+    "avg_reward_margin_slot0": 2894.434057921895,
+    "avg_episode_length": 361.94,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 14,
+        "left": 6
+      },
+      "slot1": {
+        "right": 7,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_morph_a0__slot0_sp_morph__slot1_tp_morph_a0__seed949.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 942,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_morph_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_a0__leg1",
+  "slot0": "tp_morph_a0",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      34,
+      7
+    ],
+    "draws": 9,
+    "win_rate": [
+      0.68,
+      0.14
+    ],
+    "draw_rate": 0.18,
+    "avg_episode_reward": [
+      2626.7830119285513,
+      -1219.0869029817054
+    ],
+    "std_episode_reward": [
+      1718.227318770966,
+      1674.0626802890383
+    ],
+    "avg_reward_margin_slot0": 3845.8699149102567,
+    "avg_episode_length": 304.84,
+    "side_counts": {
+      "slot0": {
+        "left": 30,
+        "right": 20
+      },
+      "slot1": {
+        "right": 30,
+        "left": 20
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 24,
+        "right": 10
+      },
+      "slot1": {
+        "right": 1,
+        "left": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_a1__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      16,
+      9
+    ],
+    "draws": 25,
+    "win_rate": [
+      0.32,
+      0.18
+    ],
+    "draw_rate": 0.5,
+    "avg_episode_reward": [
+      860.3137666333141,
+      -197.56958591428494
+    ],
+    "std_episode_reward": [
+      2080.7325492645514,
+      1885.5215821846646
+    ],
+    "avg_reward_margin_slot0": 1057.8833525475989,
+    "avg_episode_length": 390.94,
+    "side_counts": {
+      "slot0": {
+        "left": 29,
+        "right": 21
+      },
+      "slot1": {
+        "right": 29,
+        "left": 21
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 9,
+        "right": 7
+      },
+      "slot1": {
+        "right": 6,
+        "left": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_morph_a1__slot0_sp_morph__slot1_tp_morph_a1__seed951.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 900,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_morph_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_a1__leg1",
+  "slot0": "tp_morph_a1",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      15,
+      7
+    ],
+    "draws": 28,
+    "win_rate": [
+      0.3,
+      0.14
+    ],
+    "draw_rate": 0.56,
+    "avg_episode_reward": [
+      -97.65127257545177,
+      -346.86775903314526
+    ],
+    "std_episode_reward": [
+      1677.9761771273752,
+      2130.7159708535087
+    ],
+    "avg_reward_margin_slot0": 249.21648645769355,
+    "avg_episode_length": 390.9,
+    "side_counts": {
+      "slot0": {
+        "right": 23,
+        "left": 27
+      },
+      "slot1": {
+        "left": 23,
+        "right": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 14,
+        "right": 1
+      },
+      "slot1": {
+        "right": 6,
+        "left": 1
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      25,
+      4
+    ],
+    "draws": 21,
+    "win_rate": [
+      0.5,
+      0.08
+    ],
+    "draw_rate": 0.42,
+    "avg_episode_reward": [
+      2543.9823948382664,
+      -1487.7087703285686
+    ],
+    "std_episode_reward": [
+      1999.1040081595952,
+      1222.891218114413
+    ],
+    "avg_reward_margin_slot0": 4031.6911651668347,
+    "avg_episode_length": 362.94,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 19,
+        "left": 6
+      },
+      "slot1": {
+        "right": 2,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_mixed_a0_morph__slot0_sp_morph__slot1_tp_mixed_a0_morph__seed953.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 882,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      28,
+      5
+    ],
+    "draws": 17,
+    "win_rate": [
+      0.56,
+      0.1
+    ],
+    "draw_rate": 0.34,
+    "avg_episode_reward": [
+      2222.9849358514093,
+      -1304.7295929299405
+    ],
+    "std_episode_reward": [
+      1902.0831000844694,
+      1481.3527520215464
+    ],
+    "avg_reward_margin_slot0": 3527.7145287813496,
+    "avg_episode_length": 330.76,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 13,
+        "right": 15
+      },
+      "slot1": {
+        "left": 3,
+        "right": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      22,
+      4
+    ],
+    "draws": 24,
+    "win_rate": [
+      0.44,
+      0.08
+    ],
+    "draw_rate": 0.48,
+    "avg_episode_reward": [
+      1841.4083946054616,
+      -937.2080709754774
+    ],
+    "std_episode_reward": [
+      2157.387519616217,
+      1471.1842895064094
+    ],
+    "avg_reward_margin_slot0": 2778.6164655809393,
+    "avg_episode_length": 413.54,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 11,
+        "left": 11
+      },
+      "slot1": {
+        "right": 4
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_mixed_a1_fixed__slot0_sp_morph__slot1_tp_mixed_a1_fixed__seed955.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 864,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      15,
+      7
+    ],
+    "draws": 28,
+    "win_rate": [
+      0.3,
+      0.14
+    ],
+    "draw_rate": 0.56,
+    "avg_episode_reward": [
+      382.1304837349232,
+      -456.4399184955957
+    ],
+    "std_episode_reward": [
+      1689.9212751075795,
+      1706.8768398713128
+    ],
+    "avg_reward_margin_slot0": 838.5704022305188,
+    "avg_episode_length": 375.88,
+    "side_counts": {
+      "slot0": {
+        "right": 28,
+        "left": 22
+      },
+      "slot1": {
+        "left": 28,
+        "right": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 11,
+        "right": 4
+      },
+      "slot1": {
+        "left": 3,
+        "right": 4
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      42,
+      3
+    ],
+    "draws": 5,
+    "win_rate": [
+      0.84,
+      0.06
+    ],
+    "draw_rate": 0.1,
+    "avg_episode_reward": [
+      3096.1567943431683,
+      -1774.5586656948335
+    ],
+    "std_episode_reward": [
+      1290.50205408718,
+      1086.3143445432515
+    ],
+    "avg_reward_margin_slot0": 4870.715460038003,
+    "avg_episode_length": 221.72,
+    "side_counts": {
+      "slot0": {
+        "left": 24,
+        "right": 26
+      },
+      "slot1": {
+        "right": 24,
+        "left": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 19,
+        "right": 23
+      },
+      "slot1": {
+        "right": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_morph_delay200_a0__slot0_sp_morph__slot1_tp_morph_delay200_a0__seed957.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 381,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      22,
+      19
+    ],
+    "draws": 9,
+    "win_rate": [
+      0.44,
+      0.38
+    ],
+    "draw_rate": 0.18,
+    "avg_episode_reward": [
+      1698.8155227393765,
+      -281.5132812870727
+    ],
+    "std_episode_reward": [
+      2007.1998874994888,
+      1970.857402645851
+    ],
+    "avg_reward_margin_slot0": 1980.3288040264492,
+    "avg_episode_length": 311.92,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 15,
+        "right": 7
+      },
+      "slot1": {
+        "right": 6,
+        "left": 13
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "sp_morph",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      36,
+      6
+    ],
+    "draws": 8,
+    "win_rate": [
+      0.72,
+      0.12
+    ],
+    "draw_rate": 0.16,
+    "avg_episode_reward": [
+      2650.2114659292774,
+      -1070.8573451892714
+    ],
+    "std_episode_reward": [
+      2081.470836812857,
+      1406.183790529882
+    ],
+    "avg_reward_margin_slot0": 3721.068811118549,
+    "avg_episode_length": 307.08,
+    "side_counts": {
+      "slot0": {
+        "left": 31,
+        "right": 19
+      },
+      "slot1": {
+        "right": 31,
+        "left": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 24,
+        "right": 12
+      },
+      "slot1": {
+        "left": 3,
+        "right": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/sp_morph__vs__tp_morph_delay200_a1__slot0_sp_morph__slot1_tp_morph_delay200_a1__seed959.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 879,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "sp_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: sp_morph",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "sp_morph__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "sp_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      14,
+      20
+    ],
+    "draws": 16,
+    "win_rate": [
+      0.28,
+      0.4
+    ],
+    "draw_rate": 0.32,
+    "avg_episode_reward": [
+      118.30098949858053,
+      313.6266395608877
+    ],
+    "std_episode_reward": [
+      1903.0977269491084,
+      2145.769136958825
+    ],
+    "avg_reward_margin_slot0": -195.325650062307,
+    "avg_episode_length": 330.24,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 5,
+        "left": 9
+      },
+      "slot1": {
+        "left": 9,
+        "right": 11
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_a1__leg0",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      12,
+      11
+    ],
+    "draws": 27,
+    "win_rate": [
+      0.24,
+      0.22
+    ],
+    "draw_rate": 0.54,
+    "avg_episode_reward": [
+      1068.740322395135,
+      -295.775753975726
+    ],
+    "std_episode_reward": [
+      1889.5594491027125,
+      1899.6648727499316
+    ],
+    "avg_reward_margin_slot0": 1364.5160763708614,
+    "avg_episode_length": 391.18,
+    "side_counts": {
+      "slot0": {
+        "right": 22,
+        "left": 28
+      },
+      "slot1": {
+        "left": 22,
+        "right": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 4,
+        "left": 8
+      },
+      "slot1": {
+        "right": 6,
+        "left": 5
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a0__vs__tp_morph_a1__slot0_tp_morph_a0__slot1_tp_morph_a1__seed961.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 848,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a0",
+      "orange: tp_morph_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_a1__leg1",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      8,
+      6
+    ],
+    "draws": 36,
+    "win_rate": [
+      0.16,
+      0.12
+    ],
+    "draw_rate": 0.72,
+    "avg_episode_reward": [
+      -550.6040916440069,
+      -495.0940500627476
+    ],
+    "std_episode_reward": [
+      1294.6149746513586,
+      1618.8822863230228
+    ],
+    "avg_reward_margin_slot0": -55.51004158125929,
+    "avg_episode_length": 435.04,
+    "side_counts": {
+      "slot0": {
+        "left": 27,
+        "right": 23
+      },
+      "slot1": {
+        "right": 27,
+        "left": 23
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 4,
+        "right": 4
+      },
+      "slot1": {
+        "left": 1,
+        "right": 5
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      24,
+      4
+    ],
+    "draws": 22,
+    "win_rate": [
+      0.48,
+      0.08
+    ],
+    "draw_rate": 0.44,
+    "avg_episode_reward": [
+      2531.762505363426,
+      -1539.8596200166617
+    ],
+    "std_episode_reward": [
+      1638.3485943620262,
+      1317.614124385044
+    ],
+    "avg_reward_margin_slot0": 4071.622125380088,
+    "avg_episode_length": 377.74,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 10,
+        "right": 14
+      },
+      "slot1": {
+        "left": 3,
+        "right": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a0__vs__tp_mixed_a0_morph__slot0_tp_morph_a0__slot1_tp_mixed_a0_morph__seed963.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1100,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a0",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      28,
+      2
+    ],
+    "draws": 20,
+    "win_rate": [
+      0.56,
+      0.04
+    ],
+    "draw_rate": 0.4,
+    "avg_episode_reward": [
+      2486.395120190005,
+      -1442.3786357786064
+    ],
+    "std_episode_reward": [
+      1611.0466568743057,
+      1028.7602420141084
+    ],
+    "avg_reward_margin_slot0": 3928.773755968611,
+    "avg_episode_length": 357.08,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 10,
+        "right": 18
+      },
+      "slot1": {
+        "right": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      19,
+      5
+    ],
+    "draws": 26,
+    "win_rate": [
+      0.38,
+      0.1
+    ],
+    "draw_rate": 0.52,
+    "avg_episode_reward": [
+      1431.4866553467568,
+      -991.0945335738666
+    ],
+    "std_episode_reward": [
+      2039.9243934478209,
+      1562.9729303724232
+    ],
+    "avg_reward_margin_slot0": 2422.581188920623,
+    "avg_episode_length": 384.44,
+    "side_counts": {
+      "slot0": {
+        "right": 24,
+        "left": 26
+      },
+      "slot1": {
+        "left": 24,
+        "right": 26
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 12,
+        "left": 7
+      },
+      "slot1": {
+        "left": 3,
+        "right": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a0__vs__tp_mixed_a1_fixed__slot0_tp_morph_a0__slot1_tp_mixed_a1_fixed__seed965.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 778,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a0",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      7,
+      12
+    ],
+    "draws": 31,
+    "win_rate": [
+      0.14,
+      0.24
+    ],
+    "draw_rate": 0.62,
+    "avg_episode_reward": [
+      -446.98676937240015,
+      -250.95396087845594
+    ],
+    "std_episode_reward": [
+      1537.0515361114271,
+      1818.2818673680451
+    ],
+    "avg_reward_margin_slot0": -196.03280849394406,
+    "avg_episode_length": 412.98,
+    "side_counts": {
+      "slot0": {
+        "left": 20,
+        "right": 30
+      },
+      "slot1": {
+        "right": 20,
+        "left": 30
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 5,
+        "left": 2
+      },
+      "slot1": {
+        "right": 4,
+        "left": 8
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      36,
+      7
+    ],
+    "draws": 7,
+    "win_rate": [
+      0.72,
+      0.14
+    ],
+    "draw_rate": 0.14,
+    "avg_episode_reward": [
+      2474.8824087381713,
+      -1364.110710494008
+    ],
+    "std_episode_reward": [
+      2002.1258118681008,
+      1549.1223136526148
+    ],
+    "avg_reward_margin_slot0": 3838.993119232179,
+    "avg_episode_length": 248.3,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 14,
+        "right": 22
+      },
+      "slot1": {
+        "right": 3,
+        "left": 4
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a0__vs__tp_morph_delay200_a0__slot0_tp_morph_a0__slot1_tp_morph_delay200_a0__seed967.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 537,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a0",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      12,
+      22
+    ],
+    "draws": 16,
+    "win_rate": [
+      0.24,
+      0.44
+    ],
+    "draw_rate": 0.32,
+    "avg_episode_reward": [
+      717.3766204016484,
+      67.62931353803924
+    ],
+    "std_episode_reward": [
+      2036.7910245285702,
+      2012.706732714711
+    ],
+    "avg_reward_margin_slot0": 649.7473068636091,
+    "avg_episode_length": 318.88,
+    "side_counts": {
+      "slot0": {
+        "left": 21,
+        "right": 29
+      },
+      "slot1": {
+        "right": 21,
+        "left": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 9,
+        "left": 3
+      },
+      "slot1": {
+        "right": 9,
+        "left": 13
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_morph_a0",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      33,
+      6
+    ],
+    "draws": 11,
+    "win_rate": [
+      0.66,
+      0.12
+    ],
+    "draw_rate": 0.22,
+    "avg_episode_reward": [
+      2298.8108290071928,
+      -1006.6112259798153
+    ],
+    "std_episode_reward": [
+      1627.7655856243798,
+      1694.9877785685678
+    ],
+    "avg_reward_margin_slot0": 3305.422054987008,
+    "avg_episode_length": 297.52,
+    "side_counts": {
+      "slot0": {
+        "right": 22,
+        "left": 28
+      },
+      "slot1": {
+        "left": 22,
+        "right": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 13,
+        "left": 20
+      },
+      "slot1": {
+        "right": 4,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a0__vs__tp_morph_delay200_a1__slot0_tp_morph_a0__slot1_tp_morph_delay200_a1__seed969.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1022,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a0",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a0__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_morph_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      9,
+      16
+    ],
+    "draws": 25,
+    "win_rate": [
+      0.18,
+      0.32
+    ],
+    "draw_rate": 0.5,
+    "avg_episode_reward": [
+      -143.97495418667867,
+      215.8195470895338
+    ],
+    "std_episode_reward": [
+      1829.0314336371462,
+      1848.3294942888606
+    ],
+    "avg_reward_margin_slot0": -359.79450127621254,
+    "avg_episode_length": 365.28,
+    "side_counts": {
+      "slot0": {
+        "left": 28,
+        "right": 22
+      },
+      "slot1": {
+        "right": 28,
+        "left": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 8,
+        "left": 1
+      },
+      "slot1": {
+        "left": 8,
+        "right": 8
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_mixed_a0_morph__leg0",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      10,
+      2
+    ],
+    "draws": 38,
+    "win_rate": [
+      0.2,
+      0.04
+    ],
+    "draw_rate": 0.76,
+    "avg_episode_reward": [
+      -463.72712830910757,
+      -1102.639832997789
+    ],
+    "std_episode_reward": [
+      1429.728772651235,
+      1103.7202743987057
+    ],
+    "avg_reward_margin_slot0": 638.9127046886814,
+    "avg_episode_length": 428.1,
+    "side_counts": {
+      "slot0": {
+        "right": 28,
+        "left": 22
+      },
+      "slot1": {
+        "left": 28,
+        "right": 22
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 6,
+        "left": 4
+      },
+      "slot1": {
+        "left": 1,
+        "right": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a1__vs__tp_mixed_a0_morph__slot0_tp_morph_a1__slot1_tp_mixed_a0_morph__seed971.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1050,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a1",
+      "orange: tp_mixed_a0_morph"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_mixed_a0_morph__leg1",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      15,
+      10
+    ],
+    "draws": 25,
+    "win_rate": [
+      0.3,
+      0.2
+    ],
+    "draw_rate": 0.5,
+    "avg_episode_reward": [
+      1036.6624498657666,
+      -133.22529273602055
+    ],
+    "std_episode_reward": [
+      2013.1968888015172,
+      1970.2274670555823
+    ],
+    "avg_reward_margin_slot0": 1169.8877426017875,
+    "avg_episode_length": 380.78,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 7,
+        "left": 8
+      },
+      "slot1": {
+        "right": 4,
+        "left": 6
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      9,
+      9
+    ],
+    "draws": 32,
+    "win_rate": [
+      0.18,
+      0.18
+    ],
+    "draw_rate": 0.64,
+    "avg_episode_reward": [
+      -1503.9873653638736,
+      681.9110080745512
+    ],
+    "std_episode_reward": [
+      1933.0049331642795,
+      1797.0900028366284
+    ],
+    "avg_reward_margin_slot0": -2185.898373438425,
+    "avg_episode_length": 406.34,
+    "side_counts": {
+      "slot0": {
+        "right": 32,
+        "left": 18
+      },
+      "slot1": {
+        "left": 32,
+        "right": 18
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 4,
+        "right": 5
+      },
+      "slot1": {
+        "right": 8,
+        "left": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a1__vs__tp_mixed_a1_fixed__slot0_tp_morph_a1__slot1_tp_mixed_a1_fixed__seed973.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1200,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a1",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      4,
+      17
+    ],
+    "draws": 29,
+    "win_rate": [
+      0.08,
+      0.34
+    ],
+    "draw_rate": 0.58,
+    "avg_episode_reward": [
+      -1187.5570740101236,
+      1510.8606770756596
+    ],
+    "std_episode_reward": [
+      1248.084998167277,
+      1797.1847960417874
+    ],
+    "avg_reward_margin_slot0": -2698.417751085783,
+    "avg_episode_length": 406.64,
+    "side_counts": {
+      "slot0": {
+        "left": 29,
+        "right": 21
+      },
+      "slot1": {
+        "right": 29,
+        "left": 21
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 1,
+        "right": 3
+      },
+      "slot1": {
+        "right": 13,
+        "left": 4
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      23,
+      4
+    ],
+    "draws": 23,
+    "win_rate": [
+      0.46,
+      0.08
+    ],
+    "draw_rate": 0.46,
+    "avg_episode_reward": [
+      574.3624936421169,
+      -797.4292873874178
+    ],
+    "std_episode_reward": [
+      1621.6831845056925,
+      1370.0817635915662
+    ],
+    "avg_reward_margin_slot0": 1371.7917810295348,
+    "avg_episode_length": 352.56,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 12,
+        "left": 11
+      },
+      "slot1": {
+        "right": 4
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a1__vs__tp_morph_delay200_a0__slot0_tp_morph_a1__slot1_tp_morph_delay200_a0__seed975.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 683,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a1",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      3,
+      32
+    ],
+    "draws": 15,
+    "win_rate": [
+      0.06,
+      0.64
+    ],
+    "draw_rate": 0.3,
+    "avg_episode_reward": [
+      -701.0819375964057,
+      1765.7124704166272
+    ],
+    "std_episode_reward": [
+      1462.225983852944,
+      1930.7116803556494
+    ],
+    "avg_reward_margin_slot0": -2466.7944080130333,
+    "avg_episode_length": 330.92,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 1,
+        "left": 2
+      },
+      "slot1": {
+        "left": 12,
+        "right": 20
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_morph_a1",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      18,
+      10
+    ],
+    "draws": 22,
+    "win_rate": [
+      0.36,
+      0.2
+    ],
+    "draw_rate": 0.44,
+    "avg_episode_reward": [
+      -113.77431551297609,
+      445.50869789158475
+    ],
+    "std_episode_reward": [
+      1802.2973324181733,
+      1658.517765234984
+    ],
+    "avg_reward_margin_slot0": -559.2830134045607,
+    "avg_episode_length": 349.86,
+    "side_counts": {
+      "slot0": {
+        "left": 31,
+        "right": 19
+      },
+      "slot1": {
+        "right": 31,
+        "left": 19
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 9,
+        "right": 9
+      },
+      "slot1": {
+        "left": 1,
+        "right": 9
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_a1__vs__tp_morph_delay200_a1__slot0_tp_morph_a1__slot1_tp_morph_delay200_a1__seed977.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 950,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_a1",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_a1",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_a1__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_morph_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      5,
+      34
+    ],
+    "draws": 11,
+    "win_rate": [
+      0.1,
+      0.68
+    ],
+    "draw_rate": 0.22,
+    "avg_episode_reward": [
+      -1098.2183268262004,
+      1875.6066709846875
+    ],
+    "std_episode_reward": [
+      1496.8912695482682,
+      2008.226838021071
+    ],
+    "avg_reward_margin_slot0": -2973.824997810888,
+    "avg_episode_length": 306.24,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 2,
+        "left": 3
+      },
+      "slot1": {
+        "left": 12,
+        "right": 22
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_mixed_a1_fixed__leg0",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      19,
+      4
+    ],
+    "draws": 27,
+    "win_rate": [
+      0.38,
+      0.08
+    ],
+    "draw_rate": 0.54,
+    "avg_episode_reward": [
+      1462.771972374455,
+      -1081.1676694371977
+    ],
+    "std_episode_reward": [
+      1863.8468533945927,
+      1437.4783121660541
+    ],
+    "avg_reward_margin_slot0": 2543.9396418116526,
+    "avg_episode_length": 391.78,
+    "side_counts": {
+      "slot0": {
+        "left": 35,
+        "right": 15
+      },
+      "slot1": {
+        "right": 35,
+        "left": 15
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 15,
+        "right": 4
+      },
+      "slot1": {
+        "right": 2,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_mixed_a0_morph__vs__tp_mixed_a1_fixed__slot0_tp_mixed_a0_morph__slot1_tp_mixed_a1_fixed__seed979.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1255,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_mixed_a0_morph",
+      "orange: tp_mixed_a1_fixed"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_mixed_a1_fixed__leg1",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      5,
+      10
+    ],
+    "draws": 35,
+    "win_rate": [
+      0.1,
+      0.2
+    ],
+    "draw_rate": 0.7,
+    "avg_episode_reward": [
+      -390.7067966160385,
+      -586.1404056809321
+    ],
+    "std_episode_reward": [
+      1541.7636261775915,
+      1561.372218547348
+    ],
+    "avg_reward_margin_slot0": 195.43360906489357,
+    "avg_episode_length": 409.78,
+    "side_counts": {
+      "slot0": {
+        "left": 20,
+        "right": 30
+      },
+      "slot1": {
+        "right": 20,
+        "left": 30
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 2,
+        "left": 3
+      },
+      "slot1": {
+        "left": 8,
+        "right": 2
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      41,
+      4
+    ],
+    "draws": 5,
+    "win_rate": [
+      0.82,
+      0.08
+    ],
+    "draw_rate": 0.1,
+    "avg_episode_reward": [
+      2750.6981713262912,
+      -1646.1763855683635
+    ],
+    "std_episode_reward": [
+      1690.3426406870983,
+      1293.413373636326
+    ],
+    "avg_reward_margin_slot0": 4396.874556894654,
+    "avg_episode_length": 227.78,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 21,
+        "right": 20
+      },
+      "slot1": {
+        "right": 1,
+        "left": 3
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_mixed_a0_morph__vs__tp_morph_delay200_a0__slot0_tp_mixed_a0_morph__slot1_tp_morph_delay200_a0__seed981.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 606,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_mixed_a0_morph",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      8,
+      19
+    ],
+    "draws": 23,
+    "win_rate": [
+      0.16,
+      0.38
+    ],
+    "draw_rate": 0.46,
+    "avg_episode_reward": [
+      535.2413617850615,
+      -5.162603158197325
+    ],
+    "std_episode_reward": [
+      1827.0783747470252,
+      1823.4154012040892
+    ],
+    "avg_reward_margin_slot0": 540.4039649432589,
+    "avg_episode_length": 375.98,
+    "side_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 27
+      },
+      "slot1": {
+        "right": 23,
+        "left": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 3,
+        "right": 5
+      },
+      "slot1": {
+        "right": 8,
+        "left": 11
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_mixed_a0_morph",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      33,
+      2
+    ],
+    "draws": 15,
+    "win_rate": [
+      0.66,
+      0.04
+    ],
+    "draw_rate": 0.3,
+    "avg_episode_reward": [
+      2226.5255350914067,
+      -1082.489726760838
+    ],
+    "std_episode_reward": [
+      1567.7068813752837,
+      1230.1406134917295
+    ],
+    "avg_reward_margin_slot0": 3309.0152618522447,
+    "avg_episode_length": 334.08,
+    "side_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 27
+      },
+      "slot1": {
+        "right": 23,
+        "left": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 14,
+        "right": 19
+      },
+      "slot1": {
+        "right": 1,
+        "left": 1
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_mixed_a0_morph__vs__tp_morph_delay200_a1__slot0_tp_mixed_a0_morph__slot1_tp_morph_delay200_a1__seed983.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1012,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_mixed_a0_morph",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_mixed_a0_morph",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_mixed_a0_morph__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_mixed_a0_morph",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      4,
+      24
+    ],
+    "draws": 22,
+    "win_rate": [
+      0.08,
+      0.48
+    ],
+    "draw_rate": 0.44,
+    "avg_episode_reward": [
+      -801.7000238553733,
+      702.3253165242055
+    ],
+    "std_episode_reward": [
+      1412.9895011902076,
+      1595.375122480887
+    ],
+    "avg_reward_margin_slot0": -1504.0253403795787,
+    "avg_episode_length": 349.22,
+    "side_counts": {
+      "slot0": {
+        "right": 21,
+        "left": 29
+      },
+      "slot1": {
+        "left": 21,
+        "right": 29
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 2,
+        "right": 2
+      },
+      "slot1": {
+        "left": 10,
+        "right": 14
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_mixed_a1_fixed__vs__tp_morph_delay200_a0__leg0",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      29,
+      3
+    ],
+    "draws": 18,
+    "win_rate": [
+      0.58,
+      0.06
+    ],
+    "draw_rate": 0.36,
+    "avg_episode_reward": [
+      1279.0383492140118,
+      -1251.1331215736382
+    ],
+    "std_episode_reward": [
+      1488.4719470203834,
+      1286.1612874396778
+    ],
+    "avg_reward_margin_slot0": 2530.17147078765,
+    "avg_episode_length": 305.04,
+    "side_counts": {
+      "slot0": {
+        "left": 25,
+        "right": 25
+      },
+      "slot1": {
+        "right": 25,
+        "left": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 16,
+        "right": 13
+      },
+      "slot1": {
+        "right": 1,
+        "left": 2
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_mixed_a1_fixed__vs__tp_morph_delay200_a0__slot0_tp_mixed_a1_fixed__slot1_tp_morph_delay200_a0__seed985.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 548,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_mixed_a1_fixed",
+      "orange: tp_morph_delay200_a0"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_mixed_a1_fixed__vs__tp_morph_delay200_a0__leg1",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      7,
+      22
+    ],
+    "draws": 21,
+    "win_rate": [
+      0.14,
+      0.44
+    ],
+    "draw_rate": 0.42,
+    "avg_episode_reward": [
+      -351.3267474759443,
+      727.9250324831903
+    ],
+    "std_episode_reward": [
+      1782.772649679719,
+      2032.1471707426194
+    ],
+    "avg_reward_margin_slot0": -1079.2517799591346,
+    "avg_episode_length": 393.58,
+    "side_counts": {
+      "slot0": {
+        "left": 29,
+        "right": 21
+      },
+      "slot1": {
+        "right": 29,
+        "left": 21
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 5,
+        "right": 2
+      },
+      "slot1": {
+        "right": 11,
+        "left": 11
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_mixed_a1_fixed__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_mixed_a1_fixed",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      21,
+      11
+    ],
+    "draws": 18,
+    "win_rate": [
+      0.42,
+      0.22
+    ],
+    "draw_rate": 0.36,
+    "avg_episode_reward": [
+      127.3835929106963,
+      600.426163959908
+    ],
+    "std_episode_reward": [
+      1958.462834753131,
+      1806.7133771596107
+    ],
+    "avg_reward_margin_slot0": -473.04257104921174,
+    "avg_episode_length": 360.14,
+    "side_counts": {
+      "slot0": {
+        "left": 23,
+        "right": 27
+      },
+      "slot1": {
+        "right": 23,
+        "left": 27
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 11,
+        "right": 10
+      },
+      "slot1": {
+        "left": 5,
+        "right": 6
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_mixed_a1_fixed__vs__tp_morph_delay200_a1__slot0_tp_mixed_a1_fixed__slot1_tp_morph_delay200_a1__seed987.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 1078,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_mixed_a1_fixed",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_mixed_a1_fixed",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_mixed_a1_fixed__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_mixed_a1_fixed",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      3,
+      34
+    ],
+    "draws": 13,
+    "win_rate": [
+      0.06,
+      0.68
+    ],
+    "draw_rate": 0.26,
+    "avg_episode_reward": [
+      -1488.858730991312,
+      2070.0061485461038
+    ],
+    "std_episode_reward": [
+      1286.0253653052018,
+      1798.9163701981095
+    ],
+    "avg_reward_margin_slot0": -3558.8648795374156,
+    "avg_episode_length": 345.18,
+    "side_counts": {
+      "slot0": {
+        "left": 22,
+        "right": 28
+      },
+      "slot1": {
+        "right": 22,
+        "left": 28
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 2,
+        "right": 1
+      },
+      "slot1": {
+        "right": 14,
+        "left": 20
+      }
+    }
+  },
+  "video": null
+}
+{
+  "fixture_id": "tp_morph_delay200_a0__vs__tp_morph_delay200_a1__leg0",
+  "slot0": "tp_morph_delay200_a0",
+  "slot1": "tp_morph_delay200_a1",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      23,
+      16
+    ],
+    "draws": 11,
+    "win_rate": [
+      0.46,
+      0.32
+    ],
+    "draw_rate": 0.22,
+    "avg_episode_reward": [
+      1361.5809231698724,
+      -136.51447231228255
+    ],
+    "std_episode_reward": [
+      2204.271926277058,
+      2194.561543150918
+    ],
+    "avg_reward_margin_slot0": 1498.0953954821553,
+    "avg_episode_length": 290.94,
+    "side_counts": {
+      "slot0": {
+        "right": 25,
+        "left": 25
+      },
+      "slot1": {
+        "left": 25,
+        "right": 25
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "right": 8,
+        "left": 15
+      },
+      "slot1": {
+        "left": 12,
+        "right": 4
+      }
+    }
+  },
+  "video": {
+    "path": "reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/videos/tp_morph_delay200_a0__vs__tp_morph_delay200_a1__slot0_tp_morph_delay200_a0__slot1_tp_morph_delay200_a1__seed989.mp4",
+    "episodes": 5,
+    "fps": 30,
+    "stride": 2,
+    "frames_written": 932,
+    "overlay": true,
+    "body_colors": [
+      {
+        "slot": 0,
+        "agent_id": "tp_morph_delay200_a0",
+        "color": "cyan",
+        "rgba": [
+          0.0,
+          0.78,
+          1.0,
+          1.0
+        ],
+        "geom_count": 13
+      },
+      {
+        "slot": 1,
+        "agent_id": "tp_morph_delay200_a1",
+        "color": "orange",
+        "rgba": [
+          1.0,
+          0.55,
+          0.05,
+          1.0
+        ],
+        "geom_count": 13
+      }
+    ],
+    "labels": [
+      "cyan: tp_morph_delay200_a0",
+      "orange: tp_morph_delay200_a1"
+    ]
+  }
+}
+{
+  "fixture_id": "tp_morph_delay200_a0__vs__tp_morph_delay200_a1__leg1",
+  "slot0": "tp_morph_delay200_a1",
+  "slot1": "tp_morph_delay200_a0",
+  "summary": {
+    "episodes": 50,
+    "wins": [
+      22,
+      13
+    ],
+    "draws": 15,
+    "win_rate": [
+      0.44,
+      0.26
+    ],
+    "draw_rate": 0.3,
+    "avg_episode_reward": [
+      649.5689103503908,
+      -293.78351036778645
+    ],
+    "std_episode_reward": [
+      1869.0253088365548,
+      1763.7047594231947
+    ],
+    "avg_reward_margin_slot0": 943.3524207181772,
+    "avg_episode_length": 289.44,
+    "side_counts": {
+      "slot0": {
+        "left": 26,
+        "right": 24
+      },
+      "slot1": {
+        "right": 26,
+        "left": 24
+      }
+    },
+    "side_win_counts": {
+      "slot0": {
+        "left": 9,
+        "right": 13
+      },
+      "slot1": {
+        "left": 6,
+        "right": 7
+      }
+    }
+  },
+  "video": null
+}
+Wrote reports/league/formal_best10_full_ep50_allpairs_color_video_seed901/league_results.json
